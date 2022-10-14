@@ -40,8 +40,6 @@ class Trainer(BaseTrainer):
             criterion,
             metrics,
             optimizer,
-            bpe,
-            vocab,
             config,
             device,
             dataloaders,
@@ -55,13 +53,14 @@ class Trainer(BaseTrainer):
         self.text_encoder = text_encoder
         self.config = config
         self.train_dataloader = dataloaders["train"]
-        self.beam_size = 10
-        self.LM_scorer = LMScorer.from_pretrained("gpt2", batch_size=self.beam_size)
-        self.BPE = bpe
-        self.vocab = vocab
+        self.beam_size = 50
+        self.LM_scorer = LMScorer.from_pretrained("gpt2", batch_size=1)
+        #self.BPE = bpe
+        #self.vocab = vocab
+        self.vocab = list(ascii_lowercase + ' ')
         self.decoder = build_ctcdecoder(
             self.vocab,
-            kenlm_model_path='/Users/andreyborevskiy/PycharmProjects/DLA/first/3gram.arpa',
+            kenlm_model_path='3gram.arpa',
             alpha=0.5,
             beta=1.0,
         )
@@ -178,6 +177,7 @@ class Trainer(BaseTrainer):
                 self.lr_scheduler.step()
 
         batch['argmax_pred'] = torch.argmax(batch['log_probs'].cpu(), dim=-1).numpy()
+        '''
         batch['bms_pred'] = []
 
         for i, item in enumerate(batch['log_probs']):
@@ -190,7 +190,7 @@ class Trainer(BaseTrainer):
                 lm_scores.append(bm_lin[-1] + score)
             best_ind = np.argmax(lm_scores)
             batch['bms_pred'].append(bm_result[best_ind])
-
+        '''
         for met in self.metrics:
             metrics.update(met.name, met(**batch))
         return batch
@@ -256,15 +256,17 @@ class Trainer(BaseTrainer):
         ]
         argmax_texts_raw = [self.text_encoder.decode(inds) for inds in argmax_inds]
         argmax_texts = [self.text_encoder.ctc_decode(inds) for inds in argmax_inds]
-        tuples = list(zip(bms_pred, argmax_texts, text, argmax_texts_raw, audio_path))
+        # tuples = list(zip(bms_pred, argmax_texts, text, argmax_texts_raw, audio_path))
+        tuples = list(zip(argmax_texts, text, argmax_texts_raw, audio_path))
         shuffle(tuples)
         rows = {}
-        for (hypo, _, _, _, _), pred, target, raw_pred, audio_path in tuples[:examples_to_log]:
+        #for (hypo, _, _, _, _), pred, target, raw_pred, audio_path in tuples[:examples_to_log]:
+        for pred, target, raw_pred, audio_path in tuples[:examples_to_log]:
             target = BaseTextEncoder.normalize_text(target)
             wer = calc_wer(target, pred) * 100
             cer = calc_cer(target, pred) * 100
-            beam_wer = calc_wer(target, hypo) * 100
-            beam_cer = calc_cer(target, hypo) * 100
+            #beam_wer = calc_wer(target, hypo) * 100
+            #beam_cer = calc_cer(target, hypo) * 100
 
             rows[Path(audio_path).name] = {
                 "target": target,
@@ -272,9 +274,9 @@ class Trainer(BaseTrainer):
                 "predictions": pred,
                 "wer": wer,
                 "cer": cer,
-                "beam_hypothesis": hypo,
-                "beam_wer": beam_wer,
-                "beam_cer": beam_cer,
+                #"beam_hypothesis": hypo,
+                #"beam_wer": beam_wer,
+                #"beam_cer": beam_cer,
             }
         self.writer.add_table("predictions", pd.DataFrame.from_dict(rows, orient="index"))
 

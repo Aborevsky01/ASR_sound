@@ -5,7 +5,7 @@ WORKDIR /repos/asr_project_template
 RUN pip install sox && conda install torchaudio==0.11.0 -c pytorch && conda install -c conda-forge librosa
 
 # Install requirements
-COPY requirements.txt ./
+COPY ../requirements.txt ./
 RUN pip install -r requirements.txt
 
 # Copy the contents of repository

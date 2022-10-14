@@ -32,6 +32,7 @@ def main(config):
     os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
     # text_encoder
+    '''
     data_path = ROOT_PATH / "test_data" / "transcriptions"
     with open(ROOT_PATH / "test_data" / "all.txt", 'w') as f:
         for file in os.listdir(data_path):
@@ -46,9 +47,11 @@ def main(config):
     vocab = ['_'] + [BPE.id_to_piece(id) for id in range(BPE.get_piece_size())]
     vocab = list(set(vocab).union(set(list(ascii_lowercase))))
     vocab.append('')
-    text_encoder = config.get_text_encoder(vocab)
+    '''
+    text_encoder = config.get_text_encoder()
 
     # setup data_loader instances
+    '''
     audio_path = ROOT_PATH / "test_data" / "audio"
     transc_path = ROOT_PATH / "test_data" / "transcriptions"
     with (transc_path / "84-121550-0000.txt").open() as f:
@@ -61,10 +64,11 @@ def main(config):
     ]
     config['data']['train']['datasets'][0]['args']['data'] = data
     config['data']['val']['datasets'][0]['args']['data'] = data
+    '''
     dataloaders = get_dataloaders(config, text_encoder)
 
     # build model architecture, then print to console
-    model = config.init_obj(config["arch"], module_arch, n_class=len(vocab))
+    model = config.init_obj(config["arch"], module_arch, n_class=len(text_encoder))  # vocab
     logger.info(model)
 
     # prepare for (multi-device) GPU training
@@ -91,8 +95,6 @@ def main(config):
         loss_module,
         metrics,
         optimizer,
-        BPE,
-        vocab,
         text_encoder=text_encoder,
         config=config,
         device=device,

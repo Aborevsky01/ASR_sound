@@ -12,38 +12,8 @@
   },
   "augmentations": {
     "wave": [
-      {
-        "type": "Gain",
-        "args": {
-          "min_gain_in_db": -15.0,
-          "max_gain_in_db": 5.0
-        }
-       },
-      {
-        "type": "Noise",
-        "args": {
-          "sample_rate": 16000
-        }
-       },
-      {
-        "type": "Pitch",
-        "args": {
-          "sample_rate": 16000
-        }
-       }
     ],
     "spectrogram": [
-      {
-        "type": "Speed",
-        "args": {
-        }
-      },
-      {
-        "type": "Crop",
-        "args": {
-          "value": 20
-        }
-       }
     ]
   },
   "arch": {
@@ -82,7 +52,7 @@
     }
   },
   "optimizer": {
-    "type": "SGD",
+    "type": "Adam",
     "args": {
       "lr": 3e-4
     }
@@ -120,15 +90,15 @@
   "lr_scheduler": {
     "type": "OneCycleLR",
     "args": {
-      "steps_per_epoch": 20,
-      "epochs": 50,
+      "steps_per_epoch": 100,
+      "epochs": 4000,
       "anneal_strategy": "cos",
       "max_lr": 4e-3,
       "pct_start": 0.2
     }
   },
   "trainer": {
-    "epochs": 500,
+    "epochs": 4000,
     "save_dir": "saved/",
     "save_period": 5,
     "verbosity": 2,

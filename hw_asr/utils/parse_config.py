@@ -137,10 +137,13 @@ class ConfigParser:
         logger.setLevel(self.log_levels[verbosity])
         return logger
 
-    def get_text_encoder(self, alphabet) -> BaseTextEncoder:
+    def get_text_encoder(self, alphabet=None) -> BaseTextEncoder:
         if self._text_encoder is None:
             if "text_encoder" not in self._config:
-                self._text_encoder = CTCCharTextEncoder(alphabet)
+                if alphabet is None:
+                    self._text_encoder = CTCCharTextEncoder(bpe=False)
+                else:
+                    self._text_encoder = CTCCharTextEncoder(alphabet)
             else:
                 self._text_encoder = self.init_obj(self["text_encoder"],
                                                    default_module=text_encoder_module)
