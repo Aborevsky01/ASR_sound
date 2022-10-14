@@ -1,0 +1,142 @@
+{
+  "name": "default_config",
+  "n_gpu": 1,
+  "preprocessing": {
+    "sr": 16000,
+    "spectrogram": {
+      "type": "MelSpectrogram",
+      "args": {
+      }
+    },
+    "log_spec": true
+  },
+  "augmentations": {
+    "wave": [
+      {
+        "type": "Gain",
+        "args": {
+          "min_gain_in_db": -15.0,
+          "max_gain_in_db": 5.0
+        }
+       },
+      {
+        "type": "Noise",
+        "args": {
+          "sample_rate": 16000
+        }
+       },
+      {
+        "type": "Pitch",
+        "args": {
+          "sample_rate": 16000
+        }
+       }
+    ],
+    "spectrogram": [
+      {
+        "type": "Speed",
+        "args": {
+        }
+      },
+      {
+        "type": "Crop",
+        "args": {
+          "value": 20
+        }
+       }
+    ]
+  },
+  "arch": {
+    "type": "TrialModel",
+    "args": {
+      "n_feats": 128,
+      "fc_hidden": 1024
+    }
+  },
+  "data": {
+    "train": {
+      "batch_size": 1,
+      "num_workers": 5,
+      "datasets": [
+        {
+          "type": "CustomAudioDataset",
+          "args": {
+            "max_audio_length": 20.0,
+            "max_text_length": 200
+          }
+        }
+      ]
+    },
+    "val": {
+      "batch_size": 1,
+      "num_workers": 5,
+      "datasets": [
+        {
+          "type": "CustomAudioDataset",
+          "args": {
+            "max_audio_length": 20.0,
+            "max_text_length": 200
+          }
+        }
+      ]
+    }
+  },
+  "optimizer": {
+    "type": "SGD",
+    "args": {
+      "lr": 3e-4
+    }
+  },
+  "loss": {
+    "type": "CTCLoss",
+    "args": {}
+  },
+  "metrics": [
+    {
+      "type": "ArgmaxWERMetric",
+      "args": {
+        "name": "WER (ARG)"
+      }
+    },
+    {
+      "type": "ArgmaxCERMetric",
+      "args": {
+        "name": "CER (ARG)"
+      }
+    },
+    {
+      "type": "BeamSearchCERMetric",
+      "args": {
+        "name": "CER (BMS)"
+      }
+    },
+    {
+      "type": "BeamSearchWERMetric",
+      "args": {
+        "name": "WER (BMS)"
+      }
+    }
+  ],
+  "lr_scheduler": {
+    "type": "OneCycleLR",
+    "args": {
+      "steps_per_epoch": 20,
+      "epochs": 50,
+      "anneal_strategy": "cos",
+      "max_lr": 4e-3,
+      "pct_start": 0.2
+    }
+  },
+  "trainer": {
+    "epochs": 500,
+    "save_dir": "saved/",
+    "save_period": 5,
+    "verbosity": 2,
+    "monitor": "min val_loss",
+    "early_stop": 100,
+    "visualize": "wandb",
+    "wandb_project": "asr_project",
+    "len_epoch": 1,
+    "grad_norm_clip": 10
+  }
+}
