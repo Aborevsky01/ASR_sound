@@ -103,8 +103,8 @@ ENV/
 # input data, saved log, checkpoints
 data/
 input/
-saved/
-wandb/
+../saved/
+../wandb/
 
 # editor, os cache directory
 .vscode/

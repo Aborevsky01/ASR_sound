@@ -4,7 +4,6 @@ from random import shuffle
 from string import ascii_lowercase
 from hw_asr.utils import ROOT_PATH
 import kenlm
-from model import KenlmModel
 
 import matplotlib.pyplot as plt
 from pyctcdecode import build_ctcdecoder
@@ -40,6 +39,8 @@ class Trainer(BaseTrainer):
             criterion,
             metrics,
             optimizer,
+            bpe,
+            vocab,
             config,
             device,
             dataloaders,
@@ -55,9 +56,9 @@ class Trainer(BaseTrainer):
         self.train_dataloader = dataloaders["train"]
         self.beam_size = 50
         self.LM_scorer = LMScorer.from_pretrained("gpt2", batch_size=1)
-        #self.BPE = bpe
-        #self.vocab = vocab
-        self.vocab = list(ascii_lowercase + ' ')
+        self.BPE = bpe
+        self.vocab = vocab
+        #self.vocab = list(ascii_lowercase + ' ')
         self.decoder = build_ctcdecoder(
             self.vocab,
             kenlm_model_path='3gram.arpa',
@@ -241,7 +242,7 @@ class Trainer(BaseTrainer):
             log_probs,
             log_probs_length,
             argmax_pred,
-            bms_pred,
+            #bms_pred,
             audio_path,
             examples_to_log=10,
             *args,

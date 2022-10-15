@@ -31,40 +31,16 @@ def main(config):
     logger = config.get_logger("train")
     os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
-    # text_encoder
-    '''
-    data_path = ROOT_PATH / "test_data" / "transcriptions"
-    with open(ROOT_PATH / "test_data" / "all.txt", 'w') as f:
-        for file in os.listdir(data_path):
-            with open(data_path / file) as infile:
-                text = infile.read().lower()
-                f.write(text)
-
-    spm.SentencePieceTrainer.train(input=ROOT_PATH / "test_data" / "all.txt",
-                                   model_prefix='m', model_type='bpe', vocab_size=50)
     BPE = spm.SentencePieceProcessor()
     BPE.load('m.model')
     vocab = ['_'] + [BPE.id_to_piece(id) for id in range(BPE.get_piece_size())]
     vocab = list(set(vocab).union(set(list(ascii_lowercase))))
     vocab.append('')
-    '''
-    text_encoder = config.get_text_encoder()
+
+    # text_encoder
+    text_encoder = config.get_text_encoder(vocab)
 
     # setup data_loader instances
-    '''
-    audio_path = ROOT_PATH / "test_data" / "audio"
-    transc_path = ROOT_PATH / "test_data" / "transcriptions"
-    with (transc_path / "84-121550-0000.txt").open() as f:
-        transcription = f.read().strip()
-    data = [
-        {
-            "path": str(audio_path / "84-121550-0000.flac"),
-            "text": transcription
-        }
-    ]
-    config['data']['train']['datasets'][0]['args']['data'] = data
-    config['data']['val']['datasets'][0]['args']['data'] = data
-    '''
     dataloaders = get_dataloaders(config, text_encoder)
 
     # build model architecture, then print to console
@@ -95,6 +71,8 @@ def main(config):
         loss_module,
         metrics,
         optimizer,
+        BPE,
+        vocab,
         text_encoder=text_encoder,
         config=config,
         device=device,
