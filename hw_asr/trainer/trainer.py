@@ -108,6 +108,7 @@ class Trainer(BaseTrainer):
         self.model.train()
         self.train_metrics.reset()
         self.writer.add_scalar("epoch", epoch)
+        indicator = ((epoch % 10) == 0)
         for batch_idx, batch in enumerate(
                 tqdm(self.train_dataloader, desc="train", total=self.len_epoch)
         ):
@@ -116,6 +117,7 @@ class Trainer(BaseTrainer):
                     batch,
                     is_train=True,
                     metrics=self.train_metrics,
+                    bms=indicator
                 )
             except RuntimeError as e:
                 if "out of memory" in str(e) and self.skip_oom:
@@ -138,9 +140,9 @@ class Trainer(BaseTrainer):
                 self.writer.add_scalar(
                     "learning rate", self.lr_scheduler.get_last_lr()[0]
                 )
-                self._log_predictions(**batch)
-                self._log_spectrogram(batch["spectrogram"])
-                self._log_scalars(self.train_metrics)
+                #self._log_predictions(**batch)
+                #self._log_spectrogram(batch["spectrogram"])
+                #self._log_scalars(self.train_metrics)
                 # we don't want to reset train metrics at the start of every epoch
                 # because we are interested in recent train metrics
                 last_train_metrics = self.train_metrics.result()
@@ -155,7 +157,7 @@ class Trainer(BaseTrainer):
 
         return log
 
-    def process_batch(self, batch, is_train: bool, metrics: MetricTracker):
+    def process_batch(self, batch, is_train: bool, metrics: MetricTracker, bms: bool = True):
         batch = self.move_batch_to_device(batch, self.device)
         if is_train:
             self.optimizer.zero_grad()
@@ -178,19 +180,21 @@ class Trainer(BaseTrainer):
                 self.lr_scheduler.step()
 
         batch['argmax_pred'] = torch.argmax(batch['log_probs'].cpu(), dim=-1).numpy()
-        batch['bms_pred'] = []
+        metrics.update("loss", batch["loss"].item())
+        if bms:
+            batch['bms_pred'] = []
 
-        for i, item in enumerate(batch['log_probs']):
-            # bm_result = self.text_encoder.ctc_beam_search(item.exp().cpu(), batch['log_probs_length'][i],beam_size=10)
-            bm_result = self.decoder.decode_beams(item.exp().detach().numpy(), beam_width=10)
-            lm_scores = []
-            for bm_lin in bm_result:
-                score = self.LM_scorer.sentence_score(bm_lin[0], reduce="mean", log=True)
-                lm_scores.append(bm_lin[-1] + score)
-            best_ind = np.argmax(lm_scores)
-            batch['bms_pred'].append(bm_result[best_ind])
-        for met in self.metrics:
-            metrics.update(met.name, met(**batch))
+            for i, item in enumerate(batch['log_probs']):
+                # bm_result = self.text_encoder.ctc_beam_search(item.exp().cpu(), batch['log_probs_length'][i],beam_size=10)
+                bm_result = self.decoder.decode_beams(item.exp().detach().numpy(), beam_width=10)
+                lm_scores = []
+                for bm_lin in bm_result:
+                    score = self.LM_scorer.sentence_score(bm_lin[0], reduce="mean", log=True)
+                    lm_scores.append(bm_lin[-1] + score)
+                best_ind = np.argmax(lm_scores)
+                batch['bms_pred'].append(bm_result[best_ind])
+            for met in self.metrics:
+                metrics.update(met.name, met(**batch))
         return batch
 
     def _evaluation_epoch(self, epoch, part, dataloader):
@@ -212,10 +216,11 @@ class Trainer(BaseTrainer):
                     batch,
                     is_train=False,
                     metrics=self.evaluation_metrics,
+                    bms=True
                 )
             self.writer.set_step(epoch * self.len_epoch, part)
             self._log_scalars(self.evaluation_metrics)
-            self._log_predictions(**batch)
+            self._log_predictions(**batch, bms=((batch_idx % 10) == 0))
             self._log_spectrogram(batch["spectrogram"])
 
         # add histogram of model parameters to the tensorboard
@@ -239,13 +244,12 @@ class Trainer(BaseTrainer):
             log_probs,
             log_probs_length,
             argmax_pred,
-            bms_pred,
             audio_path,
+            bms_pred,
             examples_to_log=10,
             *args,
             **kwargs,
     ):
-        # TODO: implement logging of beam search results
         if self.writer is None:
             return
         argmax_inds = [
