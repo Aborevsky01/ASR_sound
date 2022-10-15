@@ -44,7 +44,7 @@ def main(config):
     dataloaders = get_dataloaders(config, text_encoder)
 
     # build model architecture, then print to console
-    model = config.init_obj(config["arch"], module_arch, n_class=len(text_encoder))  # vocab
+    model = config.init_obj(config["arch"], module_arch, n_class=len(vocab))  # vocab
     logger.info(model)
 
     # prepare for (multi-device) GPU training

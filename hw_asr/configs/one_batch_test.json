@@ -67,13 +67,25 @@
     {
       "type": "ArgmaxWERMetric",
       "args": {
-        "name": "WER (argmax)"
+        "name": "WER (ARG)"
       }
     },
     {
       "type": "ArgmaxCERMetric",
       "args": {
-        "name": "CER (argmax)"
+        "name": "CER (ARG)"
+      }
+    },
+    {
+      "type": "BeamSearchCERMetric",
+      "args": {
+        "name": "CER (BMS)"
+      }
+    },
+    {
+      "type": "BeamSearchWERMetric",
+      "args": {
+        "name": "WER (BMS)"
       }
     }
   ],
