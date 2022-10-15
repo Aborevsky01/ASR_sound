@@ -6,6 +6,7 @@ from torch import Tensor, nn
 import numpy as np
 
 from hw_asr.augmentations.base import AugmentationBase
+from hw_asr.augmentations.random_apply import RandomApply
 
 
 class Speed(AugmentationBase):

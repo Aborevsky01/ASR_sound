@@ -31,13 +31,22 @@ class TrialModel(BaseModel):
             **batch
     ) -> None:
         super().__init__(n_feats, n_class, **batch)
-        self.n_hidden = fc_hidden
-        self.fc1 = FullyConnected(n_feats, fc_hidden, dropout)
-        self.fc2 = FullyConnected(fc_hidden, fc_hidden, dropout)
-        self.fc3 = FullyConnected(fc_hidden, fc_hidden * 2, dropout)
-        self.bi_rnn = torch.nn.RNN(fc_hidden * 2, fc_hidden, num_layers=1, nonlinearity="relu", bidirectional=True)
-        self.fc4 = FullyConnected(fc_hidden, fc_hidden // 2, dropout)
-        self.out = torch.nn.Linear(fc_hidden // 2, n_class)
+        self.n_hidden = fc_hidden // 2
+        self.head = FullyConnected(n_feats, fc_hidden, dropout)
+        self.rnn = torch.nn.GRU(input_size=fc_hidden, hidden_size=fc_hidden // 2,
+                                num_layers=3, bidirectional=True, dropout=0.3, batch_first=True)
+        self.convs = nn.Sequential(
+            torch.nn.Conv2d(1, 4, kernel_size=(41, 11), stride=2),
+            torch.nn.BatchNorm2d(4),
+            torch.nn.Conv2d(4, 8, kernel_size=(21, 11), stride=1),
+            torch.nn.BatchNorm2d(8),
+            torch.nn.ReLU()
+        )
+        self.out = torch.nn.Sequential(
+            torch.nn.Linear(8 * 241, 512),
+            torch.nn.Dropout(0.4),
+            torch.nn.Linear(512, n_class)
+        )
 
 
     def forward(self, spectrogram, **batch):
@@ -49,7 +58,12 @@ class TrialModel(BaseModel):
             """
         # N x C x T x F
 
-        x = self.fc1(spectrogram.transpose(1, 2))
+        #x = self.fc1(spectrogram.transpose(1, 2))
+        r = self.rnn(self.head(spectrogram.transpose(1, 2)))[0].unsqueeze(1)
+        #r = r[:, :, : self.n_hidden] + r[:, :, self.n_hidden:]
+        x = self.convs(r)
+        out = self.out(x.permute(0, 2, 1, 3).flatten(2, 3))
+        '''
         # N x C x T x H
         x = self.fc2(x)
         # N x C x T x H
@@ -69,9 +83,10 @@ class TrialModel(BaseModel):
         # T x N x n_class
         x = x.permute(1, 0, 2)
         # N x T x n_class
+        '''
         # x = torch.nn.functional.log_softmax(x, dim=2)
         # N x T x n_class
-        return x
+        return {"logits":out}
 
     def transform_input_lengths(self, input_lengths):
-        return input_lengths
+        return (input_lengths - 40) // 2 - 19

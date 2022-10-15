@@ -11,8 +11,36 @@
     "log_spec": true
   },
   "augmentations": {
-    "wave": [],
-    "spectrogram": []
+    "wave": [{
+    "type": "Gain",
+    "args": {
+      "min_gain_in_db": -15.0,
+      "max_gain_in_db": 5.0
+    }
+   },
+  {
+    "type": "Noise",
+    "args": {
+      "sample_rate": 16000
+    }
+   },
+  {
+    "type": "Pitch",
+    "args": {
+      "sample_rate": 16000
+      }
+   }],
+    "spectrogram": [{
+    "type": "Speed",
+    "args": {
+      }
+    },
+  {
+    "type": "Crop",
+    "args": {
+     "value": 20
+    }
+  }]
   },
   "arch": {
     "type": "BaselineModel",

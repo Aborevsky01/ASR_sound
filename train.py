@@ -37,14 +37,15 @@ def main(config):
     vocab = list(set(vocab).union(set(list(ascii_lowercase))))
     vocab.append('')
 
+
     # text_encoder
-    text_encoder = config.get_text_encoder(vocab)
+    text_encoder = config.get_text_encoder()
 
     # setup data_loader instances
     dataloaders = get_dataloaders(config, text_encoder)
 
     # build model architecture, then print to console
-    model = config.init_obj(config["arch"], module_arch, n_class=len(vocab))  # vocab
+    model = config.init_obj(config["arch"], module_arch, n_class=len(text_encoder))  # vocab
     logger.info(model)
 
     # prepare for (multi-device) GPU training
