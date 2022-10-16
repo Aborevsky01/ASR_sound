@@ -62,7 +62,7 @@ class BidirectionalGRU(nn.Module):
 
     def forward(self, x):
         # print('rnn_shape_input', x.shape)
-        # x = self.layer_norm(x)
+        x = self.layer_norm(x)
         x = F.gelu(x)
         x, _ = self.BiGRU(x)
         x = self.dropout(x)

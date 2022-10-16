@@ -3,38 +3,43 @@ import collections
 import warnings
 
 import numpy as np
-import sentencepiece as spm
 import torch
 import os
 
 from pyctcdecode import build_ctcdecoder
 
+from BPE_models.BPE_train import bpe_train, kenlm_path
+from lm_scorer.models.auto import AutoLMScorer as LMScorer
+
 import hw_asr.loss as module_loss
 import hw_asr.metric as module_metric
 import hw_asr.model as module_arch
-from BPE_train import bpe_train, kenlm_path
 from hw_asr.trainer import Trainer
-from string import ascii_lowercase
-from hw_asr.utils import prepare_device
 from hw_asr.utils.object_loading import get_dataloaders
 from hw_asr.utils.parse_config import ConfigParser
-from hw_asr.utils import ROOT_PATH
 
 warnings.filterwarnings("ignore", category=UserWarning)
 
 # fix random seeds for reproducibility
 SEED = 123
-torch.manual_seed(SEED)
+torch.manual_seed(7)
 torch.backends.cudnn.deterministic = True
 torch.backends.cudnn.benchmark = False
-np.random.seed(SEED)
+np.random.seed(7)
 
 
 def main(config):
     logger = config.get_logger("train")
     os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
+    use_cuda = torch.cuda.is_available()
+    device = torch.device("cuda:0" if use_cuda else "cpu")
+
+    LM_scorer = LMScorer.from_pretrained("gpt2", batch_size=10, device=device)
+
     vocab = bpe_train(config)
+
+    text_encoder = config.get_text_encoder(vocab)
 
     decoder = build_ctcdecoder(
         vocab,
@@ -42,22 +47,18 @@ def main(config):
         alpha=1.5,
         beta=1.0,
     )
-
-    # text_encoder
-    text_encoder = config.get_text_encoder(vocab)
-
     # setup data_loader instances
     dataloaders = get_dataloaders(config, text_encoder)
 
     # build model architecture, then print to console
-    model = config.init_obj(config["arch"], module_arch, n_class=len(vocab))  # vocab
+    model = config.init_obj(config["arch"], module_arch, n_class=len(vocab)+1)  # vocab
     logger.info(model)
 
     # prepare for (multi-device) GPU training
-    device, device_ids = prepare_device(config["n_gpu"])
-    model = model.to(device)
-    if len(device_ids) > 1:
-        model = torch.nn.DataParallel(model, device_ids=device_ids)
+    # device, device_ids = prepare_device(config["n_gpu"])
+    # model = model.to(device)
+    # if len(device_ids) > 1:
+    #    model = torch.nn.DataParallel(model, device_ids=device_ids)
 
     # get function handles of loss and metrics
     loss_module = config.init_obj(config["loss"], module_loss).to(device)
@@ -78,6 +79,7 @@ def main(config):
         metrics,
         optimizer,
         decoder,
+        LM_scorer,
         vocab,
         text_encoder=text_encoder,
         config=config,

@@ -14,11 +14,15 @@
     "wave": [],
     "spectrogram": []
   },
+  "BPE": {
+    "use": true,
+    "BPE_model": "dev"
+  },
   "arch": {
     "type": "TrialModel",
     "args": {
       "n_feats": 128,
-      "fc_hidden": 256
+      "fc_hidden": 512
     }
   },
   "data": {
@@ -29,9 +33,7 @@
         {
           "type": "LibrispeechDataset",
           "args": {
-            "part": "train-clean-100",
-            "max_audio_length": 20.0,
-            "max_text_length": 200
+            "part": "dev-clean"
           }
         }
       ]
@@ -43,10 +45,7 @@
         {
           "type": "LibrispeechDataset",
           "args": {
-            "part": "test-clean",
-            "max_audio_length": 20.0,
-            "max_text_length": 200,
-            "limit": 20
+            "part": "dev-clean"
           }
         }
       ]
@@ -55,8 +54,7 @@
   "optimizer": {
     "type": "AdamW",
     "args": {
-      "lr": 5e-3,
-      "weight_decay": 0.00001
+      "lr": 5e-4
     }
   },
   "loss": {
@@ -92,15 +90,15 @@
   "lr_scheduler": {
     "type": "OneCycleLR",
     "args": {
-      "steps_per_epoch": 100,
-      "epochs": 3,
+      "steps_per_epoch": 1529,
+      "epochs": 10,
       "anneal_strategy": "linear",
       "max_lr": 5e-4,
       "pct_start": 0.2
     }
   },
   "trainer": {
-    "epochs": 50,
+    "epochs": 10,
     "save_dir": "saved/",
     "save_period": 5,
     "verbosity": 2,
@@ -108,7 +106,6 @@
     "early_stop": 100,
     "visualize": "wandb",
     "wandb_project": "asr_project",
-    "len_epoch": 100,
     "grad_norm_clip": 10
   }
 }

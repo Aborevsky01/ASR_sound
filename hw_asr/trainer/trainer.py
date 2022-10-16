@@ -40,6 +40,7 @@ class Trainer(BaseTrainer):
             metrics,
             optimizer,
             decoder,
+            LM_model,
             vocab,
             config,
             device,
@@ -49,17 +50,17 @@ class Trainer(BaseTrainer):
             len_epoch=None,
             skip_oom=True,
     ):
-        super().__init__(model, criterion, metrics, optimizer, config, device)
+        super().__init__(model.to(device), criterion, metrics, optimizer, config, device)
         self.skip_oom = skip_oom
         self.text_encoder = text_encoder
         self.config = config
         self.train_dataloader = dataloaders["train"]
-        self.beam_size = 50
-        self.LM_scorer = LMScorer.from_pretrained("gpt2", batch_size=10)
-        self.vocab = vocab
-        #self.vocab = list(ascii_lowercase + ' ')
+        self.LM_scorer = LM_model
+        # self.vocab = [''] + vocab
+        # self.vocab = list(ascii_lowercase + ' ')
+        self.vocab = [''] + text_encoder.alphabet
+        print(self.vocab)
         self.decoder = decoder
-
         if len_epoch is None:
             # epoch-based training
             self.len_epoch = len(self.train_dataloader)
@@ -70,7 +71,7 @@ class Trainer(BaseTrainer):
         self.evaluation_dataloaders = {k: v for k, v in dataloaders.items() if k != "train"}
         self.lr_scheduler = lr_scheduler
         self.log_step = 50
-        self.metric_indicator = np.arange(0, self.epochs)
+        self.metric_indicator = np.arange(0, len(self.train_dataloader), 10)
 
         self.train_metrics = MetricTracker(
             "loss", "grad norm", *[m.name for m in self.metrics], writer=self.writer
@@ -112,7 +113,7 @@ class Trainer(BaseTrainer):
                     batch,
                     is_train=True,
                     metrics=self.train_metrics,
-                    metric_calc=False
+                    bms=False
                 )
             except RuntimeError as e:
                 if "out of memory" in str(e) and self.skip_oom:
@@ -122,10 +123,19 @@ class Trainer(BaseTrainer):
                             del p.grad  # free some memory
                     torch.cuda.empty_cache()
                     continue
+                elif "Backward" in str(e) and self.skip_oom:
+                    print('log out')
+                    for p in self.model.parameters():
+                        if p.grad is not None:
+                            del p.grad
+                    continue
                 else:
                     raise e
+            if torch.isnan(batch['loss']).item() == True:
+                print(batch['loss'])
+                continue
             self.train_metrics.update("grad norm", self.get_grad_norm())
-            if batch_idx % self.log_step == 0:
+            if batch_idx % 100 == 0:
                 self.writer.set_step((epoch - 1) * self.len_epoch + batch_idx)
                 self.logger.debug(
                     "Train Epoch: {} {} Loss: {:.6f}".format(
@@ -135,7 +145,7 @@ class Trainer(BaseTrainer):
                 self.writer.add_scalar(
                     "learning rate", self.lr_scheduler.get_last_lr()[0]
                 )
-                self._log_predictions(**batch)
+                # self._log_predictions(**batch)
                 self._log_spectrogram(batch["spectrogram"])
                 self._log_scalars(self.train_metrics)
                 # we don't want to reset train metrics at the start of every epoch
@@ -147,12 +157,13 @@ class Trainer(BaseTrainer):
         log = last_train_metrics
 
         for part, dataloader in self.evaluation_dataloaders.items():
-            val_log = self._evaluation_epoch(epoch, part, dataloader, metric_calc=epoch in self.metric_indicator)
+            val_log = self._evaluation_epoch(epoch, part, dataloader, bms=epoch in self.metric_indicator)
             log.update(**{f"{part}_{name}": value for name, value in val_log.items()})
 
         return log
 
-    def process_batch(self, batch, is_train: bool, metrics: MetricTracker, metric_calc):
+    def process_batch(self, batch, is_train: bool, metrics: MetricTracker, bms):
+        torch.autograd.set_detect_anomaly(True)
         batch = self.move_batch_to_device(batch, self.device)
         if is_train:
             self.optimizer.zero_grad()
@@ -161,12 +172,13 @@ class Trainer(BaseTrainer):
             batch.update(outputs)
         else:
             batch["logits"] = outputs
-
-        batch["log_probs"] = F.log_softmax(batch["logits"], dim=-1)
+        batch["log_probs"] = F.log_softmax(batch["logits"], dim=-1).cpu()
         batch["log_probs_length"] = self.model.transform_input_lengths(
             batch["spectrogram_length"]
         )
         batch["loss"] = self.criterion(**batch)
+        if np.isnan(batch["loss"].item()):
+            return batch
         if is_train:
             batch["loss"].backward()
             self._clip_grad_norm()
@@ -175,13 +187,14 @@ class Trainer(BaseTrainer):
                 self.lr_scheduler.step()
 
         metrics.update("loss", batch["loss"].item())
-        if metric_calc == True:
-            batch['argmax_pred'] = torch.argmax(batch['log_probs'].cpu(), dim=-1).numpy()
+        batch['argmax_pred'] = torch.argmax(batch['log_probs'].cpu(), dim=-1).numpy()
+        if bms:
             batch['bms_pred'] = []
             for i, item in enumerate(batch['log_probs']):
                 # bm_result = self.text_encoder.ctc_beam_search(item.exp().cpu(), batch['log_probs_length'][i],beam_size=10)
                 bm_result = self.decoder.decode_beams(item.detach().numpy(), beam_width=50)
                 lm_scores = []
+
                 for bm_lin in bm_result[0:10]:
                     score = self.LM_scorer.sentence_score(bm_lin[0], reduce="prod", log=True)
                     lm_scores.append(bm_lin[-1] + score)
@@ -189,9 +202,12 @@ class Trainer(BaseTrainer):
                 batch['bms_pred'].append(bm_result[best_ind])
             for met in self.metrics:
                 metrics.update(met.name, met(**batch))
+        for met in self.metrics:
+            if met.name == "CER (ARG)" or met.name == "WER (ARG)":
+                metrics.update(met.name, met(**batch))
         return batch
 
-    def _evaluation_epoch(self, epoch, part, dataloader, metric_calc):
+    def _evaluation_epoch(self, epoch, part, dataloader, bms):
         """
         Validate after training an epoch
 
@@ -210,11 +226,11 @@ class Trainer(BaseTrainer):
                     batch,
                     is_train=False,
                     metrics=self.evaluation_metrics,
-                    metric_calc=metric_calc
+                    bms=batch_idx in self.metric_indicator
                 )
             self.writer.set_step(epoch * self.len_epoch, part)
             self._log_scalars(self.evaluation_metrics)
-            self._log_predictions(**batch)
+            # self._log_predictions(**batch)
             self._log_spectrogram(batch["spectrogram"])
 
         # add histogram of model parameters to the tensorboard
@@ -244,7 +260,6 @@ class Trainer(BaseTrainer):
             *args,
             **kwargs,
     ):
-        # TODO: implement logging of beam search results
         if self.writer is None:
             return
         argmax_inds = [
@@ -254,11 +269,11 @@ class Trainer(BaseTrainer):
         argmax_texts_raw = [self.text_encoder.decode(inds) for inds in argmax_inds]
         argmax_texts = [self.text_encoder.ctc_decode(inds) for inds in argmax_inds]
         tuples = list(zip(bms_pred, argmax_texts, text, argmax_texts_raw, audio_path))
-        #tuples = list(zip(argmax_texts, text, argmax_texts_raw, audio_path))
+        # tuples = list(zip(argmax_texts, text, argmax_texts_raw, audio_path))
         shuffle(tuples)
         rows = {}
         for (hypo, _, _, _, _), pred, target, raw_pred, audio_path in tuples[:examples_to_log]:
-        #for pred, target, raw_pred, audio_path in tuples[:examples_to_log]:
+            # for pred, target, raw_pred, audio_path in tuples[:examples_to_log]:
             target = BaseTextEncoder.normalize_text(target)
             wer = calc_wer(target, pred) * 100
             cer = calc_cer(target, pred) * 100
