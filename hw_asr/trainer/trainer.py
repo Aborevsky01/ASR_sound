@@ -39,7 +39,7 @@ class Trainer(BaseTrainer):
             criterion,
             metrics,
             optimizer,
-            bpe,
+            decoder,
             vocab,
             config,
             device,
@@ -56,15 +56,10 @@ class Trainer(BaseTrainer):
         self.train_dataloader = dataloaders["train"]
         self.beam_size = 50
         self.LM_scorer = LMScorer.from_pretrained("gpt2", batch_size=10)
-        self.BPE = bpe
         self.vocab = vocab
-        self.vocab = list(ascii_lowercase + ' ')
-        self.decoder = build_ctcdecoder(
-            self.vocab,
-            kenlm_model_path='4gram_big.arpa',
-            alpha=0.5,
-            beta=1.0,
-        )
+        #self.vocab = list(ascii_lowercase + ' ')
+        self.decoder = decoder
+
         if len_epoch is None:
             # epoch-based training
             self.len_epoch = len(self.train_dataloader)
@@ -75,6 +70,7 @@ class Trainer(BaseTrainer):
         self.evaluation_dataloaders = {k: v for k, v in dataloaders.items() if k != "train"}
         self.lr_scheduler = lr_scheduler
         self.log_step = 50
+        self.metric_indicator = np.arange(0, self.epochs)
 
         self.train_metrics = MetricTracker(
             "loss", "grad norm", *[m.name for m in self.metrics], writer=self.writer
@@ -108,7 +104,6 @@ class Trainer(BaseTrainer):
         self.model.train()
         self.train_metrics.reset()
         self.writer.add_scalar("epoch", epoch)
-        indicator = (epoch % 10) == 0
         for batch_idx, batch in enumerate(
                 tqdm(self.train_dataloader, desc="train", total=self.len_epoch)
         ):
@@ -117,7 +112,7 @@ class Trainer(BaseTrainer):
                     batch,
                     is_train=True,
                     metrics=self.train_metrics,
-                    bms=False
+                    metric_calc=False
                 )
             except RuntimeError as e:
                 if "out of memory" in str(e) and self.skip_oom:
@@ -140,8 +135,8 @@ class Trainer(BaseTrainer):
                 self.writer.add_scalar(
                     "learning rate", self.lr_scheduler.get_last_lr()[0]
                 )
-                #self._log_predictions(**batch)
-                #self._log_spectrogram(batch["spectrogram"])
+                self._log_predictions(**batch)
+                self._log_spectrogram(batch["spectrogram"])
                 self._log_scalars(self.train_metrics)
                 # we don't want to reset train metrics at the start of every epoch
                 # because we are interested in recent train metrics
@@ -152,12 +147,12 @@ class Trainer(BaseTrainer):
         log = last_train_metrics
 
         for part, dataloader in self.evaluation_dataloaders.items():
-            val_log = self._evaluation_epoch(epoch, part, dataloader, bms=indicator)
+            val_log = self._evaluation_epoch(epoch, part, dataloader, metric_calc=epoch in self.metric_indicator)
             log.update(**{f"{part}_{name}": value for name, value in val_log.items()})
 
         return log
 
-    def process_batch(self, batch, is_train: bool, metrics: MetricTracker, bms):
+    def process_batch(self, batch, is_train: bool, metrics: MetricTracker, metric_calc):
         batch = self.move_batch_to_device(batch, self.device)
         if is_train:
             self.optimizer.zero_grad()
@@ -180,14 +175,14 @@ class Trainer(BaseTrainer):
                 self.lr_scheduler.step()
 
         metrics.update("loss", batch["loss"].item())
-        if bms:
+        if metric_calc == True:
             batch['argmax_pred'] = torch.argmax(batch['log_probs'].cpu(), dim=-1).numpy()
             batch['bms_pred'] = []
             for i, item in enumerate(batch['log_probs']):
                 # bm_result = self.text_encoder.ctc_beam_search(item.exp().cpu(), batch['log_probs_length'][i],beam_size=10)
-                bm_result = self.decoder.decode_beams(item.exp().detach().numpy(), beam_width=10)
+                bm_result = self.decoder.decode_beams(item.detach().numpy(), beam_width=50)
                 lm_scores = []
-                for bm_lin in bm_result:
+                for bm_lin in bm_result[0:10]:
                     score = self.LM_scorer.sentence_score(bm_lin[0], reduce="prod", log=True)
                     lm_scores.append(bm_lin[-1] + score)
                 best_ind = np.argmax(lm_scores)
@@ -196,7 +191,7 @@ class Trainer(BaseTrainer):
                 metrics.update(met.name, met(**batch))
         return batch
 
-    def _evaluation_epoch(self, epoch, part, dataloader, bms):
+    def _evaluation_epoch(self, epoch, part, dataloader, metric_calc):
         """
         Validate after training an epoch
 
@@ -215,12 +210,12 @@ class Trainer(BaseTrainer):
                     batch,
                     is_train=False,
                     metrics=self.evaluation_metrics,
-                    bms=True
+                    metric_calc=metric_calc
                 )
             self.writer.set_step(epoch * self.len_epoch, part)
             self._log_scalars(self.evaluation_metrics)
-            #self._log_predictions(**batch)
-            #self._log_spectrogram(batch["spectrogram"])
+            self._log_predictions(**batch)
+            self._log_spectrogram(batch["spectrogram"])
 
         # add histogram of model parameters to the tensorboard
         for name, p in self.model.named_parameters():
@@ -243,7 +238,7 @@ class Trainer(BaseTrainer):
             log_probs,
             log_probs_length,
             argmax_pred,
-            #bms_pred,
+            bms_pred,
             audio_path,
             examples_to_log=10,
             *args,
@@ -258,17 +253,17 @@ class Trainer(BaseTrainer):
         ]
         argmax_texts_raw = [self.text_encoder.decode(inds) for inds in argmax_inds]
         argmax_texts = [self.text_encoder.ctc_decode(inds) for inds in argmax_inds]
-        # tuples = list(zip(bms_pred, argmax_texts, text, argmax_texts_raw, audio_path))
-        tuples = list(zip(argmax_texts, text, argmax_texts_raw, audio_path))
+        tuples = list(zip(bms_pred, argmax_texts, text, argmax_texts_raw, audio_path))
+        #tuples = list(zip(argmax_texts, text, argmax_texts_raw, audio_path))
         shuffle(tuples)
         rows = {}
-        #for (hypo, _, _, _, _), pred, target, raw_pred, audio_path in tuples[:examples_to_log]:
-        for pred, target, raw_pred, audio_path in tuples[:examples_to_log]:
+        for (hypo, _, _, _, _), pred, target, raw_pred, audio_path in tuples[:examples_to_log]:
+        #for pred, target, raw_pred, audio_path in tuples[:examples_to_log]:
             target = BaseTextEncoder.normalize_text(target)
             wer = calc_wer(target, pred) * 100
             cer = calc_cer(target, pred) * 100
-            #beam_wer = calc_wer(target, hypo) * 100
-            #beam_cer = calc_cer(target, hypo) * 100
+            beam_wer = calc_wer(target, hypo) * 100
+            beam_cer = calc_cer(target, hypo) * 100
 
             rows[Path(audio_path).name] = {
                 "target": target,
@@ -276,9 +271,9 @@ class Trainer(BaseTrainer):
                 "predictions": pred,
                 "wer": wer,
                 "cer": cer,
-                #"beam_hypothesis": hypo,
-                #"beam_wer": beam_wer,
-                #"beam_cer": beam_cer,
+                "beam_hypothesis": hypo,
+                "beam_wer": beam_wer,
+                "beam_cer": beam_cer,
             }
         self.writer.add_table("predictions", pd.DataFrame.from_dict(rows, orient="index"))
 

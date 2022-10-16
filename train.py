@@ -7,9 +7,12 @@ import sentencepiece as spm
 import torch
 import os
 
+from pyctcdecode import build_ctcdecoder
+
 import hw_asr.loss as module_loss
 import hw_asr.metric as module_metric
 import hw_asr.model as module_arch
+from BPE_train import bpe_train, kenlm_path
 from hw_asr.trainer import Trainer
 from string import ascii_lowercase
 from hw_asr.utils import prepare_device
@@ -31,21 +34,23 @@ def main(config):
     logger = config.get_logger("train")
     os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
-    BPE = spm.SentencePieceProcessor()
-    BPE.load('m.model')
-    vocab = ['_'] + [BPE.id_to_piece(id) for id in range(BPE.get_piece_size())]
-    vocab = list(set(vocab).union(set(list(ascii_lowercase))))
-    vocab.append('')
+    vocab = bpe_train(config)
 
+    decoder = build_ctcdecoder(
+        vocab,
+        kenlm_model_path=kenlm_path(),
+        alpha=1.5,
+        beta=1.0,
+    )
 
     # text_encoder
-    text_encoder = config.get_text_encoder()
+    text_encoder = config.get_text_encoder(vocab)
 
     # setup data_loader instances
     dataloaders = get_dataloaders(config, text_encoder)
 
     # build model architecture, then print to console
-    model = config.init_obj(config["arch"], module_arch, n_class=len(text_encoder))  # vocab
+    model = config.init_obj(config["arch"], module_arch, n_class=len(vocab))  # vocab
     logger.info(model)
 
     # prepare for (multi-device) GPU training
@@ -72,7 +77,7 @@ def main(config):
         loss_module,
         metrics,
         optimizer,
-        BPE,
+        decoder,
         vocab,
         text_encoder=text_encoder,
         config=config,

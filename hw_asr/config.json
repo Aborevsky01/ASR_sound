@@ -11,26 +11,25 @@
     "log_spec": true
   },
   "augmentations": {
-    "wave": [
-    ],
-    "spectrogram": [
-    ]
+    "wave": [],
+    "spectrogram": []
   },
   "arch": {
     "type": "TrialModel",
     "args": {
       "n_feats": 128,
-      "fc_hidden": 1024
+      "fc_hidden": 256
     }
   },
   "data": {
     "train": {
-      "batch_size": 1,
-      "num_workers": 5,
+      "batch_size": 10,
+      "num_workers": 0,
       "datasets": [
         {
-          "type": "CustomAudioDataset",
+          "type": "LibrispeechDataset",
           "args": {
+            "part": "train-clean-100",
             "max_audio_length": 20.0,
             "max_text_length": 200
           }
@@ -38,23 +37,26 @@
       ]
     },
     "val": {
-      "batch_size": 1,
-      "num_workers": 5,
+      "batch_size": 10,
+      "num_workers": 0,
       "datasets": [
         {
-          "type": "CustomAudioDataset",
+          "type": "LibrispeechDataset",
           "args": {
+            "part": "test-clean",
             "max_audio_length": 20.0,
-            "max_text_length": 200
+            "max_text_length": 200,
+            "limit": 20
           }
         }
       ]
     }
   },
   "optimizer": {
-    "type": "Adam",
+    "type": "AdamW",
     "args": {
-      "lr": 3e-4
+      "lr": 5e-3,
+      "weight_decay": 0.00001
     }
   },
   "loss": {
@@ -91,14 +93,14 @@
     "type": "OneCycleLR",
     "args": {
       "steps_per_epoch": 100,
-      "epochs": 4000,
-      "anneal_strategy": "cos",
-      "max_lr": 4e-3,
+      "epochs": 3,
+      "anneal_strategy": "linear",
+      "max_lr": 5e-4,
       "pct_start": 0.2
     }
   },
   "trainer": {
-    "epochs": 4000,
+    "epochs": 50,
     "save_dir": "saved/",
     "save_period": 5,
     "verbosity": 2,
@@ -106,7 +108,7 @@
     "early_stop": 100,
     "visualize": "wandb",
     "wandb_project": "asr_project",
-    "len_epoch": 1,
+    "len_epoch": 100,
     "grad_norm_clip": 10
   }
 }

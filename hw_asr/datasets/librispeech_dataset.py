@@ -21,6 +21,7 @@ URL_LINKS = {
     "train-clean-100": "https://www.openslr.org/resources/12/train-clean-100.tar.gz",
     "train-clean-360": "https://www.openslr.org/resources/12/train-clean-360.tar.gz",
     "train-other-500": "https://www.openslr.org/resources/12/train-other-500.tar.gz",
+    "lj": "https://data.keithito.com/data/speech/LJSpeech-1.1.tar.bz2"
 }
 
 

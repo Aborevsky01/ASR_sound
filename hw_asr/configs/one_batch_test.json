@@ -11,68 +11,39 @@
     "log_spec": true
   },
   "augmentations": {
-    "wave": [{
-    "type": "Gain",
-    "args": {
-      "min_gain_in_db": -15.0,
-      "max_gain_in_db": 5.0
-    }
-   },
-  {
-    "type": "Noise",
-    "args": {
-      "sample_rate": 16000
-    }
-   },
-  {
-    "type": "Pitch",
-    "args": {
-      "sample_rate": 16000
-      }
-   }],
-    "spectrogram": [{
-    "type": "Speed",
-    "args": {
-      }
-    },
-  {
-    "type": "Crop",
-    "args": {
-     "value": 20
-    }
-  }]
+    "wave": [],
+    "spectrogram": []
   },
   "arch": {
-    "type": "BaselineModel",
+    "type": "TrialModel",
     "args": {
       "n_feats": 128,
-      "fc_hidden": 512
+      "fc_hidden": 128
     }
   },
   "data": {
     "train": {
       "batch_size": 10,
-      "num_workers": 0,
+      "num_workers": 3,
       "datasets": [
         {
-          "type": "LibrispeechDataset",
+          "type": "LJDataset",
           "args": {
-            "part": "dev-clean",
+            "part": "train",
             "max_audio_length": 20.0,
-            "max_text_length": 200,
-            "limit": 10
+            "max_text_length": 200
           }
         }
       ]
     },
     "val": {
       "batch_size": 10,
-      "num_workers": 0,
+      "num_workers": 3,
       "datasets": [
         {
-          "type": "LibrispeechDataset",
+          "type": "LJDataset",
           "args": {
-            "part": "dev-clean",
+            "part": "test",
             "max_audio_length": 20.0,
             "max_text_length": 200,
             "limit": 10
@@ -82,9 +53,10 @@
     }
   },
   "optimizer": {
-    "type": "SGD",
+    "type": "AdamW",
     "args": {
-      "lr": 1e-2
+      "lr": 5e-3,
+      "weight_decay": 0.00001
     }
   },
   "loss": {
@@ -121,14 +93,14 @@
     "type": "OneCycleLR",
     "args": {
       "steps_per_epoch": 100,
-      "epochs": 50,
+      "epochs": 20,
       "anneal_strategy": "cos",
       "max_lr": 1e-2,
       "pct_start": 0.2
     }
   },
   "trainer": {
-    "epochs": 50,
+    "epochs": 20,
     "save_dir": "saved/",
     "save_period": 5,
     "verbosity": 2,
