@@ -6,104 +6,82 @@ from hw_asr.base import BaseModel
 import torch
 
 
-class CNNLayerNorm(nn.Module):
-    """Layer normalization built for cnns input"""
+class Normalize(nn.Module):
 
-    def __init__(self, n_feats):
-        super(CNNLayerNorm, self).__init__()
-        self.layer_norm = nn.LayerNorm(n_feats)
+    def __init__(self):
+        super(Normalize, self).__init__()
 
     def forward(self, x):
-        # x (batch, channel, feature, time)
-        x = x.transpose(2, 3).contiguous()  # (batch, channel, time, feature)
-        x = self.layer_norm(x)
-        return x.transpose(2, 3).contiguous()  # (batch, channel, feature, time)
+        x = x.transpose(2, 3)
+        x = nn.LayerNorm(x.shape[-1])(x)
+        return x.transpose(2, 3)
 
 
-class ResidualCNN(nn.Module):
-    """Residual CNN inspired by https://arxiv.org/pdf/1603.05027.pdf
-        except with layer norm instead of batch norm
-    """
+class ConvBlock(nn.Module):
 
-    def __init__(self, in_channels, out_channels, kernel, stride, dropout, n_feats):
-        super(ResidualCNN, self).__init__()
+    def __init__(self, in_channels, out_channels, pad, dropout):
+        super(ConvBlock, self).__init__()
 
-        self.cnn1 = nn.Conv2d(in_channels, out_channels, kernel, stride, padding=kernel // 2)
-        self.cnn2 = nn.Conv2d(out_channels, out_channels, kernel, stride, padding=kernel // 2)
-        self.dropout1 = nn.Dropout(dropout)
-        self.dropout2 = nn.Dropout(dropout)
-        self.layer_norm1 = CNNLayerNorm(n_feats)
-        self.layer_norm2 = CNNLayerNorm(n_feats)
+        self.cnn1 = nn.Conv2d(in_channels, out_channels, 2 * pad + 1, 1, padding=pad)
+        self.cnn2 = nn.Conv2d(in_channels, out_channels, 2 * pad + 1, 1, padding=pad)
+        self.dropout = dropout
+        self.layer_norm1 = Normalize()
+        self.layer_norm2 = Normalize()
 
     def forward(self, x):
-        residual = x  # (batch, channel, feature, time)
-        x = self.layer_norm1(x)
-        x = F.gelu(x)
-        x = self.dropout1(x)
+        residual = x
+        x = nn.ReLU6()(x)
+        x = nn.Dropout(self.dropout)(x)
         x = self.cnn1(x)
-        x = self.layer_norm2(x)
-        x = F.gelu(x)
-        x = self.dropout2(x)
+        x = nn.ReLU6()(x)
+        x = nn.Dropout(self.dropout)(x)
         x = self.cnn2(x)
-        x += residual
-        return x  # (batch, channel, feature, time)
+        return x + residual
 
 
-class BidirectionalGRU(nn.Module):
+class RNNBlock(nn.Module):
 
-    def __init__(self, rnn_dim, hidden_size, dropout, batch_first):
-        super(BidirectionalGRU, self).__init__()
-
-        self.BiGRU = nn.GRU(
-            input_size=rnn_dim, hidden_size=hidden_size,
-            num_layers=1, batch_first=batch_first, bidirectional=True)
-        self.layer_norm = nn.LayerNorm(rnn_dim)
-        self.dropout = nn.Dropout(dropout)
+    def __init__(self, input_size, hidden_size, dropout, batch_first):
+        super(RNNBlock, self).__init__()
+        self.seq = nn.Sequential(
+            nn.LayerNorm(input_size),
+            nn.ReLU6(),
+            nn.GRU(input_size=input_size, hidden_size=hidden_size,
+                   num_layers=1, batch_first=batch_first, bidirectional=True)
+        )
+        self.dropout = dropout
 
     def forward(self, x):
-        # print('rnn_shape_input', x.shape)
-        x = self.layer_norm(x)
-        x = F.gelu(x)
-        x, _ = self.BiGRU(x)
-        x = self.dropout(x)
+        x, _ = self.seq(x)
+        x = nn.Dropout(p=self.dropout)(x)
         return x
 
 
 class TrialModel(BaseModel):
-    """Speech Recognition Model Inspired by DeepSpeech 2"""
 
-    def __init__(self, fc_hidden, n_class, n_feats, n_cnn_layers=3, n_rnn_layers=5, stride=2, dropout=0.1, **batch):
+    def __init__(self, fc_hidden, n_class, n_feats, dropout=0.2, **batch):
         super().__init__(n_feats, n_class, **batch)
-        n_feats = n_feats // 2
-        self.cnn = nn.Conv2d(1, 32, 3, stride=stride, padding=3 // 2)  # cnn for extracting heirachal features
+        convs = [ConvBlock(32, 32, pad=1, dropout=dropout) for _ in range(3)]
+        grus = [RNNBlock(input_size=2 * fc_hidden if i != 0 else fc_hidden,
+                         hidden_size=fc_hidden, dropout=dropout, batch_first=(i == 0)) for i in range(5)]
 
-        # n residual cnn layers with filter size of 32
-        self.rescnn_layers = nn.Sequential(*[
-            ResidualCNN(32, 32, kernel=3, stride=1, dropout=dropout, n_feats=64)
-            for _ in range(n_cnn_layers)
-        ])
-        self.fully_connected = nn.Linear(n_feats * 32, fc_hidden)
-        self.birnn_layers = nn.Sequential(*[
-            BidirectionalGRU(rnn_dim=fc_hidden if i == 0 else fc_hidden * 2,
-                             hidden_size=fc_hidden, dropout=dropout, batch_first=i == 0)
-            for i in range(n_rnn_layers)
-        ])
-        self.classifier = nn.Sequential(
-            nn.Linear(fc_hidden * 2, fc_hidden),  # birnn returns rnn_dim*2
+        self.cnn = nn.Conv2d(1, 32, 3, stride=2, padding=1)
+        self.resconv = nn.Sequential(*convs)
+        self.fc_1 = nn.Linear(128 * 16, fc_hidden)
+        self.rnn = nn.Sequential(*grus)
+        self.fc_2 = nn.Linear(fc_hidden * 2, fc_hidden)
+        self.out = nn.Sequential(
+            nn.Dropout(p=dropout),
             nn.ReLU6(),
-            nn.Dropout(dropout),
             nn.Linear(fc_hidden, n_class)
         )
 
     def forward(self, spectrogram, **batch):
-        x = self.cnn(spectrogram.unsqueeze(1))
-        x = self.rescnn_layers(x)
-        sizes = x.size()
-        x = x.view(sizes[0], sizes[1] * sizes[2], sizes[3])  # (batch, feature, time
-        x = x.transpose(1, 2)  # (batch, time, feature)
-        x = self.fully_connected(x)
-        x = self.birnn_layers(x)
-        x = self.classifier(x)
+        x = self.resconv(self.cnn(spectrogram.unsqueeze(1)))
+        x = x.flatten(1, 2).transpose(1, 2)
+        f = self.fc_1(x)
+        x = self.rnn(f)
+        x = self.out(self.fc_2(x) + f)
         return x
 
     def transform_input_lengths(self, input_lengths):

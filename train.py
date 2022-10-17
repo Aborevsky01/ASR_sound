@@ -35,8 +35,6 @@ def main(config):
     use_cuda = torch.cuda.is_available()
     device = torch.device("cuda:0" if use_cuda else "cpu")
 
-    LM_scorer = LMScorer.from_pretrained("gpt2", batch_size=10, device=device)
-
     vocab = bpe_train(config)
 
     text_encoder = config.get_text_encoder(vocab)
@@ -51,7 +49,8 @@ def main(config):
     dataloaders = get_dataloaders(config, text_encoder)
 
     # build model architecture, then print to console
-    model = config.init_obj(config["arch"], module_arch, n_class=len(vocab)+1)  # vocab
+    model = config.init_obj(config["arch"], module_arch, n_class=len(vocab) + 1)
+    model = model.to(device)  # vocab
     logger.info(model)
 
     # prepare for (multi-device) GPU training
@@ -79,7 +78,6 @@ def main(config):
         metrics,
         optimizer,
         decoder,
-        LM_scorer,
         vocab,
         text_encoder=text_encoder,
         config=config,

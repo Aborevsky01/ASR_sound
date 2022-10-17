@@ -40,7 +40,6 @@ class Trainer(BaseTrainer):
             metrics,
             optimizer,
             decoder,
-            LM_model,
             vocab,
             config,
             device,
@@ -55,7 +54,7 @@ class Trainer(BaseTrainer):
         self.text_encoder = text_encoder
         self.config = config
         self.train_dataloader = dataloaders["train"]
-        self.LM_scorer = LM_model
+        self.LM_scorer = LMScorer.from_pretrained("gpt2", batch_size=1, device=device)
         # self.vocab = [''] + vocab
         # self.vocab = list(ascii_lowercase + ' ')
         self.vocab = [''] + text_encoder.alphabet
@@ -71,7 +70,6 @@ class Trainer(BaseTrainer):
         self.evaluation_dataloaders = {k: v for k, v in dataloaders.items() if k != "train"}
         self.lr_scheduler = lr_scheduler
         self.log_step = 50
-        self.metric_indicator = np.arange(0, len(self.train_dataloader), 10)
 
         self.train_metrics = MetricTracker(
             "loss", "grad norm", *[m.name for m in self.metrics], writer=self.writer
@@ -145,7 +143,7 @@ class Trainer(BaseTrainer):
                 self.writer.add_scalar(
                     "learning rate", self.lr_scheduler.get_last_lr()[0]
                 )
-                # self._log_predictions(**batch)
+                self._log_predictions(**batch)
                 self._log_spectrogram(batch["spectrogram"])
                 self._log_scalars(self.train_metrics)
                 # we don't want to reset train metrics at the start of every epoch
@@ -157,7 +155,7 @@ class Trainer(BaseTrainer):
         log = last_train_metrics
 
         for part, dataloader in self.evaluation_dataloaders.items():
-            val_log = self._evaluation_epoch(epoch, part, dataloader, bms=epoch in self.metric_indicator)
+            val_log = self._evaluation_epoch(epoch, part, dataloader, bms=True)
             log.update(**{f"{part}_{name}": value for name, value in val_log.items()})
 
         return log
@@ -201,6 +199,7 @@ class Trainer(BaseTrainer):
                 best_ind = np.argmax(lm_scores)
                 batch['bms_pred'].append(bm_result[best_ind])
             for met in self.metrics:
+              if met.name == "CER (BMS)" or met.name == "WER (BMS)":
                 metrics.update(met.name, met(**batch))
         for met in self.metrics:
             if met.name == "CER (ARG)" or met.name == "WER (ARG)":
@@ -226,11 +225,11 @@ class Trainer(BaseTrainer):
                     batch,
                     is_train=False,
                     metrics=self.evaluation_metrics,
-                    bms=batch_idx in self.metric_indicator
+                    bms=bms
                 )
             self.writer.set_step(epoch * self.len_epoch, part)
             self._log_scalars(self.evaluation_metrics)
-            # self._log_predictions(**batch)
+            self._log_predictions(**batch)
             self._log_spectrogram(batch["spectrogram"])
 
         # add histogram of model parameters to the tensorboard
@@ -254,7 +253,6 @@ class Trainer(BaseTrainer):
             log_probs,
             log_probs_length,
             argmax_pred,
-            bms_pred,
             audio_path,
             examples_to_log=10,
             *args,
@@ -268,17 +266,17 @@ class Trainer(BaseTrainer):
         ]
         argmax_texts_raw = [self.text_encoder.decode(inds) for inds in argmax_inds]
         argmax_texts = [self.text_encoder.ctc_decode(inds) for inds in argmax_inds]
-        tuples = list(zip(bms_pred, argmax_texts, text, argmax_texts_raw, audio_path))
-        # tuples = list(zip(argmax_texts, text, argmax_texts_raw, audio_path))
+        # tuples = list(zip(bms_pred, argmax_texts, text, argmax_texts_raw, audio_path))
+        tuples = list(zip(argmax_texts, text, argmax_texts_raw, audio_path))
         shuffle(tuples)
         rows = {}
-        for (hypo, _, _, _, _), pred, target, raw_pred, audio_path in tuples[:examples_to_log]:
-            # for pred, target, raw_pred, audio_path in tuples[:examples_to_log]:
+        # for (hypo, _, _, _, _), pred, target, raw_pred, audio_path in tuples[:examples_to_log]:
+        for pred, target, raw_pred, audio_path in tuples[:examples_to_log]:
             target = BaseTextEncoder.normalize_text(target)
             wer = calc_wer(target, pred) * 100
             cer = calc_cer(target, pred) * 100
-            beam_wer = calc_wer(target, hypo) * 100
-            beam_cer = calc_cer(target, hypo) * 100
+            #beam_wer = calc_wer(target, hypo) * 100
+            #beam_cer = calc_cer(target, hypo) * 100
 
             rows[Path(audio_path).name] = {
                 "target": target,
@@ -286,9 +284,9 @@ class Trainer(BaseTrainer):
                 "predictions": pred,
                 "wer": wer,
                 "cer": cer,
-                "beam_hypothesis": hypo,
-                "beam_wer": beam_wer,
-                "beam_cer": beam_cer,
+                #"beam_hypothesis": hypo,
+                #"beam_wer": beam_wer,
+                #"beam_cer": beam_cer,
             }
         self.writer.add_table("predictions", pd.DataFrame.from_dict(rows, orient="index"))
 

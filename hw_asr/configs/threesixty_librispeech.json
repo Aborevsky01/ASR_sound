@@ -16,7 +16,7 @@
   },
   "BPE": {
     "use": true,
-    "BPE_model": "dev"
+    "BPE_model": "train_360"
   },
   "arch": {
     "type": "TrialModel",
@@ -31,11 +31,9 @@
       "num_workers": 0,
       "datasets": [
         {
-          "type": "LibrispeechDataset",
+         "type": "LibrispeechDataset",
           "args": {
-            "part": "train-clean-100",
-            "max_audio_length": 20.0,
-            "max_text_length": 200
+            "part": "train-clean-360"
           }
         }
       ]
@@ -47,10 +45,7 @@
         {
           "type": "LibrispeechDataset",
           "args": {
-            "part": "test-clean",
-            "max_audio_length": 20.0,
-            "max_text_length": 200,
-            "limit": 20
+            "part": "test-clean"
           }
         }
       ]
@@ -95,15 +90,15 @@
   "lr_scheduler": {
     "type": "OneCycleLR",
     "args": {
-      "steps_per_epoch": 1529,
-      "epochs": 10,
+      "steps_per_epoch": 2853,
+      "epochs": 6,
       "anneal_strategy": "linear",
       "max_lr": 5e-4,
       "pct_start": 0.2
     }
   },
   "trainer": {
-    "epochs": 10,
+    "epochs": 6,
     "save_dir": "saved/",
     "save_period": 5,
     "verbosity": 2,

@@ -14,8 +14,12 @@
     "wave": [],
     "spectrogram": []
   },
+  "BPE": {
+    "use": true,
+    "BPE_model": "dev"
+  },
   "arch": {
-    "type": "TrialModel",
+    "type": "BaselineModel",
     "args": {
       "n_feats": 128,
       "fc_hidden": 128
@@ -27,11 +31,12 @@
       "num_workers": 3,
       "datasets": [
         {
-          "type": "LJDataset",
+          "type": "LibrispeechDataset",
           "args": {
-            "part": "train",
+            "part": "dev-clean",
             "max_audio_length": 20.0,
-            "max_text_length": 200
+            "max_text_length": 200,
+            "limit": 10
           }
         }
       ]
@@ -41,9 +46,9 @@
       "num_workers": 3,
       "datasets": [
         {
-          "type": "LJDataset",
+          "type": "LibrispeechDataset",
           "args": {
-            "part": "test",
+            "part": "dev-clean",
             "max_audio_length": 20.0,
             "max_text_length": 200,
             "limit": 10
@@ -108,7 +113,7 @@
     "early_stop": 100,
     "visualize": "wandb",
     "wandb_project": "asr_project",
-    "len_epoch": 100,
+    "len_epoch": 10,
     "grad_norm_clip": 10
   }
 }
