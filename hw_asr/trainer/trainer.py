@@ -188,7 +188,7 @@ class Trainer(BaseTrainer):
                 lm_scores = []
                 for bm_lin in bm_result[0:10]:
                     score = self.LM_scorer.sentence_score(bm_lin[0], reduce="prod", log=True)
-                    lm_scores.append(bm_lin[-1] + score)
+                    lm_scores.append(bm_lin[-1] + 1.5 * score)
                 best_ind = np.argmax(lm_scores)
                 batch['bms_pred'].append(bm_result[best_ind])
             for met in self.metrics:
