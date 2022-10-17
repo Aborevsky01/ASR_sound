@@ -151,7 +151,7 @@ class Trainer(BaseTrainer):
         log = last_train_metrics
 
         for part, dataloader in self.evaluation_dataloaders.items():
-            val_log = self._evaluation_epoch(epoch, part, dataloader)
+            val_log = self._evaluation_epoch(epoch, part, dataloader, bms=False)
             log.update(**{f"{part}_{name}": value for name, value in val_log.items()})
 
         return log
