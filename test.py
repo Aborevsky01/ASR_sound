@@ -33,8 +33,8 @@ def main(config, out_file):
     decoder = build_ctcdecoder(
         text_encoder.alphabet,
         kenlm_model_path=kenlm_path(),
-        alpha=0.5,
-        beta=1.0,
+        alpha=1.5,
+        beta=0.7,
     )
 
     LM_scorer = LMScorer.from_pretrained("gpt2", batch_size=1, device=device)
@@ -150,6 +150,7 @@ if __name__ == "__main__":
     )
 
     args = args.parse_args()
+
 
     # set GPUs
     if args.device is not None:

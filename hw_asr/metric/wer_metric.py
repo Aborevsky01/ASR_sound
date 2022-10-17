@@ -36,5 +36,5 @@ class BeamSearchWERMetric(BaseMetric):
         lengths = log_probs_length.detach().numpy()
         for (pred_txt, _, _, _, _), length, target_text in zip(bms_pred, lengths, text):
             target_text = CTCCharTextEncoder.normalize_text(target_text)
-            wers.append(calc_wer(target_text, pred_txt.replace('_',' ')))
+            wers.append(calc_wer(target_text, pred_txt.replace('▁',' ').replace('_',' ')))
         return sum(wers) / len(wers)

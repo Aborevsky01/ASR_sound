@@ -1,0 +1,91 @@
+2022-10-17 02:31:25,688 - pyctcdecode.decoder - INFO - Using arpa instead of binary LM file, decoder instantiation might be slow.
+2022-10-17 02:31:25,874 - pyctcdecode.alphabet - INFO - Alphabet determined to be of BPE style.
+2022-10-17 02:31:25,876 - pyctcdecode.alphabet - INFO - CTC blank char '' not found, appending to end.
+2022-10-17 02:31:25,879 - pyctcdecode.alphabet - INFO - Found <unk> in vocabulary, substituting with ▁⁇▁.
+2022-10-17 02:31:28,781 - hw_asr.base.base_dataset - INFO - 92 (3.5%) records are longer then 20.0 seconds. Excluding them.
+2022-10-17 02:31:28,791 - hw_asr.base.base_dataset - INFO - 334 (12.7%) records are longer then 200 characters. Excluding them.
+2022-10-17 02:31:28,797 - hw_asr.base.base_dataset - INFO - Filtered 335(12.8%) records  from dataset
+2022-10-17 02:31:32,668 - train - INFO - TrialModel(
+  (cnn): Conv2d(1, 32, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+  (resconv): Sequential(
+    (0): ConvBlock(
+      (cnn1): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (cnn2): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (layer_norm1): Normalize()
+      (layer_norm2): Normalize()
+    )
+    (1): ConvBlock(
+      (cnn1): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (cnn2): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (layer_norm1): Normalize()
+      (layer_norm2): Normalize()
+    )
+    (2): ConvBlock(
+      (cnn1): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (cnn2): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (layer_norm1): Normalize()
+      (layer_norm2): Normalize()
+    )
+  )
+  (fc_1): Linear(in_features=2048, out_features=512, bias=True)
+  (rnn): Sequential(
+    (0): RNNBlock(
+      (seq): Sequential(
+        (0): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        (1): ReLU6()
+        (2): GRU(512, 512, batch_first=True, bidirectional=True)
+      )
+    )
+    (1): RNNBlock(
+      (seq): Sequential(
+        (0): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+        (1): ReLU6()
+        (2): GRU(1024, 512, bidirectional=True)
+      )
+    )
+    (2): RNNBlock(
+      (seq): Sequential(
+        (0): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+        (1): ReLU6()
+        (2): GRU(1024, 512, bidirectional=True)
+      )
+    )
+    (3): RNNBlock(
+      (seq): Sequential(
+        (0): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+        (1): ReLU6()
+        (2): GRU(1024, 512, bidirectional=True)
+      )
+    )
+    (4): RNNBlock(
+      (seq): Sequential(
+        (0): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+        (1): ReLU6()
+        (2): GRU(1024, 512, bidirectional=True)
+      )
+    )
+  )
+  (fc_2): Linear(in_features=1024, out_features=512, bias=True)
+  (out): Sequential(
+    (0): Dropout(p=0.2, inplace=False)
+    (1): ReLU6()
+    (2): Linear(in_features=512, out_features=73, bias=True)
+  )
+)
+Trainable parameters: 23727177
+2022-10-17 02:31:34,317 - wandb.jupyter - ERROR - Failed to detect the name of this notebook, you can set it manually with the WANDB_NOTEBOOK_NAME environment variable to enable code saving.
+2022-10-17 03:09:23,283 - trainer - INFO -     epoch          : 1
+2022-10-17 03:09:23,288 - trainer - INFO -     loss           : 1.3058108162879944
+2022-10-17 03:09:23,291 - trainer - INFO -     grad norm      : 1.773151605129242
+2022-10-17 03:09:23,294 - trainer - INFO -     WER (ARG)      : 0.8766819689278782
+2022-10-17 03:09:23,295 - trainer - INFO -     CER (ARG)      : 0.54251324442795
+2022-10-17 03:09:23,297 - trainer - INFO -     CER (BMS)      : 0
+2022-10-17 03:09:23,299 - trainer - INFO -     WER (BMS)      : 0
+2022-10-17 03:09:23,300 - trainer - INFO -     val_loss       : 1.2873865199401389
+2022-10-17 03:09:23,302 - trainer - INFO -     val_WER (ARG)  : 0.8589928568339348
+2022-10-17 03:09:23,303 - trainer - INFO -     val_CER (ARG)  : 0.530158285920656
+2022-10-17 03:09:23,305 - trainer - INFO -     val_CER (BMS)  : 0.8592636537655802
+2022-10-17 03:09:23,306 - trainer - INFO -     val_WER (BMS)  : 1.0447325144698314
+2022-10-17 03:09:24,239 - trainer - INFO - Saving current best: model_best.pth ...
+2022-10-17 03:16:07,594 - trainer - INFO - Saving model on keyboard interrupt
+2022-10-17 03:16:08,363 - trainer - INFO - Saving checkpoint: saved/models/default_config/1017_022955/checkpoint-epoch2.pth ...

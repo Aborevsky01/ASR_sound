@@ -1,0 +1,514 @@
+
+Loading checkpoint: hw_asr/default_test_model/model_best_100_3.pth ...
+Warning: Optimizer or lr_scheduler given in config file is different from that of checkpoint. Optimizer parameters not being resumed.
+Checkpoint loaded. Resume training from epoch 4
+['', '▁in', 'i', 'en', 'g', 'n', 'as', 'ed', '</s>', 'z', '_', '▁o', 'm', 'nd', 'r', 'in', 'e', 'a', '▁s', 'is', '▁h', '▁th', '▁d', 'ou', 'f', '▁f', '▁he', 'o', 'he', '▁t', '▁p', 'l', 'at', 'k', '▁n', 'an', 'u', 's', '<unk>', '▁l', 'w', 'es', 'd', '▁w', '<s>', '▁c', 'it', 'c', '▁i', '▁', 'v', 'j', 'h', 'er', 'q', '▁b', 'y', 're', 'p', 'b', '▁to', 'ar', '▁a', 'ing', 'or', 't', 'x', '▁of', 'on', '▁and', '▁m', 'll', '▁the']
+inside
+here
+almost
+train:   0%|          | 0/951 [00:00<?, ?it/s]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+train:  11%|█         | 100/951 [01:26<11:08,  1.27it/s]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+train:  21%|██        | 200/951 [02:46<09:48,  1.28it/s]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+train:  32%|███▏      | 300/951 [04:06<08:50,  1.23it/s]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+train:  42%|████▏     | 400/951 [05:27<07:19,  1.25it/s]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+train:  53%|█████▎    | 500/951 [06:46<06:07,  1.23it/s]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+train:  63%|██████▎   | 600/951 [08:05<04:35,  1.27it/s]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+train:  74%|███████▎  | 700/951 [09:24<03:19,  1.26it/s]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+train:  84%|████████▍ | 800/951 [10:42<02:00,  1.26it/s]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+train:  95%|█████████▍| 900/951 [12:02<00:39,  1.30it/s]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+train: 100%|██████████| 951/951 [12:41<00:00,  1.25it/s]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+test:  15%|█▍        | 39/262 [02:12<12:36,  3.39s/it]
+Saving model on keyboard interrupt
+Saving checkpoint: saved/models/hundred_default_config/1017_151146/checkpoint-epoch4.pth ...
+saved/models/hundred_default_config/1017_151146
+saved/models/hundred_default_config/1017_151146/config.json
+hw_asr/default_test_model/config.json
+/home/jupyter/work/resources/ASR_sound/hw_asr/logger/logger_config.json
+after BPE train ['▁in', 'i', 'en', 'g', 'n', 'as', 'ed', '</s>', 'z', '_', '▁o', 'm', 'nd', 'r', 'in', 'e', 'a', '▁s', 'is', '▁h', '▁th', '▁d', 'ou', 'f', '▁f', '▁he', 'o', 'he', '▁t', '▁p', 'l', 'at', 'k', '▁n', 'an', 'u', 's', '<unk>', '▁l', 'w', 'es', 'd', '▁w', '<s>', '▁c', 'it', 'c', '▁i', '▁', 'v', 'j', 'h', 'er', 'q', '▁b', 'y', 're', 'p', 'b', '▁to', 'ar', '▁a', 'ing', 'or', 't', 'x', '▁of', 'on', '▁and', '▁m', 'll', '▁the']
+CTC {'▁in': 0, 'i': 1, 'en': 2, 'g': 3, 'n': 4, 'as': 5, 'ed': 6, '</s>': 7, 'z': 8, '_': 9, '▁o': 10, 'm': 11, 'nd': 12, 'r': 13, 'in': 14, 'e': 15, 'a': 16, '▁s': 17, 'is': 18, '▁h': 19, '▁th': 20, '▁d': 21, 'ou': 22, 'f': 23, '▁f': 24, '▁he': 25, 'o': 26, 'he': 27, '▁t': 28, '▁p': 29, 'l': 30, 'at': 31, 'k': 32, '▁n': 33, 'an': 34, 'u': 35, 's': 36, '<unk>': 37, '▁l': 38, 'w': 39, 'es': 40, 'd': 41, '▁w': 42, '<s>': 43, '▁c': 44, 'it': 45, 'c': 46, '▁i': 47, '▁': 48, 'v': 49, 'j': 50, 'h': 51, 'er': 52, 'q': 53, '▁b': 54, 'y': 55, 're': 56, 'p': 57, 'b': 58, '▁to': 59, 'ar': 60, '▁a': 61, 'ing': 62, 'or': 63, 't': 64, 'x': 65, '▁of': 66, 'on': 67, '▁and': 68, '▁m': 69, 'll': 70, '▁the': 71, '^': 72}
+Using arpa instead of binary LM file, decoder instantiation might be slow.
+Alphabet determined to be of BPE style.
+CTC blank char '' not found, appending to end.
+Found <unk> in vocabulary, substituting with ▁⁇▁.
+Loading the LM will be faster if you build a binary file.
+Reading /home/jupyter/work/resources/ASR_sound/BPE_models/lowercase.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+[34m[1mwandb[39m[22m: [33mWARNING[39m Calling wandb.login() after wandb.init() has no effect.
+pyctc {0: '▁in', 1: 'i', 2: 'en', 3: 'g', 4: 'n', 5: 'as', 6: 'ed', 7: '</s>', 8: 'z', 9: '_', 10: '▁o', 11: 'm', 12: 'nd', 13: 'r', 14: 'in', 15: 'e', 16: 'a', 17: '▁s', 18: 'is', 19: '▁h', 20: '▁th', 21: '▁d', 22: 'ou', 23: 'f', 24: '▁f', 25: '▁he', 26: 'o', 27: 'he', 28: '▁t', 29: '▁p', 30: 'l', 31: 'at', 32: 'k', 33: '▁n', 34: 'an', 35: 'u', 36: 's', 37: '▁⁇▁', 38: '▁l', 39: 'w', 40: 'es', 41: 'd', 42: '▁w', 43: '<s>', 44: '▁c', 45: 'it', 46: 'c', 47: '▁i', 48: '▁', 49: 'v', 50: 'j', 51: 'h', 52: 'er', 53: 'q', 54: '▁b', 55: 'y', 56: 're', 57: 'p', 58: 'b', 59: '▁to', 60: 'ar', 61: '▁a', 62: 'ing', 63: 'or', 64: 't', 65: 'x', 66: '▁of', 67: 'on', 68: '▁and', 69: '▁m', 70: 'll', 71: '▁the', 72: ''}
+TrialModel(
+  (cnn): Conv2d(1, 32, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+  (resconv): Sequential(
+    (0): ConvBlock(
+      (cnn1): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (cnn2): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (layer_norm1): Normalize()
+      (layer_norm2): Normalize()
+    )
+    (1): ConvBlock(
+      (cnn1): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (cnn2): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (layer_norm1): Normalize()
+      (layer_norm2): Normalize()
+    )
+    (2): ConvBlock(
+      (cnn1): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (cnn2): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (layer_norm1): Normalize()
+      (layer_norm2): Normalize()
+    )
+  )
+  (fc_1): Linear(in_features=2048, out_features=512, bias=True)
+  (rnn): Sequential(
+    (0): RNNBlock(
+      (seq): Sequential(
+        (0): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        (1): ReLU6()
+        (2): GRU(512, 512, batch_first=True, bidirectional=True)
+      )
+    )
+    (1): RNNBlock(
+      (seq): Sequential(
+        (0): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+        (1): ReLU6()
+        (2): GRU(1024, 512, bidirectional=True)
+      )
+    )
+    (2): RNNBlock(
+      (seq): Sequential(
+        (0): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+        (1): ReLU6()
+        (2): GRU(1024, 512, bidirectional=True)
+      )
+    )
+    (3): RNNBlock(
+      (seq): Sequential(
+        (0): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+        (1): ReLU6()
+        (2): GRU(1024, 512, bidirectional=True)
+      )
+    )
+    (4): RNNBlock(
+      (seq): Sequential(
+        (0): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+        (1): ReLU6()
+        (2): GRU(1024, 512, bidirectional=True)
+      )
+    )
+  )
+  (fc_2): Linear(in_features=1024, out_features=512, bias=True)
+  (out): Sequential(
+    (0): Dropout(p=0.2, inplace=False)
+    (1): ReLU6()
+    (2): Linear(in_features=512, out_features=73, bias=True)
+  )
+)
+Trainable parameters: 23727177

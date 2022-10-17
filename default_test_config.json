@@ -1,5 +1,5 @@
 {
-  "name": "threesixty_default_config",
+  "name": "default_test_config",
   "n_gpu": 1,
   "preprocessing": {
     "sr": 16000,
@@ -9,38 +9,6 @@
       }
     },
     "log_spec": true
-  },
-  "augmentations": {
-    "wave": [{
-    "type": "Gain",
-    "args": {
-      "min_gain_in_db": -15.0,
-      "max_gain_in_db": 5.0
-    }
-   },
-  {
-    "type": "Noise",
-    "args": {
-      "sample_rate": 16000
-    }
-   },
-  {
-    "type": "Pitch",
-    "args": {
-      "sample_rate": 16000
-      }
-   }],
-    "spectrogram": [{
-    "type": "Speed",
-    "args": {
-      }
-    },
-  {
-    "type": "Crop",
-    "args": {
-     "value": 20
-    }
-  }]
   },
   "BPE": {
     "use": true,
@@ -54,28 +22,14 @@
     }
   },
   "data": {
-    "train": {
-      "batch_size": 30,
-      "num_workers": 4,
-      "datasets": [
-        {
-         "type": "LibrispeechDataset",
-          "args": {
-            "part": "train-clean-360",
-            "max_audio_length": 20.0,
-            "max_text_length": 200
-          }
-        }
-      ]
-    },
-    "val": {
+    "test": {
       "batch_size": 10,
       "num_workers": 2,
       "datasets": [
         {
           "type": "LibrispeechDataset",
           "args": {
-            "part": "test-clean"
+            "part": "dev-clean"
           }
         }
       ]
@@ -121,14 +75,14 @@
     "type": "OneCycleLR",
     "args": {
       "steps_per_epoch": 1855,
-      "epochs": 9,
+      "epochs": 13,
       "anneal_strategy": "linear",
       "max_lr": 5e-4,
       "pct_start": 0.2
     }
   },
   "trainer": {
-    "epochs": 9,
+    "epochs": 13,
     "save_dir": "saved/",
     "save_period": 5,
     "verbosity": 2,

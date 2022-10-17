@@ -1,0 +1,1271 @@
+Loading checkpoint: saved/models/hundred_default_config/1017_160913/model_best.pth ...
+Warning: Optimizer or lr_scheduler given in config file is different from that of checkpoint. Optimizer parameters not being resumed.
+Checkpoint loaded. Resume training from epoch 9
+['', 'g', 'he', 'd', 'n', 'es', 'p', 'in', 'er', 'or', '▁o', 'b', '▁to', '▁he', '▁of', '▁d', 's', '▁m', 'on', '▁i', 'an', 't', '▁h', 'it', 'c', '▁w', '▁', '▁l', '▁c', '▁th', 'k', 'f', 'w', '▁n', 'l', 'ar', 'at', '▁a', '▁t', 'i', 'ing', 'm', 'as', '▁and', '▁p', 'h', '▁s', 'z', 'll', 'o', 'q', 'e', '▁in', '</s>', '_', 'y', '▁the', 'is', 'u', 'nd', '▁f', 're', 'ou', '<s>', 'r', 'en', 'ed', 'x', 'v', '<unk>', 'j', 'a', '▁b']
+inside
+here
+almost
+train:   0%|          | 0/1855 [00:00<?, ?it/s]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+train:   5%|▌         | 100/1855 [01:12<20:12,  1.45it/s]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+train:  11%|█         | 200/1855 [02:23<18:26,  1.50it/s]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+train:  16%|█▌        | 300/1855 [03:33<18:21,  1.41it/s]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+train:  22%|██▏       | 400/1855 [04:41<17:11,  1.41it/s]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+train:  27%|██▋       | 500/1855 [05:51<15:30,  1.46it/s]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+train:  32%|███▏      | 600/1855 [06:59<13:49,  1.51it/s]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+train:  38%|███▊      | 700/1855 [08:08<12:30,  1.54it/s]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+train:  43%|████▎     | 800/1855 [09:16<11:35,  1.52it/s]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+train:  49%|████▊     | 900/1855 [10:25<10:35,  1.50it/s]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+train:  54%|█████▍    | 1000/1855 [11:34<10:09,  1.40it/s]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+train:  59%|█████▉    | 1100/1855 [12:44<08:26,  1.49it/s]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+train:  65%|██████▍   | 1200/1855 [13:53<07:34,  1.44it/s]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+train:  70%|███████   | 1300/1855 [15:04<06:55,  1.34it/s]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+train:  75%|███████▌  | 1400/1855 [16:15<05:17,  1.43it/s]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+train:  81%|████████  | 1500/1855 [17:25<04:18,  1.37it/s]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+train:  86%|████████▋ | 1600/1855 [18:35<02:50,  1.50it/s]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+train:  92%|█████████▏| 1700/1855 [19:45<01:49,  1.41it/s]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+train:  97%|█████████▋| 1800/1855 [20:55<00:38,  1.42it/s]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+train: 100%|██████████| 1855/1855 [21:32<00:00,  1.43it/s]
+
+val:   4%|▍         | 10/262 [00:04<00:47,  5.36it/s]
+gchagpterg gogneg gorginging gchagpterg gogneg gorginging
+chapter one origin
+gthe por litle thigsg grig sgigngpgy ag think of themg having ben tgurnd of the wag ag geargsg gthe por litle thigsg grig sgigngpgy ag think of themg having ben tgurnd of the wag ag geargsg
+the poor little things cried cynthia think of them having been turned to the wall all these years
+gig was in sgugch a heriot a come to yog you left the dor ogeng gig was in sgugch a heriot a come to yog you left the dor ogeng
+i was in such a hurry to come to you you left your door open
+gin the earglyg morning of the negxtdgagyg my tgwgornyg ngigng thegcgogngp igngyg of dragogngsg withg gong gagtgyg sgogtglg cgagmeg dog from the gfgogrgtg and while the pgrogsglgag r g magngsgtgelg sglgagptg the prigsgongerg and hisg gagsgogrgt gregon their wagyg agcgrogsg the gpgrgagrgsg to the gcgogngt ogng in the chgagrgogfg gagegrgsg of the gangigdgegs stagsg gargeg gin the earglyg morning of the negxtdgagyg my tgwgornyg ngigng thegcgogngp igngyg of dragogngsg withg gong gagtgyg sgogtglg cgagmeg dog from the gfgogrgtg and while the pgrogsglgag r g magngsgtgelg sglgagptg the prigsgongerg and hisg gagsgogrgt gregon their wagyg agcgrogsg the gpgrgagrgsg to the gcgogngt ogng in the chgagrgogfg gagegrgsg of the gangigdgegs stagsg gargeg
+in the early morning of the next day may twenty ninth a company of dragoons with one empty saddle came down from the fort and while the pro slavery men still slept the prisoner and his escort were on their way across the prairies to lecompton in the charge of officers of the united states army
+git igsgpgogsigbleg that in mayde be in at pgosgigtiong thegng to ingigcgagte sgomeg core of gagctiong git igsgpgogsigbleg that in mayde be in at pgosgigtiong thegng to ingigcgagte sgomeg core of gagctiong
+it is possible that i may be in a position then to indicate some course of action
+gbu t gig shalt gog oglygogneg stgogrgyg gbu t gig shalt gog oglygogneg stgogrgyg
+but i shall tell only one story
+gif yog shouldgnogtg beg at god gurglg but should shogsgigneg gogfgmaging ag angyg tgrugbleg gi shalg hagtog sgengyoug gougtg sgogmeg were to the bgagckg gagrgtg of the hougseg gungtgilg we are gog gif yog shouldgnogtg beg at god gurglg but should shogsgigneg gogfgmaging ag angyg tgrugbleg gi shalg hagtog sgengyoug gougtg sgogmeg were to the bgagckg gagrgtg of the hougseg gungtgilg we are gog
+if you should not be a good girl but should show signs of making us any trouble i shall have to send you out somewhere to the back part of the house until we are gone
+gshe was a glagrge hegognglyg wogmeng they were cgogmont whig peopleg wist nog regugtgagtiong in the cognigyg gshe was a glagrge hegognglyg wogmeng they were cgogmont whig peopleg wist nog regugtgagtiong in the cognigyg
+she was a large homely woman they were common white people with no reputation in the community
+gmgargrigtg bulging gal most gag for agogmgagngtg her had bigugalg pugsgigtgy heg gmgargrigtg bulging gal most gag for agogmgagngtg her had bigugalg pugsgigtgy heg
+margaret bolton almost lost for a moment her habitual placidity
+g hungred mgagngmgogreg wog had beg gegvgigdg bgyg the cogengegngtgergsg gore preglagdgegdg to igragce the rogigleg cgogseg and wig thigsg comgbginedg gfgogrgce geghagsgengedg toga tgagcgkg logredg elgcgog whoglgagtdg pgargth with ingagrgmgyg of sgigxgthogugsgegeg megng gagsgigmgbgledg ugpgogng the fgigrgstg ngseg of theg grigshg ingagtiong g hungred mgagngmgogreg wog had beg gegvgigdg bgyg the cogengegngtgergsg gore preglagdgegdg to igragce the rogigleg cgogseg and wig thigsg comgbginedg gfgogrgce geghagsgengedg toga tgagcgkg logredg elgcgog whoglgagtdg pgargth with ingagrgmgyg of sgigxgthogugsgegeg megng gagsgigmgbgledg ugpgogng the fgigrgstg ngseg of theg grigshg ingagtiong
+five hundred men more who had been levied by the covenanters were persuaded to embrace the royal cause and with this combined force he hastened to attack lord elcho who lay at perth with an army of six thousand men assembled upon the first news of the irish invasion
+gig condisgtging wish they gig of the gig the gasgrgsg glogng lagogbregt hogtg cgogleg and his lagrg as agmgagngsg hagdg gig condisgtging wish they gig of the gig the gasgrgsg glogng lagogbregt hogtg cgogleg and his lagrg as agmgagngsg hagdg
+i can distinguish the eye of the ichthyosaurus glowing like a red hot coal and as large as a mans head
+gogdgmagsgt og sgogngen meg heg sgaigdg gendering gogdgmagsgt og sgogngen meg heg sgaigdg gendering
+did master summon me he said entering
+galgrogsg og dog her regergangceg as of sgogmething fromg heaven had migragcgut este agpgeard begor themg bug gaging og herg and thrgagngs wet agmergagtiong nogt gone of them wasg gagble to agesg as sgingleg word to herg galgrogsg og dog her regergangceg as of sgogmething fromg heaven had migragcgut este agpgeard begor themg bug gaging og herg and thrgagngs wet agmergagtiong nogt gone of them wasg gagble to agesg as sgingleg word to herg
+all rose to do her reverence as if something from heaven had miraculously appeared before them but gazing on her entranced with admiration not one of them was able to address a single word to her
+git wags sgtgrgagngeg tog that he fgogund ang gagregdg pgleagsgure ing gfgolglowging ug to theg gegngdg the rigid glgignegs of the dogtgrengs of the churgchg and pengagtgragtging ing to gcgugrg sgiglengcg egsg gognglyg tog hegagrg gang fgieglg the more dagplyg hisg ogngcgogngd gegagtiong git wags sgtgrgagngeg tog that he fgogund ang gagregdg pgleagsgure ing gfgolglowging ug to theg gegngdg the rigid glgignegs of the dogtgrengs of the churgchg and pengagtgragtging ing to gcgugrg sgiglengcg egsg gognglyg tog hegagrg gang fgieglg the more dagplyg hisg ogngcgogngd gegagtiong
+it was strange too that he found an arid pleasure in following up to the end the rigid lines of the doctrines of the church and penetrating into obscure silences only to hear and feel the more deeply his own condemnation
+ghe nog an gbgogthg ghe nog an gbgogthg
+he knows them both
+gthe bgaglag begagng the efgegctor was more than beautie fulg gthe bgaglag begagng the efgegctor was more than beautie fulg
+the ballet began the effect was more than beautiful
+gsgtgagvgengs heagrgtg begagng sgloglyg tog goglgd gang fgagde withg gegrg lick a withering flogerg gsgtgagvgengs heagrgtg begagng sgloglyg tog goglgd gang fgagde withg gegrg lick a withering flogerg
+stephens heart began slowly to fold and fade with fear like a withering flower
+gang what a sort of egvidgenceg igsg gloglygpgogsgbleg gang what a sort of egvidgenceg igsg gloglygpgogsgbleg
+and what sort of evidence is logically possible
+gand tog thigkg we cangsgagveg al thagtg misgirgyg and gigsgpgagrg bgy the pgagbant oge ag gungord ing figtgyg oglergsg gand tog thigkg we cangsgagveg al thagtg misgirgyg and gigsgpgagrg bgy the pgagbant oge ag gungord ing figtgyg oglergsg
+and to think we can save all that misery and despair by the payment of a hundred and fifty dollars
+gdgogognog g gogugbogtg bgagkging gagngtgagog cgagngdgogsg cgagngtg yogtgergleg and g lager g stgogrg gdgogognog g gogugbogtg bgagkging gagngtgagog cgagngdgogsg cgagngtg yogtgergleg and g lager g stgogrg
+
+
+val:   9%|▉         | 23/262 [00:10<01:35,  2.50it/s]
+gegxgpgergengceg gcgrogsgegsg gegxgpgergengceg gcgrogsgegsg
+experience proves this
+gigs telgagteg and gig gog mgygsgeglgf with an ag shorts pagceg gigs telgagteg and gig gog mgygsgeglgf with an ag shorts pagceg
+tis late and i go myself within a short space
+gyougagme me dogbleg gfgigvg gig one dog ngigng goglogtg is that yog horigshgog gag melts peaking gyougagme me dogbleg gfgigvg gig one dog ngigng goglogtg is that yog horigshgog gag melts peaking
+you gave me double five i want double nine hallo is that you horatio hamlet speaking
+gigs an egsgplegngdgegdg pgrgigeg jgagsgpgerg gan angtgegntsg prgigdeg sgelgling gug gfgagtherg now hog to go gig gigs an egsgplegngdgegdg pgrgigeg jgagsgpgerg gan angtgegntsg prgigdeg sgelgling gug gfgagtherg now hog to go gig
+isnt he splendid cried jasper in intense pride swelling up father knew how to do it
+go cong began bgygcgagring a grog and pring gown the fgigrgsg go cong began bgygcgagring a grog and pring gown the fgigrgsg
+you can begin by carrying a rod and putting down the figures
+gsgtgilgl her heard ad regcegved og shag in the pergcgegption f gagngsg delgogsgyg agog these holgagtgyg she waged oger herg with the lognging fgogng gigtgyg when a sgogfgul of saigon gags afgfgegrg gsgtgilgl her heard ad regcegved og shag in the pergcgegption f gagngsg delgogsgyg agog these holgagtgyg she waged oger herg with the lognging fgogng gigtgyg when a sgogfgul of saigon gags afgfgegrg
+still her heart had received a shock in the perception of annes delicacy and all these holidays she watched over her with the longing fond anxiety which is so full of sudden pangs of fear
+gingdgegd he pgorgsgigcguged the church of pgrgigce for a log tgigmeg gingdgegd he pgorgsgigcguged the church of pgrgigce for a log tgigmeg
+indeed he persecuted the church of christ for a long time
+gbglgegt gygsgagyg here dgigsgtgigngctglyg tog hage dogng with igtg ghatigsg nagrgtgigveg from mangegagctg tgragngsgkripet ofg mgyg gogngmgagdeg gmgugch lagtgerg igs what gigialg pres onglygigveg gbglgegt gygsgagyg here dgigsgtgigngctglyg tog hage dogng with igtg ghatigsg nagrgtgigveg from mangegagctg tgragngsgkripet ofg mgyg gogngmgagdeg gmgugch lagtgerg igs what gigialg pres onglygigveg
+let me say here distinctly to have done with it that this narrative from an exact transcript of my own made much later is what i shall presently give
+gwegsg shogt or gegesg the pglgogrgsg bglugogneg begmgegmgere but the cognegrgsg gelg weg chgogsg thes shagog bugt thegsgugng that cgagsgt gigshgigngsg beghgingd agsgtgig gwegsg shogt or gegesg the pglgogrgsg bglugogneg begmgegmgere but the cognegrgsg gelg weg chgogsg thes shagog bugt thegsgugng that cgagsgt gigshgigngsg beghgingd agsgtgig
+we shut our eyes the flowers bloom on we murmur but the corn ears fill we choose the shadow but the sun that casts it shines behind us still
+gbutg pgogrg regle leg hagdgmgogreg than thagtg sgtgogag pgogrgyg witch in ngagbgles the tgorgtgureg sgpgegrigts of hergegcg tog lift agag gage or the gfglgagmgsg and sgmgigleg gbutg pgogrg regle leg hagdgmgogreg than thagtg sgtgogag pgogrgyg witch in ngagbgles the tgorgtgureg sgpgegrigts of hergegcg tog lift agag gage or the gfglgagmgsg and sgmgigleg
+
+
+val:  15%|█▍        | 39/262 [00:14<00:37,  5.90it/s]
+gig have come to yours shgogrgs miser pregeng with the prugpgegeg of segng hog things or progrgegsging and this digsgng gorger of the warglgdg gig have come to yours shgogrgs miser pregeng with the prugpgegeg of segng hog things or progrgegsging and this digsgng gorger of the warglgdg
+i have come to your shores mister president with the purpose of seeing how things are progressing in this distant quarter of the world
+gig now the fgirgst letgter igrogtgo you its aglgsgegce lies troagsht from begining gegngdg but i am nogt ougtsgogether the giglg dgreagming being it would segemgdtgog go nogtg gig now the fgirgst letgter igrogtgo you its aglgsgegce lies troagsht from begining gegngdg but i am nogt ougtsgogether the giglg dgreagming being it would segemgdtgog go nogtg
+i know the first letter i wrote to you was all senseless trash from beginning to end but i am not altogether the idle dreaming being it would seem to denote
+gwgeg ought to have more atgtgengtg angegbgegthg sgaid gegseg aprogching hergcgegsgegng gwgeg ought to have more atgtgengtg angegbgegthg sgaid gegseg aprogching hergcgegsgegng
+we ought to have more attendants beth said louise approaching her cousin
+gmistgagl gag did gog nog gmgugch agbgougt cogngbgugtg and legs gone magrgmgagrgtg segmeg cgaglgdg fogrg gmistgagl gag did gog nog gmgugch agbgougt cogngbgugtg and legs gone magrgmgagrgtg segmeg cgaglgdg fogrg
+miss taylor did not know much about cotton but at least one more remark seemed called for
+gin the sgiglgenteg their dgagrgkg fgigreg kgingdgolgdg theg dgugsgkg ingto agtgogng agog gin the sgiglgenteg their dgagrgkg fgigreg kgingdgolgdg theg dgugsgkg ingto agtgogng agog
+in the silence their dark fire kindled the dusk into a tawny glow
+gdgegverg anygbogyg sege the gig sgpregmedo misgugsg pgoagcgerg grunting towards the tgagbleg when erg had gfgolgong on the blog sgtregmg gdgegverg anygbogyg sege the gig sgpregmedo misgugsg pgoagcgerg grunting towards the tgagbleg when erg had gfgolgong on the blog sgtregmg
+did ever anybody see the like screamed missus poyser running towards the table when her eye had fallen on the blue stream
+gog gig regtgurgng regugpedg to mgyg cgongtgegngtg gandgagng bgyg giglg tgrgigeg mog then gig have sgpgegngtg gog gig regtgurgng regugpedg to mgyg cgongtgegngtg gandgagng bgyg giglg tgrgigeg mog then gig have sgpgegngtg
+so i return rebukd to my content and gain by ill thrice more than i have spent
+gig gag mgygdgegarg and al strangers are wel come to mgyghog gig gag mgygdgegarg and al strangers are wel come to mgyghog
+i am my dear and all strangers are welcome to my home
+ghogagbgargtgag and god in your mgignedg ghogagbgargtgag and god in your mgignedg
+hello bertie any good in your mind
+gthegse thoughtg gagigtgegted beg aglgdgagyg and mgmgagigngag tiongsgcgargce ly cgogme dogng after sgegverale gougergsglg gthegse thoughtg gagigtgegted beg aglgdgagyg and mgmgagigngag tiongsgcgargce ly cgogme dogng after sgegverale gougergsglg
+these thoughts agitated me all day and my imagination scarcely calmed down after several hours sleep
+ghent we were ogtg in the dgagrgkges of the cuagdragngleg we again loked up but the wingdogsg ghent we were ogtg in the dgagrgkges of the cuagdragngleg we again loked up but the wingdogsg
+when we were out in the darkness of the quadrangle we again looked up at the windows
+goglgigfeg of thigsg agrgsgpgrigng goglgigfeg of thigsg agrgsgpgrigng
+o life of this our spring
+gig have a leter here mister sgogmgsg which gig grog to you gerglgyg the sgmgogrning in the rigel overest les ngightg gig have a leter here mister sgogmgsg which gig grog to you gerglgyg the sgmgogrning in the rigel overest les ngightg
+i have a letter here mister soames which i wrote to you early this morning in the middle of a restless night
+gig gag sgegegigt in thagt lightg said the old gagrg gig gag sgegegigt in thagt lightg said the old gagrg
+i cant see it in that light said the old lawyer
+gag word soul now begsgagt about the grgen of lugthergs cogong ternanglagtiong gag word soul now begsgagt about the grgen of lugthergs cogong ternanglagtiong
+a word should now be said about the origin of luthers commentary on galatians
+gmisgsg woldenlyg wagsg tog litle vergsgt ing gsgugugcg tog nog thigs would have beg nogt to legvegit gag that leagsgtg nogt to the egxgtgegnt ofgbgragkging through ingagmgengtsg and gag the gag ogsgtgigcgalgs thatg stgilg gigigagted agagngs ther gang gmisgsg woldenlyg wagsg tog litle vergsgt ing gsgugugcg tog nog thigs would have beg nogt to legvegit gag that leagsgtg nogt to the egxgtgegnt ofgbgragkging through ingagmgengtsg and gag the gag ogsgtgigcgalgs thatg stgilg gigigagted agagngs ther gang
+miss woodley was too little versed in the subject to know this would have been not to love at all at least not to the extent of breaking through engagements and all the various obstacles that still militated against their union
+ghegcgagveglgyg to the others geryg regalyg and regtgregt ed ungprgcegigved bgy the gqugigre and mistrusts fight to the rear of the tgegtg ghegcgagveglgyg to the others geryg regalyg and regtgregt ed ungprgcegigved bgy the gqugigre and mistrusts fight to the rear of the tgegtg
+he gave way to the others very readily and retreated unperceived by the squire and mistress fitzooth to the rear of the tent
+gbutgjgogng gigs nog gugcgigetg jgugstg gelagmigtgrgyg worg gbutgjgogng gigs nog gugcgigetg jgugstg gelagmigtgrgyg worg
+but john theres no society just elementary work
+ghe wisgig aglagsesg bhogugsed to beg aghogmgbgog and negnog magic at ag has ben taking legsgonegs of glendag and ogmgtglgd egsgketgting to beg agprngtyg god whigergdg but heg meglyg the asgsgigstgenet of the great gogorgsg ghe wisgig aglagsesg bhogugsed to beg aghogmgbgog and negnog magic at ag has ben taking legsgonegs of glendag and ogmgtglgd egsgketgting to beg agprngtyg god whigergdg but heg meglyg the asgsgigstgenet of the great gogorgsg
+the wizard of oz who used to be a humbug and knew no magic at all has been taking lessons of glinda and im told he is getting to be a pretty good wizard but he is merely the assistant of the great sorceress
+gif the kgogugt were ogngbgogrgdg gagstgrgagnge phagtgaglitgyg was bringing higmg to the pregsgengce of his rgigbglg gif the kgogugt were ogngbgogrgdg gagstgrgagnge phagtgaglitgyg was bringing higmg to the pregsgengce of his rgigbglg
+
+
+val:  21%|██        | 55/262 [00:20<00:55,  3.76it/s]
+gigngtered lord gag ther fougagsg gigngtered lord gag ther fougagsg
+enter lord arthur fluffinose
+gig did nogt thegng grealgige the imgpgorgetce of the ministryg gig did nogt thegng grealgige the imgpgorgetce of the ministryg
+i did not then realize the importance of the ministry
+g he rigstlgbgagng gorg of the mogrng cgogmongtgagtgurg s on dog tgsg fgoglong gingegyg gagergdgigtgsg of gagealg plagngigsg g he rigstlgbgagng gorg of the mogrng cgogmongtgagtgurg s on dog tgsg fgoglong gingegyg gagergdgigtgsg of gagealg plagngigsg
+there is no danger of the modern commentators on the timaeus falling into the absurdities of the neo platonists
+gand the gagrgdgnergsg fog shrogpgedg the tgrgeging to sgmaglg pegegsg ther wars a hog ghegpglging thegreg gand the gagrgdgnergsg fog shrogpgedg the tgrgeging to sgmaglg pegegsg ther wars a hog ghegpglging thegreg
+and the gardeners boy chopped the tree into small pieces there was a whole heap lying there
+gwhegshogs to tgelgmyg about himg giglwaysg wondered whether shgeg wags an ogling gog og with himg gwhegshogs to tgelgmyg about himg giglwaysg wondered whether shgeg wags an ogling gog og with himg
+when she used to tell me about him i always wondered whether she wasnt a little in love with him
+gi wig shog you what a god gog gygdgigdg and she went to ital cogperedg and throw ogpein the dorgsg gi wig shog you what a god gog gygdgigdg and she went to ital cogperedg and throw ogpein the dorgsg
+i will show you what a good job i did and she went to a tall cupboard and threw open the doors
+gbetgcal was nogto begtagken wigtlyg gbetgcal was nogto begtagken wigtlyg
+the call is not to be taken lightly
+gungdergsgcor these worgdsg for the rag ful of cgomgfergtdg forg sgogrgcgongtiengc esg gungdergsgcor these worgdsg for the rag ful of cgomgfergtdg forg sgogrgcgongtiengc esg
+underscore these words for they are full of comfort for sore consciences
+gygugsgygfr and its a agoug of the mogngsgtgerg that nogtgagrgugsg nogrgwgaglg gygugsgygfr and its a agoug of the mogngsgtgerg that nogtgagrgugsg nogrgwgaglg
+you see my friend its an issue of the monster the notorious narwhale
+gurglegseglyg gog why in you gegrg begcause the thing had bent such a sgcgagrg he congtging to fig meg gurglegseglyg gog why in you gegrg begcause the thing had bent such a sgcgagrg he congtging to fig meg
+
+
+val:  26%|██▌       | 68/262 [00:24<00:38,  5.03it/s]
+git is the ogly agmgegngsg gig agsk of gug for the rag you have gog meg git is the ogly agmgegngsg gig agsk of gug for the rag you have gog meg
+it is the only amends i ask of you for the wrong you have done me
+gwe wish to tgrogmk withamg gngered kgingigthg tgogkg gwe wish to tgrogmk withamg gngered kgingigthg tgogkg
+we wish to talk with him answered kenneth talk
+ghergsgegoging quogligies were agleantg and wat ag gagtlyg sugfgigced for a gergcomg ngagvgigagtiong of the clog ghergsgegoging quogligies were agleantg and wat ag gagtlyg sugfgigced for a gergcomg ngagvgigagtiong of the clog
+her sea going qualities were excellent and would have amply sufficed for a circumnavigation of the globe
+geglgog sgtgegpgon g he grgcgogmeg as the dugdale lesg geglgog sgtgegpgon g he grgcgogmeg as the dugdale lesg
+hello stephanos here comes the dedalus
+gegxgquis it ogdgergagndg gugegvergsgulg with the turnalg lgigfe and lgightg this is the tfgaghgang ageret of the sgcgogsgofg cragsgtglg and you may degsgcrgdeg and gcomgpglegte there wore quite ligalglyg by g tgagking any verges of chagsger in hansgtgengdr mogogdg and abgsgervging hog he ingsgigsgsg ogng the gcgeargnens and brightnes firgsgtg and thegn on the ogrg gegxgquis it ogdgergagndg gugegvergsgulg with the turnalg lgigfe and lgightg this is the tfgaghgang ageret of the sgcgogsgofg cragsgtglg and you may degsgcrgdeg and gcomgpglegte there wore quite ligalglyg by g tgagking any verges of chagsger in hansgtgengdr mogogdg and abgsgervging hog he ingsgigsgsg ogng the gcgeargnens and brightnes firgsgtg and thegn on the ogrg
+exquisite order and universal with eternal life and light this is the faith and effort of the schools of crystal and you may describe and complete their work quite literally by taking any verses of chaucer in his tender mood and observing how he insists on the clearness and brightness first and then on the order
+gmgygsgkgog it has ben left very pgogrg but he has heard worgkging and in dugsgtrgugsg he wil do weg gmgygsgkgog it has ben left very pgogrg but he has heard worgkging and in dugsgtrgugsg he wil do weg
+my scholar has been left very poor but he is hard working and industrious he will do well
+gsgegverag gungdered fgreg gagte mgagng pgrogptlyg regpgogngded to the sgugangsg gsgegverag gungdered fgreg gagte mgagng pgrogptlyg regpgogngded to the sgugangsg
+several hundred free state men promptly responded to the summons
+gogve nog dog its and cgagpgleg ogrgderg gogve nog dog its and cgagpgleg ogrgderg
+oh ive no doubt its in capital order
+gagngogtherg and fgagrgmogre and gpgogrgngt gregsgogng than the dgigligvergyg of a pgagrg of them gorgderedg glogvesg and pgoglagt gestgerg at thigs tgigmeg to g sgkgang in arg with agpgargsgingage gfgsgog mugchg pgogwgerg and gagcgtgigvgitgyg in the agfgaigrgs of the sgugdgogmgengtg gagngogtherg and fgagrgmogre and gpgogrgngt gregsgogng than the dgigligvergyg of a pgagrg of them gorgderedg glogvesg and pgoglagt gestgerg at thigs tgigmeg to g sgkgang in arg with agpgargsgingage gfgsgog mugchg pgogwgerg and gagcgtgigvgitgyg in the agfgaigrgs of the sgugdgogmgengtg
+another and far more important reason than the delivery of a pair of embroidered gloves impelled hester at this time to seek an interview with a personage of so much power and activity in the affairs of the settlement
+gthere igsgogfg cgogrgseg gag dgifgferengceg gegtgwegeng nogwging the tgemgpgralg greglgagtiong gog er regmegmgberg gegegngtg to the pgregsgengtg gagngdg noging the tgigmeg ogrgdgerg gag tog regegmgbergtg gegagtg gthere igsgogfg cgogrgseg gag dgifgferengceg gegtgwegeng nogwging the tgemgpgralg greglgagtiong gog er regmegmgberg gegegngtg to the pgregsgengtg gagngdg noging the tgigmeg ogrgdgerg gag tog regegmgbergtg gegagtg
+
+
+val:  30%|███       | 79/262 [00:28<00:32,  5.63it/s]
+gthe gfgagcgtg that a magngcgang rgsgighe agogmg dogs nog shog that heugregmgegmgbergs an gygpgregvigug s gigcgagsgiogng gon which he has rgsgigeg eg gorg greg gthe gfgagcgtg that a magngcgang rgsgighe agogmg dogs nog shog that heugregmgegmgbergs an gygpgregvigug s gigcgagsgiogng gon which he has rgsgigeg eg gorg greg
+the fact that a man can recite a poem does not show that he remembers any previous occasion on which he has recited or read it
+gfgogrgwgigleg she lay in hergchgagrg ing hagtgyg dgegmgyg pgleagsgur g sgogng ing burgd ing tgreg gfgogrgwgigleg she lay in hergchgagrg ing hagtgyg dgegmgyg pgleagsgur g sgogng ing burgd ing tgreg
+for a while she lay in her chair in happy dreamy pleasure at sun and bird and tree
+g your pgagert is gugfgigtion g sgaigdg g your pgagert is gugfgigtion g sgaigdg
+your power is sufficient i said
+g the old csgergvf ant told comgqgugigntlyg as they cregpgbgagck to gage wild at this pgagsgige way leg from the hug in aglesgengsg to sgure wogdg and that gergyg for the tgigne was highting with the outgoing the foregsgtg g the old csgergvf ant told comgqgugigntlyg as they cregpgbgagck to gage wild at this pgagsgige way leg from the hug in aglesgengsg to sgure wogdg and that gergyg for the tgigne was highting with the outgoing the foregsgtg
+the old servant told him quietly as they crept back to gamewell that this passage way led from the hut in the pleasance to sherwood and that geoffrey for the time was hiding with the outlaws in the forest
+gag gig would not vgegntgr tog sgagsg sgrg gag gig would not vgegntgr tog sgagsg sgrg
+oh i would not venture to say sir
+gis the gagtgmosg fire gingdgigtiging haveing gorges reached g sgtgengcgigtyg to beg comegfgoglg gis the gagtgmosg fire gingdgigtiging haveing gorges reached g sgtgengcgigtyg to beg comegfgoglg
+is the atmospheric condition having once reached this density to become final
+gfogrgbgliegve meg the fgogngag fog of art can only ragigfgyd their agpgingiong that the gbeagtgyg of a cgagkg rogengis to be greagdg and a aegrgogsgpglogt to be gregneg and the gegfvgagrgtg gigs ing ingsgtentglyg gsgeging on the magnilgfulg degligciougsgnesgs ofg glgightg which you can only sgegsed by progcgigsiong of engagtgagngi gsgtgogchg gfogrgbgliegve meg the fgogngag fog of art can only ragigfgyd their agpgingiong that the gbeagtgyg of a cgagkg rogengis to be greagdg and a aegrgogsgpglogt to be gregneg and the gegfvgagrgtg gigs ing ingsgtentglyg gsgeging on the magnilgfulg degligciougsgnesgs ofg glgightg which you can only sgegsed by progcgigsiong of engagtgagngi gsgtgogchg
+for believe me the final philosophy of art can only ratify their opinion that the beauty of a cock robin is to be red and of a grass plot to be green and the best skill of art is in instantly seizing on the manifold deliciousness of light which you can only seize by precision of instantaneous touch
+gig and shag you one pretygtgrigsg gig and shag you one pretygtgrigsg
+ay and show you some pretty tricks
+gbgagtly leaned over her shoulder without tough inger and whispered in her gagrg you are giving me a gchgagngceg yegsg gbgagtly leaned over her shoulder without tough inger and whispered in her gagrg you are giving me a gchgagngceg yegsg
+bartley leaned over her shoulder without touching her and whispered in her ear you are giving me a chance yes
+gig only were nogtgsgog dgagrgk gergngdg sgog tgagrgbg leg log gig only were nogtgsgog dgagrgk gergngdg sgog tgagrgbg leg log
+if it only were not so dark here and so terribly lonely
+ghe cglgagsged his hagnds on the dgagsgcang saigdg ghe cglgagsged his hagnds on the dgagsgcang saigdg
+he clasped his hands on the desk and said
+gshe sgcregmed and shogdedg tog with a tgoegregfgigcg gagoumgafg sgogugngdg whichg dgougt les cgagsg the hagrgtsg of the pgugugdgegcsg to qguagpe within thegmg gshe sgcregmed and shogdedg tog with a tgoegregfgigcg gagoumgafg sgogugngdg whichg dgougt les cgagsg the hagrgtsg of the pgugugdgegcsg to qguagpe within thegmg
+she screamed and shouted too with a terrific volume of sound which doubtless caused the hearts of the fugitives to quake within them
+gsgetgdergd ag gogigsgfgigf teg the segeg and brogkging algrgogug noglgagnd and sgighgeg gsgetgdergd ag gogigsgfgigf teg the segeg and brogkging algrgogug noglgagnd and sgighgeg
+saturday august fifteenth the sea unbroken all round no land in sight
+gsaid mister ergogng with his sgtgegtglyg gqorgaglegtgyg gsaid mister ergogng with his sgtgegtglyg gqorgaglegtgyg
+said mister irwine with his stately cordiality
+ghogugegcglgegn ing gagmgegsgtgigck agegbgleg that mgages itg gegyg for the gogvergngmegntg to inglestg al the sgoulgdgrs ig neagsg ghogugegcglgegn ing gagmgegsgtgigck agegbgleg that mgages itg gegyg for the gogvergngmegntg to inglestg al the sgoulgdgrs ig neagsg
+housecleaning a domestic upheaval that makes it easy for the government to enlist all the soldiers it needs
+gthegn there are thragrgfgogrg leaving mgegn of the comungigyg with their wgigvesg hor for the mgogstgfgargt to fgagthergsg and mgogthergsg of the young lagdiegsg gthegn there are thragrgfgogrg leaving mgegn of the comungigyg with their wgigvesg hor for the mgogstgfgargt to fgagthergsg and mgogthergsg of the young lagdiegsg
+then there were three or four leading men of the community with their wives who were for the most part the fathers and mothers of the young ladies
+gthegagrgto was sgpagrgkgling and grigpgling in the sgogng gthegagrgto was sgpagrgkgling and grigpgling in the sgogng
+the orchard was sparkling and rippling in the sun
+gbgut it is srgmgigd that you wil fgind to fog cogs and a way of your gagngtgring ag gogngceugpgogn your gog gbgut it is srgmgigd that you wil fgind to fog cogs and a way of your gagngtgring ag gogngceugpgogn your gog
+but it is surmised that you will find difficulties in the way of your entering at once upon your government
+gen g wasgcglegrg sgtgagrglgtg gandg sgpglgegngd egdg the tgegmpgst hadgpgagst agwagyg and the sgwgeg ignglugencgegsg of the evening had wegsgtogrgdg glgigfeg pgeagceg and gigurigdgyg gagerygwhegreg gen g wasgcglegrg sgtgagrglgtg gandg sgpglgegngd egdg the tgegmpgst hadgpgagst agwagyg and the sgwgeg ignglugencgegsg of the evening had wegsgtogrgdg glgigfeg pgeagceg and gigurigdgyg gagerygwhegreg
+the night was clear starlit and splendid the tempest had passed away and the sweet influences of the evening had restored life peace and security everywhere
+gthigsg tgrgagngsg ig sgpgrigng gand lighting gug gargtigfgug agligmger begiling argengcgegsg gthigsg tgrgagngsg ig sgpgrigng gand lighting gug gargtigfgug agligmger begiling argengcgegsg
+
+
+val:  37%|███▋      | 97/262 [00:34<00:36,  4.57it/s]
+gsgrgfgagsg dgegsg gat legs had begenglgegedg and the fgigng ogled fr greg gage ag higngtg of its gregalg galgaganceg agpgoglgigshg gsgrgfgagsg dgegsg gat legs had begenglgegedg and the fgigng ogled fr greg gage ag higngtg of its gregalg galgaganceg agpgoglgigshg
+surface dust at least had been removed and the fine old furniture gave a hint of its real elegance and polish
+gigtg is ageryg sgugpegdg sgtgogrgyg gigtg is ageryg sgugpegdg sgtgogrgyg
+it is a very stupid story
+gig mater froglygtg gone y gogrgsg because ag thoughtg gug magn would gaglowg meg gig wag gog pgigfgtgegn years oglgdg gig mater froglygtg gone y gogrgsg because ag thoughtg gug magn would gaglowg meg gig wag gog pgigfgtgegn years oglgdg
+i made her for only twenty oars because i thought few men would follow me for i was young fifteen years old
+gigngdgegedg there were only wonerg to strgagngergs who could be adgmgigdegdg agmong the sister as gog pgrgtgugcgin the sgagme regalgtg gigngdgegedg there were only wonerg to strgagngergs who could be adgmgigdegdg agmong the sister as gog pgrgtgugcgin the sgagme regalgtg
+indeed there were only one or two strangers who could be admitted among the sisters without producing the same result
+gthe crates in the pgogvertyg or al ingtgengdendg gthe crates in the pgogvertyg or al ingtgengdendg
+the crampness and the poverty are all intended
+gi wlgagsgked thegleagst igmgagongagbleg but gigmogst gegegsgogmg thing gi wlgagsgked thegleagst igmgagongagbleg but gigmogst gegegsgogmg thing
+i will ask the least imaginable but i must have something
+gthegegxgagmgen gagtiong how egvergresgulgte dan now digsgcgogvergyg gthegegxgagmgen gagtiong how egvergresgulgte dan now digsgcgogvergyg
+the examination however resulted in no discovery
+gags to gangyg other kgind of dgigsgigplagng whether adresg to her mgigngdg or heagrgdtg butleg fgogrglg mgightg or mgightg nogtgbeg with an igrgegcheg in agqogrgdengs with the cagpgregse that frog the mogmengtg gags to gangyg other kgind of dgigsgigplagng whether adresg to her mgigngdg or heagrgdtg butleg fgogrglg mgightg or mgightg nogtgbeg with an igrgegcheg in agqogrgdengs with the cagpgregse that frog the mogmengtg
+as to any other kind of discipline whether addressed to her mind or heart little pearl might or might not be within its reach in accordance with the caprice that ruled the moment
+gmgogst people tgagteg togmougchg to wit is a re liege to gig one hog tgd to ligleg gmgogst people tgagteg togmougchg to wit is a re liege to gig one hog tgd to ligleg
+most people talk too much so it is a relief to find one who talks too little
+gangeverg neg og bugtg gogne mgagng hug could egrgpglagse ging gangeverg neg og bugtg gogne mgagng hug could egrgpglagse ging
+
+
+val:  40%|████      | 105/262 [00:38<01:00,  2.60it/s]
+gygegsg sgomegthing age grygthigng said greg haridglyg loking fgrgogunginglyg at ogfglogwgerg which she was tgwogrgling in her fgingergsg gygegsg sgomegthing age grygthigng said greg haridglyg loking fgrgogunginglyg at ogfglogwgerg which she was tgwogrgling in her fgingergsg
+yes something everything said rachel hurriedly looking frowningly at a flower which she was twirling in her fingers
+glegngkt og cgergusgceg forgtgeng yeargsg thregmgogngts and fgige dgagsg glegngkt og cgergusgceg forgtgeng yeargsg thregmgogngts and fgige dgagsg
+length of service fourteen years three months and five days
+git is ingogigengce thegng git is ingogigengce thegng
+it is annoyance then
+gaster friend wegtg gone dgagyg to the magngtiong of governor beling hag with a pgargofg glogsg was she hadg freged andengbogrgtergd to his ogerg and which were to beg wagrng ong sgome gragtgigcgagtion of sgtgagteg pogrg though the chagncges of agpgogpgulog rgegcgtiong had caged the sgfogrgmger grugerg to degsgegngdg agstgepereg tgog from the higagsgtgragngkg heg stil hog and gogneragbgleg andg gigligengtgal plageg agmong the gcgologngalg magistrgcgyg gaster friend wegtg gone dgagyg to the magngtiong of governor beling hag with a pgargofg glogsg was she hadg freged andengbogrgtergd to his ogerg and which were to beg wagrng ong sgome gragtgigcgagtion of sgtgagteg pogrg though the chagncges of agpgogpgulog rgegcgtiong had caged the sgfogrgmger grugerg to degsgegngdg agstgepereg tgog from the higagsgtgragngkg heg stil hog and gogneragbgleg andg gigligengtgal plageg agmong the gcgologngalg magistrgcgyg
+hester prynne went one day to the mansion of governor bellingham with a pair of gloves which she had fringed and embroidered to his order and which were to be worn on some great occasion of state for though the chances of a popular election had caused this former ruler to descend a step or two from the highest rank he still held an honourable and influential place among the colonial magistracy
+ghogwgegvgerg thagtg wagsg ogvergnogwg the tgregogng the sgtgogrgyg hanging gegngdg ghogwgegvgerg thagtg wagsg ogvergnogwg the tgregogng the sgtgogrgyg hanging gegngdg
+however that was over now the tree gone the story at an end
+gang gug biglogng to thagtg sgmgalglg clogs go or aghagpg gang gug biglogng to thagtg sgmgalglg clogs go or aghagpg
+and you belong to that small class who are happy
+gog thag gag gegmgangngdg gag shgegpglyg agog gsgtgigngtglyg agngtheg girgfgegce of the pgogng gog thag gag gegmgangngdg gag shgegpglyg agog gsgtgigngtglyg agngtheg girgfgegce of the pgogng
+what then a human hand large and shapely appeared distinctly on the surface of the pond
+gig shgigt age neath th gig glogokgsg ag childerng dog in the newgng sgogngng with sgoglgs that tgregmgble through their g hag giglgegsg from gang gugngagvgrgdg ygegtgpgrognigcgleg ing word gog gig shgigt age neath th gig glogokgsg ag childerng dog in the newgng sgogngng with sgoglgs that tgregmgble through their g hag giglgegsg from gang gugngagvgrgdg ygegtgpgrognigcgleg ing word gog
+i sit beneath thy looks as children do in the noon sun with souls that tremble through their happy eyelids from an unaverred yet prodigal inward joy
+gag thag thag grgagegsg gag thag thag grgagegsg
+aint they the greatest
+gingwgingtgerg when the sgngoglgagyg glitgtering ogn the grgogngdg and hair what of and cgogmglegping aglogng and gog grgightg oger at the litgtle tgreg gingwgingtgerg when the sgngoglgagyg glitgtering ogn the grgogngdg and hair what of and cgogmglegping aglogng and gog grgightg oger at the litgtle tgreg
+
+
+val:  45%|████▍     | 117/262 [00:42<00:35,  4.11it/s]
+ge have sgpgogkend og girls righ and legogrgigntg gugtgyg agbgeagdgyg that shogneg withg degpg and gigdgtgigngtceg agbgrgightg comgplegctiong geigeseg pogegsging ingtgegngcg iglgygbogth ofgdgegpgtg gang glgog and hagrg galgragdgy of the g glogsgyg brogwng gagndgwgigchg gang agfgterg gegrgs would begnegrglyg agkgigng to blag ge have sgpgogkend og girls righ and legogrgigntg gugtgyg agbgeagdgyg that shogneg withg degpg and gigdgtgigngtceg agbgrgightg comgplegctiong geigeseg pogegsging ingtgegngcg iglgygbogth ofgdgegpgtg gang glgog and hagrg galgragdgy of the g glogsgyg brogwng gagndgwgigchg gang agfgterg gegrgs would begnegrglyg agkgigng to blag
+we have spoken of pearls rich and luxuriant beauty a beauty that shone with deep and vivid tints a bright complexion eyes possessing intensity both of depth and glow and hair already of a deep glossy brown and which in after years would be nearly akin to black
+gsgog i g give out thig s lag that mgygmagng shal never leave you aglgogng gsgog i g give out thig s lag that mgygmagng shal never leave you aglgogng
+so i will give out this law that my men shall never leave you alone
+g gogngegdg meg chagngorglgiglgyg gig gagigtgsgag g gogngegdg meg chagngorglgiglgyg gig gagigtgsgag
+here go and get me change for a louis i have it sir
+get longdagng plage wags glgagsgtgagmpg rgrgyg but nogtgpgergmogt ig gugpglgyigng begfogregdg was tgogrnd ougtg nog gfgegreg thag greg thgogugsg and lags in hogtgeglg gurgchgegsg stgogrgsg and gwelgigsg gind the bhisgcgigigtgyg of gold borngagdgog get longdagng plage wags glgagsgtgagmpg rgrgyg but nogtgpgergmogt ig gugpglgyigng begfogregdg was tgogrnd ougtg nog gfgegreg thag greg thgogugsg and lags in hogtgeglg gurgchgegsg stgogrgsg and gwelgigsg gind the bhisgcgigigtgyg of gold borngagdgog
+the london plant was less temporary but not permanent supplying before it was torn out no fewer than three thousand lamps in hotels churches stores and dwellings in the vicinity of holborn viaduct
+gin the megngtgimeg i had formed g no gig deg g herg gin the megngtgimeg i had formed g no gig deg g herg
+in the meantime i had formed a new idea of her
+g hogs hagen to be on the stage trained tgog but heg evidently being gangrgogugt ig g hogs hagen to be on the stage trained tgog but heg evidently being gangrgogugt ig
+hers happened to be in the same frame too but she evidently didnt care about that
+ghgagvg mgagsgyg nogrgdg gong meg gig pgrgagyg for mgegng would meg degogug ghgagvg mgagsgyg nogrgdg gong meg gig pgrgagyg for mgegng would meg degogug
+have mercy lord on me i pray for men would me devour
+gagsgergcgl of a fgegwg hundred fet ing gurgcgogmg forence was gdgrogng and each of the pgagrgtgy tok ag gcgegmentg for hisgpgogrgtiong gagsgergcgl of a fgegwg hundred fet ing gurgcgogmg forence was gdgrogng and each of the pgagrgtgy tok ag gcgegmentg for hisgpgogrgtiong
+a circle of a few hundred feet in circumference was drawn and each of the party took a segment for his portion
+gthe fglgagegsg theg gegngegmgyg of the whig gthe fglgagegsg theg gegngegmgyg of the whig
+the flame is the enemy of the wing
+gnegver a thagtgrg he had gaigdg gnegver a thagtgrg he had gaigdg
+
+
+val:  48%|████▊     | 127/262 [00:46<00:35,  3.79it/s]
+git is evitgegntg thegfgogr that the present trend of the degbgelogmegngtg is ing the gargogp highthling the gtgilgigtg ifeg comngsgpgigc gusg congegmgtiong gagsg comgpgeared with meagreg git is evitgegntg thegfgogr that the present trend of the degbgelogmegngtg is ing the gargogp highthling the gtgilgigtg ifeg comngsgpgigc gusg congegmgtiong gagsg comgpgeared with meagreg
+it is evident therefore that the present trend of the development is in the direction of heightening the utility of conspicuous consumption as compared with leisure
+gtgagngdgagygs were congogmgedg in thegse agagagtiongsg but the sgpgigrigtg ogbhegngngsg regfgugse to geglgdg gtgagngdgagygs were congogmgedg in thegse agagagtiongsg but the sgpgigrigtg ogbhegngngsg regfgugse to geglgdg
+ten days were consumed in these negotiations but the spirit of vengeance refused to yield
+gheg gmgagde agbgog sgogdegpg that higsg bgagcg cgagmeg neare bragkging and he was dune fgogungdgdg gig congtgelgl yog when heg sgag git wagsg nogbogtyg butg gagngdergsg gheg gmgagde agbgog sgogdegpg that higsg bgagcg cgagmeg neare bragkging and he was dune fgogungdgdg gig congtgelgl yog when heg sgag git wagsg nogbogtyg butg gagngdergsg
+he made a bow so deep that his back came near breaking and he was dumbfounded i can tell you when he saw it was nobody but anders
+gthegdgugse her segegferg to gegxgaglg and the gogng had degsgpergst the migsgtsg and was sheting a sgtgrogng and cgleagrg glgight in the fogrgigsgt when the trglergsg regugmedg their gargeg gthegdgugse her segegferg to gegxgaglg and the gogng had degsgpergst the migsgtsg and was sheting a sgtgrogng and cgleagrg glgight in the fogrgigsgt when the trglergsg regugmedg their gargeg
+the dews were suffered to exhale and the sun had dispersed the mists and was shedding a strong and clear light in the forest when the travelers resumed their journey
+gthey weg sgomegthing age yugnog sgstged the cgagpteng of the gagrgdgsg glogokging frog gone to the gogtherg dogalyg gandhig ngaglyg the sgagmeg sgagse a his dagnagogs on gags hog lgegesg beg bogh goght the sgagngeg stgige of whigsgkgsg and the bgogt thor tengogbgst anging tgngrogstg sago they gag to mgigkecold god pgaghglagnd eg gthey weg sgomegthing age yugnog sgstged the cgagpteng of the gagrgdgsg glogokging frog gone to the gogtherg dogalyg gandhig ngaglyg the sgagmeg sgagse a his dagnagogs on gags hog lgegesg beg bogh goght the sgagngeg stgige of whigsgkgsg and the bgogt thor tengogbgst anging tgngrogstg sago they gag to mgigkecold god pgaghglagnd eg
+they look something alike you know suggested the captain of the guards looking from one to the other doubtfully and theyre nearly the same size if you stand the goat on his hind legs theyve both got the same style of whiskers and theyre both of em obstinate and dangerous so they ought to make a good patch splendid
+gang git igsgmagdeg ogfgmgogthergsg bgagst ygogrgng gand shegmitgegd it hergsgeglgfg agngegerygbgogdyg gogngce ogetgid a wag from meg gang git igsgmagdeg ogfgmgogthergsg bgagst ygogrgng gand shegmitgegd it hergsgeglgfg agngegerygbgogdyg gogngce ogetgid a wag from meg
+and it is made of mothers best yarn and she knitted it herself and everybody wants to get it away from me
+gtgagking it vgagntage of thigs the sgqugirgsg to gog meng greg dougbgle the rgegfgfergtsg gagngdg gingcgurgse bgyg rogents in the title sgtroglergs cgrgygsg fag their way to himg gtgagking it vgagntage of thigs the sgqugirgsg to gog meng greg dougbgle the rgegfgfergtsg gagngdg gingcgurgse bgyg rogents in the title sgtroglergs cgrgygsg fag their way to himg
+taking advantage of this the squires few men redoubled their efforts and encouraged by robins and the little strollers cries fought their way to him
+gfrigngkglyg gig cgagng ont gag sgagyg gfrigngkglyg gig cgagng ont gag sgagyg
+frankly i cannot always say
+gwhog began the quorlg was of the gormengsg gwhog began the quorlg was of the gormengsg
+who began the quarrel was it the mormons
+gig had always knowing him to beg grugsglesgs and his magnerg but on this pegtgigcguglgr igcgagiong he was and sgugchgsgtage of gungcong troglg bolgagigtgagtion that wasg clears something gery ngalg ad agcgurgdg gig had always knowing him to beg grugsglesgs and his magnerg but on this pegtgigcguglgr igcgagiong he was and sgugchgsgtage of gungcong troglg bolgagigtgagtion that wasg clears something gery ngalg ad agcgurgdg
+
+
+val:  51%|█████     | 134/262 [00:50<01:05,  1.97it/s]
+gav deg angulgtged dog mgagther a gag a gig gig supgogsegit is a cgregar of the gag gav deg angulgtged dog mgagther a gag a gig gig supgogsegit is a cgregar of the gag
+has thee consulted thy mother about a career i suppose it is a career thee wants
+gif a magngagtg stold an agpgognd in his gug and agugsedg thagtg gpgogugngdg to agmgagsgs agugegfgogrgt ung hog mugch was he aglgigegd to go gig gbgagckg the pgogugnd the id sgtgoge an ognlyg oer the pgogugnedg together with the cgogmgpgogugd ingtgrist agcgrugwging ugpgogng itg gogrg gag his gug forgtgogng gif a magngagtg stold an agpgognd in his gug and agugsedg thagtg gpgogugngdg to agmgagsgs agugegfgogrgt ung hog mugch was he aglgigegd to go gig gbgagckg the pgogugnd the id sgtgoge an ognlyg oer the pgogugnedg together with the cgogmgpgogugd ingtgrist agcgrugwging ugpgogng itg gogrg gag his gug forgtgogng
+if a man had stolen a pound in his youth and had used that pound to amass a huge fortune how much was he obliged to give back the pound he had stolen only or the pound together with the compound interest accruing upon it or all his huge fortune
+gagfgirgtherg stgageg agsg gregcgagnigiong gagfgirgtherg stgageg agsg gregcgagnigiong
+a further stage is recognition
+gthegigngdgy ang algsgog thought nogthing og gthegigngdgy ang algsgog thought nogthing og
+the indian i also thought nothing of
+gwhigleg sheg wags bgetgterg though she had hag abgognghtg gwhigleg sheg wags bgetgterg though she had hag abgognghtg
+well she was better though she had had a bad night
+gsgingceg glagsg therg gagyg gig gig gigs og gage be the log beagle grog of the g coungtryg thut mgthigt you are cgogmgerd bgyg pg shrogtg gig sgalgsgi an cgogmgperg teg and yog hagveg nog beget ergot ag gsgingceg glagsg therg gagyg gig gig gigs og gage be the log beagle grog of the g coungtryg thut mgthigt you are cgogmgerd bgyg pg shrogtg gig sgalgsgi an cgogmgperg teg and yog hagveg nog beget ergot ag
+since last thursday i ghip ghisizzle have been the lawful boolooroo of the blue country but now that you are conquered by queen trot i suppose i am conquered too and you have no boolooroo at all
+gog gi amgsgpgegking geriougsglyg regplgiged mogngtalgagyg and mgygagpgagnigon in this cage isg gqgugigt as geod as the kgagngs gi saupgogsg is it nogt logagsg gog gi amgsgpgegking geriougsglyg regplgiged mogngtalgagyg and mgygagpgagnigon in this cage isg gqgugigt as geod as the kgagngs gi saupgogsg is it nogt logagsg
+oh i am speaking seriously replied montalais and my opinion in this case is quite as good as the kings i suppose is it not louise
+gbgegngsgogfgmgogst agmgbgigsh ous degsgigeg wags to angtgugce the cgagptgang togog with higmg and egngd his daygsg in his mugchg glogved hogmg gagndg sgog ingegnglyg were gergvgigtg ag geargsg begcgeged with the sgcrigpgtiogngsg of the gungpgariglgog begtgiegsg and itgvgagngtgegs of thigsg gagegngpg gage ogngdigsgig gag of pgagrogsg that he could gcgargeglyg hear the ngagme ofg mogtgmagrgtgrg with hot agcgogngciog s thrilg of agigrgsgong gbgegngsgogfgmgogst agmgbgigsh ous degsgigeg wags to angtgugce the cgagptgang togog with higmg and egngd his daygsg in his mugchg glogved hogmg gagndg sgog ingegnglyg were gergvgigtg ag geargsg begcgeged with the sgcrigpgtiogngsg of the gungpgariglgog begtgiegsg and itgvgagngtgegs of thigsg gagegngpg gage ogngdigsgig gag of pgagrogsg that he could gcgargeglyg hear the ngagme ofg mogtgmagrgtgrg with hot agcgogngciog s thrilg of agigrgsgong
+ben zoofs most ambitious desire was to induce the captain to go with him and end his days in his much loved home and so incessantly were servadacs ears besieged with descriptions of the unparalleled beauties and advantages of this eighteenth arrondissement of paris that he could scarcely hear the name of montmartre without a conscious thrill of aversion
+gthreisg nogthing eglgts that locks sgogtgoglyg gthreisg nogthing eglgts that locks sgogtgoglyg
+there is nothing else that looks so jolly
+glugngcgugsg who had already progched the dogrigd gredgnesgs toglygd the wagyg nog regqgogigledg and pglgagced himgsgelg gogngceg more n the bgogdom of the log glugngcgugsg who had already progched the dogrigd gredgnesgs toglygd the wagyg nog regqgogigledg and pglgagced himgsgelg gogngceg more n the bgogdom of the log
+
+
+val:  56%|█████▋    | 148/262 [00:54<00:23,  4.77it/s]
+ghergtgogng was nogtglesg kegegng than her gig and when ever a dgagmgsgog gage with greg shgogtg segme to tgagke ug ang gugngfgingigshe ligureg gas a begrilg or gang tgagkeg ugogtgugng fergsgigly had the pgogigngtg where ighegt leg gog ghergtgogng was nogtglesg kegegng than her gig and when ever a dgagmgsgog gage with greg shgogtg segme to tgagke ug ang gugngfgingigshe ligureg gas a begrilg or gang tgagkeg ugogtgugng fergsgigly had the pgogigngtg where ighegt leg gog
+her tongue was not less keen than her eye and whenever a damsel came within earshot seemed to take up an unfinished lecture as a barrel organ takes up a tune precisely at the point where it had left off
+ghat shal we go with the migngogs at the dgogorg they cgogntgsgigsg and the sgingeras egs god is nogthing ghat shal we go with the migngogs at the dgogorg they cgogntgsgigsg and the sgingeras egs god is nogthing
+what shall we do with the mingoes at the door they count six and this singer is as good as nothing
+gags hog true the cgargtan gig was agwgagrg fromg sgogme litle regigtgigtgyg and angelegrd nest of his agigtgog that he was progpgagred for an agurgengcgyg gags hog true the cgargtan gig was agwgagrg fromg sgogme litle regigtgigtgyg and angelegrd nest of his agigtgog that he was progpgagred for an agurgengcgyg
+as holmes drew the curtain i was aware from some little rigidity and alertness of his attitude that he was prepared for an emergency
+ghergmgagner was neither ingtegpgengd ent gogcgergt g but ragtherg gong of wel greg comgpgogsgureg and cgogmgreglgigngceg ghergmgagner was neither ingtegpgengd ent gogcgergt g but ragtherg gong of wel greg comgpgogsgureg and cgogmgreglgigngceg
+her manner was neither independent nor assertive but rather one of well bred composure and calm reliance
+gi age regy dont think he knew mugchgbgogugd at mister hogmegsg gi age regy dont think he knew mugchgbgogugd at mister hogmegsg
+i really dont think he knew much about it mister holmes
+gbugt this glgagsg gogpgpogsgigtiong gigsg algogstg gaglglgaygsg gangngegcgasg sgagrgyg fogrg igmagryg has beg hag bigtguaglyg magniagegdg gong thigsg pringcgigbgleg sheg wil nog magkeg ingyg trogblg gbugt this glgagsg gogpgpogsgigtiong gigsg algogstg gaglglgaygsg gangngegcgasg sgagrgyg fogrg igmagryg has beg hag bigtguaglyg magniagegdg gong thigsg pringcgigbgleg sheg wil nog magkeg ingyg trogblg
+but this last supposition is almost always unnecessary for if mary has been habitually managed on this principle she will not make any trouble
+gthe ngoglgig igsg g migryg ang gone sgegngeg thought agnogtherg it isg nogtg gthe ngoglgig igsg g migryg ang gone sgegngeg thought agnogtherg it isg nogtg
+this knowledge is memory in one sense though in another it is not
+gtheg gigdgegag of phaghging cgagmgbgog to agogt was gvgagstglyg agmgeagsging to higmg and agmoregyg thought of gig the more hegrogrgd with lgagvgtgerg gtheg gigdgegag of phaghging cgagmgbgog to agogt was gvgagstglyg agmgeagsging to higmg and agmoregyg thought of gig the more hegrogrgd with lgagvgtgerg
+the idea of patching capn bill to a goat was vastly amusing to him and the more he thought of it the more he roared with laughter
+gagregmugfhgogneg gbgy the helpef gcgugtigple gregcgergdsg mogrglgagte to ugsg the gingsgenengteg gogitsg pgagsgsg agndg pgeople are nogtgsgog digferengtg from grogagfgogngsg gags they lgke to beliegveg gagregmugfhgogneg gbgy the helpef gcgugtigple gregcgergdsg mogrglgagte to ugsg the gingsgenengteg gogitsg pgagsgsg agndg pgeople are nogtgsgog digferengtg from grogagfgogngsg gags they lgke to beliegveg
+a gramophone by the help of suitable records might relate to us the incidents of its past and people are not so different from gramophones as they like to believe
+gig nog gags ked puglyg congrogling here sgogbgsg gig gog ognglgyg gig cogent thing yug gig nog gags ked puglyg congrogling here sgogbgsg gig gog ognglgyg gig cogent thing yug
+
+
+val:  60%|█████▉    | 157/262 [00:58<00:28,  3.70it/s]
+grgtgwilginglyg for pegtgwen us we have gone the bgagtleg agngse red rogang grgtgwilginglyg for pegtgwen us we have gone the bgagtleg agngse red rogang
+right willingly for between us we have won the battle answered robin
+gthougtg g me that gig nogtg bgoghgtg to leg lagrgeg lags og gmgiglesg weg nhogug gargtgogng but thagtg sgogmgugchg ogfg geargthg angwgagterg brogtg gig mugstgagtgeagngdg tgigmegsg glegure with mgygmogng gregcgegvging gnogtg bgyg elogmgegng sgoglog gbugtg heagvgyg tgegrgsg bgagegsg ofg gigthergsg wog gthougtg g me that gig nogtg bgoghgtg to leg lagrgeg lags og gmgiglesg weg nhogug gargtgogng but thagtg sgogmgugchg ogfg geargthg angwgagterg brogtg gig mugstgagtgeagngdg tgigmegsg glegure with mgygmogng gregcgegvging gnogtg bgyg elogmgegng sgoglog gbugtg heagvgyg tgegrgsg bgagegsg ofg gigthergsg wog
+thought kills me that i am not thought to leap large lengths of miles when thou art gone but that so much of earth and water wrought i must attend times leisure with my moan receiving nought by elements so slow but heavy tears badges of eithers woe
+gheregis agring porgsgigt the friendlyg and here is a brigceglgdg and gagsgogrg would nogt be as shgagme to hanging yours sgigdg gheregis agring porgsgigt the friendlyg and here is a brigceglgdg and gagsgogrg would nogt be as shgagme to hanging yours sgigdg
+here is a ring for sif the friendly and here is a bracelet a sword would not be ashamed to hang at your side
+gthougcgagngsgedg gwgagtg through sgogrowgeng sgigcgngegsg to bring sgoglgs to tgugchg gang thing igtgsgong whang ogthergsg cgrgyg tog leg gthougcgagngsgedg gwgagtg through sgogrowgeng sgigcgngegsg to bring sgoglgs to tgugchg gang thing igtgsgong whang ogthergsg cgrgyg tog leg
+thou canst wait through sorrow and sickness to bring souls to touch and think it soon when others cry too late
+gthe abgtgection ofg clogsg presgengte gigsgelgfg that eginetgtgure ong woman sgtreseg and hougshgolg gpgargfrign gaglig gigs agnogugs igegction to the throg but it wil apgpgearging the sgqgoged that this gugcgegptiong g megchgmog ogugsg and shupgtgegngtialg gthe abgtgection ofg clogsg presgengte gigsgelgfg that eginetgtgure ong woman sgtreseg and hougshgolg gpgargfrign gaglig gigs agnogugs igegction to the throg but it wil apgpgearging the sgqgoged that this gugcgegptiong g megchgmog ogugsg and shupgtgegngtialg
+the objection of course presents itself that expenditure on womens dress and household paraphernalia is an obvious exception to this rule but it will appear in the sequel that this exception is much more obvious than substantial
+gcogrgagiongsg gags the kang any right to gengtergfgrg and matgtergs of thatg kgigndg gcogrgagiongsg gags the kang any right to gengtergfgrg and matgtergs of thatg kgigndg
+good gracious has the king any right to interfere in matters of that kind
+gogfgcgorgs he did nogt reglgigse that it wasg gig who wasg nogtking but non the legs is cgogngbugct was vgerygaungcgurgd ygsgang ingdeged under the gorcumgtgagncg es rogerg sgpgigiogsg gogfgcgorgs he did nogt reglgigse that it wasg gig who wasg nogtking but non the legs is cgogngbugct was vgerygaungcgurgd ygsgang ingdeged under the gorcumgtgagncg es rogerg sgpgigiogsg
+of course he did not realize that it was i who was knocking but none the less his conduct was very uncourteous and indeed under the circumstances rather suspicious
+gforgegs gagtyg where in the fgigrm we can sgegng for he an amigegtg gforgegs gagtyg where in the fgigrm we can sgegng for he an amigegtg
+for if hes anywhere on the farm we can send for him in a minute
+ghogtghgergfulyg heg segegmgsg to greg eng hog neglygsgpreagd is cgagsg and whigcgomg litle gfgigsgigsg gig woughgegtglyg sgmgiglging gagsg ghogtghgergfulyg heg segegmgsg to greg eng hog neglygsgpreagd is cgagsg and whigcgomg litle gfgigsgigsg gig woughgegtglyg sgmgiglging gagsg
+how cheerfully he seems to grin how neatly spread his claws and welcome little fishes in with gently smiling jaws
+gig stond with gygagck to the wag for gig gone and nog gore reaching og the dag for mag gig stond with gygagck to the wag for gig gone and nog gore reaching og the dag for mag
+
+val:  61%|██████    | 160/262 [00:58<00:19,  5.24it/s]
+gogngwgug sgigfrgpgagtergsg gorg pgurgmgegtsg of tgargtsg gang pgagcgsg gang greagdg gingsgpgurgled ing glitgtering thegcgagngtgergsg gogngwgug sgigfrgpgagtergsg gorg pgurgmgegtsg of tgargtsg gang pgagcgsg gang greagdg gingsgpgurgled ing glitgtering thegcgagngtgergsg
+on huge silver platters were pyramids of tarts and cakes and red wine sparkled in glittering decanters
+gbegnogtgsgog gfgogygsh friegngdg sgagdg gigogsh crogsglyg gbegnogtgsgog gfgogygsh friegngdg sgagdg gigogsh crogsglyg
+be not so foolish friend said fitzooth crossly
+gcgagpglg way gog whigshg when of gig ever fgalglogd yog gcgagpglg way gog whigshg when of gig ever fgalglogd yog
+keep away if you wish when have i ever followed you
+git wil nogt beg sgagf for you dogsgtagyg here nog git wil nogt beg sgagf for you dogsgtagyg here nog
+it will not be safe for you to stay here now
+g thagtg tgogwaiseg gogerg g thagtg tgogwaiseg gogerg
+now that too is over
+gyoulogft timing agchgagre you sgagyg which chegrg bgy the wing dog thegreg gyoulogft timing agchgagre you sgagyg which chegrg bgy the wing dog thegreg
+you left him in a chair you say which chair by the window there
+gin this magnogtnogs lage ogmgignd thagt was a cgleagsgan gegngdg gin this magnogtnogs lage ogmgignd thagt was a cgleagsgan gegngdg
+in this monotonous life of mine that was a pleasant event
+gthegbeghgagp gurgugsg to atgegmpgsg to mgagke sgcgogligyg agregcgergdg of beghagvgurg hasted to trust his gmegborgyg gang magking the regergdg gthegbeghgagp gurgugsg to atgegmpgsg to mgagke sgcgogligyg agregcgergdg of beghagvgurg hasted to trust his gmegborgyg gang magking the regergdg
+the behaviourist who attempts to make psychology a record of behaviour has to trust his memory in making the record
+ghe felt for and fgound the wistergdsg blogagcg cglogthg the gqugirg was gquigt out of breathg ghe felt for and fgound the wistergdsg blogagcg cglogthg the gqugirg was gquigt out of breathg
+he felt for and found the wizards black cloth the squire was quite out of breath
+gogngcgngogt ed the dgogr of the hogs and dog chogyg pleasing fgagsed gogmeng grease aging blog gogpened igtg and great ed the vegigtgergs with asgmgigleg gogngcgngogt ed the dgogr of the hogs and dog chogyg pleasing fgagsed gogmeng grease aging blog gogpened igtg and great ed the vegigtgergs with asgmgigleg
+
+val:  65%|██████▍   | 170/262 [01:01<00:14,  6.37it/s]
+gsginge the pgegrgigat of gargtgaglg the gagcgt of sgpgigrgt of the cgoungtryg as sgrgrgougngd ed it with a belt of grigchging thrgigving getugmengtsg though nogng but the hgugngtger or the sgagvgage gas gevergknogng gegen nog to gpgenagtgrgagt egs whiled gregcgegegsg gsginge the pgegrgigat of gargtgaglg the gagcgt of sgpgigrgt of the cgoungtryg as sgrgrgougngd ed it with a belt of grigchging thrgigving getugmengtsg though nogng but the hgugngtger or the sgagvgage gas gevergknogng gegen nog to gpgenagtgrgagt egs whiled gregcgegegsg
+since the period of our tale the active spirit of the country has surrounded it with a belt of rich and thriving settlements though none but the hunter or the savage is ever known even now to penetrate its wild recesses
+gnogcag fhgegtgralg baglevgemg bergogs gigsgeglgfg could vgyg with the churgch at mogmgagtgurg gnogcag fhgegtgralg baglevgemg bergogs gigsgeglgfg could vgyg with the churgch at mogmgagtgurg
+no cathedral not even burgos itself could vie with the church at montmartre
+gyges and megergyg somewhirg on the front gear gig thing wigan a mag gyges and megergyg somewhirg on the front gear gig thing wigan a mag
+why its in missouri somewhere on the frontier i think well get a map
+gwhige thegng glgagsgtg he is tgurgmgsg greg sgcgogog of the hgigeusg cglagsgsg and you dogfgignd his agrgt gaglugtlyg gas firgsthge degsgpgyigng ingtgegngsglyg and with the sternest ingtglgcgtg of nagralg grmg ags itg gigsg and tin the ingegmgen of gig with cglgoged ang fgrg gwhige thegng glgagsgtg he is tgurgmgsg greg sgcgogog of the hgigeusg cglagsgsg and you dogfgignd his agrgt gaglugtlyg gas firgsthge degsgpgyigng ingtgegngsglyg and with the sternest ingtglgcgtg of nagralg grmg ags itg gigsg and tin the ingegmgen of gig with cglgoged ang fgrg
+well then last here is turners greek school of the highest class and you define his art absolutely as first the displaying intensely and with the sternest intellect of natural form as it is and then the envelopment of it with cloud and fire
+g git uncougsgpgogingtging nogrgth angsgegugthg at theg egvigdgegntg gmagrgkgsg of the brogtgrag gong gegtherg sgighe of higmg the dgagrgkg here has gagne to ward the fgogrigsgtg g git uncougsgpgogingtging nogrgth angsgegugthg at theg egvigdgegntg gmagrgkgsg of the brogtgrag gong gegtherg sgighe of higmg the dgagrgkg here has gagne to ward the fgogrigsgtg
+see said uncas pointing north and south at the evident marks of the broad trail on either side of him the dark hair has gone toward the forest
+gragceg begtgug youg and pgeagceg from gogd the fgagtherg and fremogb ogrgegsg asgrgigsg gragceg begtgug youg and pgeagceg from gogd the fgagtherg and fremogb ogrgegsg asgrgigsg
+grace be to you and peace from god the father and from our lord jesus christ
+gang his gregtgurgneg to the cgagmpg his agugete gang pgragctgigcedg ing to leg wer ingtgegntily ingaged in digvgigsging meagngsg to gcgountergagc tag wagchgfulgngesgs ingugsgpgigtion on the pgart of his gengigmigsg that he neg where ing nog degre angfgegrigorg to his gogng gang his gregtgurgneg to the cgagmpg his agugete gang pgragctgigcedg ing to leg wer ingtgegntily ingaged in digvgigsging meagngsg to gcgountergagc tag wagchgfulgngesgs ingugsgpgigtion on the pgart of his gengigmigsg that he neg where ing nog degre angfgegrigorg to his gogng
+in his return to the camp his acute and practised intellects were intently engaged in devising means to counteract a watchfulness and suspicion on the part of his enemies that he knew were in no degree inferior to his own
+gngogogrgds bergsgpgogng nog gligngwhagce wasg gugtergdgtg sgagyged og of gwgaglging inghagstgigng and thagt sgognmeg hog wagsg gingdigsgtgigngtg gags gig it exgigsgtgegd ing fgagngtcgyg ang nogigrigagligtyg gngogogrgds bergsgpgogng nog gligngwhagce wasg gugtergdgtg sgagyged og of gwgaglging inghagstgigng and thagt sgognmeg hog wagsg gingdigsgtgigngtg gags gig it exgigsgtgegd ing fgagngtcgyg ang nogigrigagligtyg
+no words were spoken no language was uttered save that of wailing and hissing and that somehow was indistinct as if it existed in fancy and not in reality
+gthigsgegvengigng they alg saigdg gthigsgegvengigng they alg saigdg
+this evening they all said
+gag you leave be aglogne in my gog rom or must gog way to asgcgagpesg g gag you leave be aglogne in my gog rom or must gog way to asgcgagpesg g
+
+val:  68%|██████▊   | 179/262 [01:05<00:15,  5.41it/s]
+go ont semed to regards the pogsgigtiong go ont semed to regards the pogsgigtiong
+you dont seem to realize the position
+gong sgegterdgyg mogrnings when the sgogdgaglgigt ygmegt in the chgagpgleg to regcgigde the litle ogfgigceg his pglagceg was agcugsgiongdg neglingdgsgk at the rgight of the altgerg from which he glegdg his wing of bogigce thru the resgpogngsgegsg gong sgegterdgyg mogrnings when the sgogdgaglgigt ygmegt in the chgagpgleg to regcgigde the litle ogfgigceg his pglagceg was agcugsgiongdg neglingdgsgk at the rgight of the altgerg from which he glegdg his wing of bogigce thru the resgpogngsgegsg
+on saturday mornings when the sodality met in the chapel to recite the little office his place was a cushioned kneeling desk at the right of the altar from which he led his wing of boys through the responses
+gist mis yer gqugigre rogpgendg and big meg god ging gist mis yer gqugigre rogpgendg and big meg god ging
+dismiss your squire robin and bid me good e e n
+gtgegmgeng crags tregsg is a vgegryg gogantg agfgagerg gtgegmgeng crags tregsg is a vgegryg gogantg agfgagerg
+lieutenant crosstrees is a very gallant officer
+gtgegve thegugsg the mugstgredg segdg a mong the sgpoglgast of galgtgsg hagigtgag the progpgogrgtigongsg of agtgreg and the birds of the agrg gorgngegsting gangitsg pragegsg the gagogrgd is nog ing gog gogring progtegcgtiong and thes sgwegetsg of sgagisgfgagctiong to gegeryg garnesgpgog grogournigng its gwagyg gir trug gtgegve thegugsg the mugstgredg segdg a mong the sgpoglgast of galgtgsg hagigtgag the progpgogrgtigongsg of agtgreg and the birds of the agrg gorgngegsting gangitsg pragegsg the gagogrgd is nog ing gog gogring progtegcgtiong and thes sgwegetsg of sgagisgfgagctiong to gegeryg garnesgpgog grogournigng its gwagyg gir trug
+nevertheless the mustard seed among the smallest of all seeds has attained the proportions of a tree and the birds of the air are nesting in its branches the acorn is now an oak offering protection and the sweets of satisfaction to every earnest pilgrim journeying its way for truth
+g you wil fgin by congtgingualgyg sgpeagkng of for mgegngtgigtgong hogbgigng tgargmgerg and ting cotgtg in almost the sgagmegtgagmgsg g you wil fgin by congtgingualgyg sgpeagkng of for mgegngtgigtgong hogbgigng tgargmgerg and ting cotgtg in almost the sgagmegtgagmgsg
+you will find me continually speaking of four men titian holbein turner and tintoret in almost the same terms
+git a fgirgthgregd fgogngs and gogtgurg thigseg to beg mag chagngeg ing gsgimgpale cgugsgtgomg of a morglesgsg regrogcgagrgcgt eg gitonlt havergbgeg the theargegti cogvgagesg of the disgtgingctiong which his magnegtgagngdg whethregtg begat thad bgeg or a glgogrgd to congengtiongaglgigtgyg the feagtguresg of the cogmgengtioinaglg sgkegm of congemgtiong ignogtg chagngeg eaglyg git a fgirgthgregd fgogngs and gogtgurg thigseg to beg mag chagngeg ing gsgimgpale cgugsgtgomg of a morglesgsg regrogcgagrgcgt eg gitonlt havergbgeg the theargegti cogvgagesg of the disgtgingctiong which his magnegtgagngdg whethregtg begat thad bgeg or a glgogrgd to congengtiongaglgigtgyg the feagtguresg of the cogmgengtioinaglg sgkegm of congemgtiong ignogtg chagngeg eaglyg
+with a further advance in culture this tabu may change into simple custom of a more or less rigorous character but whatever be the theoretical basis of the distinction which is maintained whether it be a tabu or a larger conventionality the features of the conventional scheme of consumption do not change easily
+gpogtgigmedg tgigmeg og flegegyg tgugft og migugsg we yegt son agleming lgight left ugpgogngig tgrogps s dognd upon the dgegnceg flor of greg and glugsges its sgeglgfg in the gogagkeg and agpgengigtgragbgle mag gpogtgigmedg tgigmeg og flegegyg tgugft og migugsg we yegt son agleming lgight left ugpgogngig tgrogps s dognd upon the dgegnceg flor of greg and glugsges its sgeglgfg in the gogagkeg and agpgengigtgragbgle mag
+from time to time a fleecy tuft of mist with yet some gleaming light left upon it drops down upon the dense floor of grey and loses itself in the opaque and impenetrable mass
+gwhecgheg hagd bag bagneg egesgsg and i was only a legingrgs og she gigs to sgagyg yog have a frind gagnergtsg inguragnt rag gog it gigamgpgagk in fog yog for she has a khgined ghargtg and amgshgere i had found it sgog gwhecgheg hagd bag bagneg egesgsg and i was only a legingrgs og she gigs to sgagyg yog have a frind gagnergtsg inguragnt rag gog it gigamgpgagk in fog yog for she has a khgined ghargtg and amgshgere i had found it sgog
+when she had that bad illness and i was only eleven years old she used to say youll have a friend on earth in your aunt rachel if im taken from you for she has a kind heart and im sure ive found it so
+git was throg flog tgd gfgigdte the pegangdg gorge the milgtgaryg gegxgpegdgigtion to yugtgog gogigngsgigdblyg to an sgtgalg sergeant feteral gigalgsg and twogragpreseg and aglgegsgtg ingegntgt gog rgbelgligung which had fgagck had nevergcomg in to egsgtegdgsg but in regaligtgyg to gfgergtherg the igtgregtsg of the gigsgegsion gig git was throg flog tgd gfgigdte the pegangdg gorge the milgtgaryg gegxgpegdgigtion to yugtgog gogigngsgigdblyg to an sgtgalg sergeant feteral gigalgsg and twogragpreseg and aglgegsgtg ingegntgt gog rgbelgligung which had fgagck had nevergcomg in to egsgtegdgsg but in regaligtgyg to gfgergtherg the igtgregtsg of the gigsgegsion gig
+
+
+val:  76%|███████▌  | 199/262 [01:12<00:10,  6.12it/s]
+gnogthagts ingpgogsgigbgle reagdgyg forgig greaglyg dong thing gig gong thought of hing gal the gegvegngigng gegegpghi of s gog orgtgogking gnogthagts ingpgogsgigbgle reagdgyg forgig greaglyg dong thing gig gong thought of hing gal the gegvegngigng gegegpghi of s gog orgtgogking
+now thats impossible radie for i really dont think i once thought of him all this evening except just while we were talking
+gi cognogd gang mgygsgeugf the grotifgfgigcgagtion of angering sgogdges regpgig gi cognogd gang mgygsgeugf the grotifgfgigcgagtion of angering sgogdges regpgig
+i cannot deny myself the gratification of inserting southeys reply
+gog sgirgcgirgtgengly nogtg gog sgirgcgirgtgengly nogtg
+no sir certainly not
+gkgangyou a mage bucking higmg has ben sgogfgiglegngtg gig sgugsgpgagcgtg g gkgangyou a mage bucking higmg has ben sgogfgiglegngtg gig sgugsgpgagcgtg g
+can you imagine why buckingham has been so violent i suspect
+gmagcgegrg was the gagnlyg gagne who did gnogtg under sgtgagndg ang thing about the magterg gmagcgegrg was the gagnlyg gagne who did gnogtg under sgtgagndg ang thing about the magterg
+monsieur was the only one who did not understand anything about the matter
+ge orge had to be congegngcgtg ge orge had to be congegngcgtg
+the work had to be condensed
+gug and dgogwn the wager we went to get much welt and mgugch froglicg gug and dgogwn the wager we went to get much welt and mgugch froglicg
+up and down the water we went to get much wealth and much frolic
+ghegwgagedg gag gregwgagyg the meader gplgagtesg gagnd pergsgogdg gegeryglgimne of angvgegst gigagtion gmgagongblg but agingbgag ghegwgagedg gag gregwgagyg the meader gplgagtesg gagnd pergsgogdg gegeryglgimne of angvgegst gigagtion gmgagongblg but agingbgag
+he weighed and reweighed the meter plates and pursued every line of investigation imaginable but all in vain
+git was one of the mgagsteraly and chgarming stories of dugmog the gegerg git was one of the mgagsteraly and chgarming stories of dugmog the gegerg
+it was one of the masterly and charming stories of dumas the elder
+git gigs sgoglgegveryg gagreg but for the lags thre weg nogitgy bil g angygsgneg but thagtg sgoglgdg gag the gegbgegtg gcgagtg git gigs sgoglgegveryg gagreg but for the lags thre weg nogitgy bil g angygsgneg but thagtg sgoglgdg gag the gegbgegtg gcgagtg
+
+val:  80%|███████▉  | 209/262 [01:16<00:10,  5.08it/s]
+gal agbougt home wots a tgogmolg ogbgrgigtg and brogang gogarg sgcgagtgeredg gang brags plagsgegsg gal agbougt home wots a tgogmolg ogbgrgigtg and brogang gogarg sgcgagtgeredg gang brags plagsgegsg
+all about him was a tumult of bright and broken color scattered in broad splashes
+g shal beg hagpy to take chagon thegmg said sgrgfgorg nagngdgag g shal beg hagpy to take chagon thegmg said sgrgfgorg nagngdgag
+i shall be happy to take charge of them said sir ferdinando
+gthegrg thegreg he sgagd sgugthinglyg pgagting her brogngdg fags he hagdg gthegrg thegreg he sgagd sgugthinglyg pgagting her brogngdg fags he hagdg
+there there he said soothingly patting her brown fuzzy head
+grogbgeng cgagrgfulglyg degcgegngdgd the lighter and fgogunthimgsgelf gon ugpgogng for g brogckgeg grogngdg grogbgeng cgagrgfulglyg degcgegngdgd the lighter and fgogunthimgsgelf gon ugpgogng for g brogckgeg grogngdg
+robin carefully descended the ladder and found himself soon upon firm rocky ground
+gags a grave sgigtigsgogn g shal be agmgogtle of dgegportg meg bougogse it wold be dagrgigs to be ogthergigsg gags a grave sgigtigsgogn g shal be agmgogtle of dgegportg meg bougogse it wold be dagrgigs to be ogthergigsg
+as a private citizen i shall be a model of deportment because it would be dangerous to be otherwise
+gbugtgnegtherg sgagngrg grogrgdg nogrg brogdg stregtg megtherg gwongdgergsg of the gmgegngtg nor the glories of the hag white the gogs so vagfgagtherg sgigtg galgwaygs sgagnging the dgegcglgergagtiogng gang pregbgigsgigergs sgogmgugchg ag the sgpluingdgergsg of the chgegst togtg threat when gogwgsg and the bgorgagngsg ogngagtg stregtg gbugtgnegtherg sgagngrg grogrgdg nogrg brogdg stregtg megtherg gwongdgergsg of the gmgegngtg nor the glories of the hag white the gogs so vagfgagtherg sgigtg galgwaygs sgagnging the dgegcglgergagtiogng gang pregbgigsgigergs sgogmgugchg ag the sgpluingdgergsg of the chgegst togtg threat when gogwgsg and the bgorgagngsg ogngagtg stregtg
+but neither saint girard nor broad street neither wonders of the mint nor the glories of the hall where the ghosts of our fathers sit always signing the declaration impressed the visitors so much as the splendors of the chestnut street windows and the bargains on eighth street
+gin the gogyg wage to the s sgtregtsg glegsgsgings wayg shogredg gugogn higmg bgyg gag whog gag g bglesgsging ugpgogn his begtgyg ugogng the magtherg the bog higmg ug on the fgagthrg hagt begogigmg ugogngthogse hog brag higmg gogsgog wheleg gin the gogyg wage to the s sgtregtsg glegsgsgings wayg shogredg gugogn higmg bgyg gag whog gag g bglesgsging ugpgogn his begtgyg ugogng the magtherg the bog higmg ug on the fgagthrg hagt begogigmg ugogngthogse hog brag higmg gogsgog wheleg
+when the boy walked through the streets blessings were showered upon him by all who saw him blessings upon his beauty upon the mother that bore him upon the father that begot him upon those who brought him up so well
+ghe world is alg thegreg just as g guse to beg butg gigcgagtg gig agit anyg mogreg ghe world is alg thegreg just as g guse to beg butg gigcgagtg gig agit anyg mogreg
+the world is all there just as it used to be but i cant get at it any more
+gcgogmgfogrthg wgorgmg an the sgiglgegtg bhaglyg to tgpgangce give cguegng gcgogmgfogrthg wgorgmg an the sgiglgegtg bhaglyg to tgpgangce give cguegng
+come forth worm and the silent valley to thy pensive queen
+gcogmg theire fore and let agsgpglging mut at thegmg gcogmg theire fore and let agsgpglging mut at thegmg
+
+val:  81%|████████  | 211/262 [01:18<00:25,  2.00it/s]
+gat the fgagrgtgrgegn d of the largest gag gagtgegbleg wags sgegtg withgoglgd ing cog gang gugeng pglgagtsg gignglgogng grogsg gat the fgagrgtgrgegn d of the largest gag gagtgegbleg wags sgegtg withgoglgd ing cog gang gugeng pglgagtsg gignglgogng grogsg
+at the farther end of the largest hall a table was set with golden cups and golden plates in long rows
+gagoglgdagng gogrgtgi on and aghagpgd lgigfeg gagoglgdagng gogrgtgi on and aghagpgd lgigfeg
+a golden fortune and a happy life
+gag roger fgigkgigng god begkgigng and ygsgcgagled g meg gag roger fgigkgigng god begkgigng and ygsgcgagled g meg
+a robber viking said the king and scowled at me
+gog was begining tog log gegeng in tristan g sglengdgerg bhagat fort gogorg og sgigpktg gag and out of the plgagyg sgignging leges sgomeg gong ging ding thorgegyg geglg gog was begining tog log gegeng in tristan g sglengdgerg bhagat fort gogorg og sgigpktg gag and out of the plgagyg sgignging leges sgomeg gong ging ding thorgegyg geglg
+he was beginning to feel a keen interest in the slender barefoot donkey girl who slipped in and out of the play singing like some one winding through a hilly field
+ghat gig meg is that gig gag you to pgrogmagseg never to segmeg agaigng nogagtarg hog ogren i cgogmgnog mgarg hoghagrg ig big ghat gig meg is that gig gag you to pgrogmagseg never to segmeg agaigng nogagtarg hog ogren i cgogmgnog mgarg hoghagrg ig big
+what i mean is that i want you to promise never to see me again no matter how often i come no matter how hard i beg
+gog gigigsg fog dog pg gaged the mgigceg gog gigigsg fog dog pg gaged the mgigceg
+who is humpy dumpy asked the mice
+ge gag to hog is not egpegctgeg ug ge gag to hog is not egpegctgeg ug
+he acts as though he had not expected us
+gig gugngtergedg and ig toe you in to mgygcgogngfig ence ogs to the sugugstiongs of the sgigde gtgagbleg gig gugngtergedg and ig toe you in to mgygcgogngfig ence ogs to the sugugstiongs of the sgigde gtgagbleg
+i entered and i took you into my confidence as to the suggestions of the side table
+gagsgkedg frogngyg in ungtgegngsg gingeregsgt sgligping dgogwgn og pgolglig sgagrmgs and crogding ugpgcglogse to gagsgprgsgigeg gagsgkedg frogngyg in ungtgegngsg gingeregsgt sgligping dgogwgn og pgolglig sgagrmgs and crogding ugpgcglogse to gagsgprgsgigeg
+asked phronsie in intense interest slipping down out of pollys arms and crowding up close to jaspers side
+gagfter pgogngbdering agwgigleg he sgaigdg gif we weregfgagrg ther agwgegtyg gigsheuld extgpgegct to fgined agdegpgtg gafg two ore thre hugngdred fagmgsg ing sgtgoagd ofg fgigveg fgagpgomgsg fgigveg fragomgsg gagfter pgogngbdering agwgigleg he sgaigdg gif we weregfgagrg ther agwgegtyg gigsheuld extgpgegct to fgined agdegpgtg gafg two ore thre hugngdred fagmgsg ing sgtgoagd ofg fgigveg fgagpgomgsg fgigveg fragomgsg
+
+
+val:  87%|████████▋ | 229/262 [01:22<00:05,  6.30it/s]
+g i am gag foraged there nog sgigngs hegreg said heg g i am gag foraged there nog sgigngs hegreg said heg
+i am afraid there are no signs here said he
+gagvgogigceg from begogng the worgld was caging gagvgogigceg from begogng the worgld was caging
+a voice from beyond the world was calling
+gbgugrgagsg fgagceg fgagl under his brogting gagesg gbgugrgagsg fgagceg fgagl under his brogting gagesg
+maries face fell under his brooding gaze
+gag angygreageg g sgagyg g gag angygreageg g sgagyg g
+at any rate i say go
+gthigs was at the magrghg aglegctiong gagtengfgigtgig gigveg gthigs was at the magrghg aglegctiong gagtengfgigtgig gigveg
+this was at the march election eighteen fifty five
+gheg hagdg gogtgingtog hergcgogrgt gagrgdg gheg hagdg gogtgingtog hergcgogrgt gagrgdg
+he had got into her courtyard
+gang reg thing he igsgdgogng has begeng gagmg that the cgogngsgrgbgagtion of egergyg the congtragcgtion of sgpgagceg the ingtgegngcgigpgicgcgagtion ofg cgogtgureg gang reg thing he igsgdgogng has begeng gagmg that the cgogngsgrgbgagtion of egergyg the congtragcgtion of sgpgagceg the ingtgegngcgigpgicgcgagtion ofg cgogtgureg
+everything he has done has been aimed at the conservation of energy the contraction of space the intensification of culture
+gi hag vgerglyg fgeg toglogveg meg nog and ig sgaughtg yog mgight loge meg gagsg gig have begogng tog loge yog gi hag vgerglyg fgeg toglogveg meg nog and ig sgaughtg yog mgight loge meg gagsg gig have begogng tog loge yog
+i have very few to love me now and i thought you might love me as i have begun to love you
+gindgughg thegse g migfgigcglg sgugbgeg the sgrgounging nagur thorg sgogfgfgrgigng g stil digfgig ang begtagfulg gindgughg thegse g migfgigcglg sgugbgeg the sgrgounging nagur thorg sgogfgfgrgigng g stil digfgig ang begtagfulg
+in both these high mythical subjects the surrounding nature though suffering is still dignified and beautiful
+gthegpgargug sgplgagndg glicke thagt of the cristal pgagbgogseg was agtgegmgpg grargyg egegbgigtg gthegpgargug sgplgagndg glicke thagt of the cristal pgagbgogseg was agtgegmgpg grargyg egegbgigtg
+the paris plant like that at the crystal palace was a temporary exhibit
+gthegregcgterg did nogtgpgagsgke for a cgagtgicgis ing tog hear the lesing frogmg gthegregcgterg did nogtgpgagsgke for a cgagtgicgis ing tog hear the lesing frogmg
+the rector did not ask for a catechism to hear the lesson from
+ghegsegsgligfgly pgogngegshedg ghegsegsgligfgly pgogngegshedg
+hes swiftly punished
+gigwantg dougbleg gigng peglog gigwantg dougbleg gigng peglog
+i want double nine hal lo
+gait was the firgst greagtg sgogrgow of his lgigfeg it was nogt gog mugs the logs of the cgogten agsgeglgfg but the fgagngtgigcgyg the hogsg the dgregmgsg bilge round ig gait was the firgst greagtg sgogrgow of his lgigfeg it was nogt gog mugs the logs of the cgogten agsgeglgfg but the fgagngtgigcgyg the hogsg the dgregmgsg bilge round ig
+it was the first great sorrow of his life it was not so much the loss of the cotton itself but the fantasy the hopes the dreams built around it
+gshegsgogterd than g gagm but sgogpgig g gandg sgagdg ang shgyg that she segegmgs lige a chgiglg gshegsgogterd than g gagm but sgogpgig g gandg sgagdg ang shgyg that she segegmgs lige a chgiglg
+shes older than i am but so tiny and sad and shy that she seems like a child
+gthigsg was the gfgirgst agcgagsiong with an agenergagtiong gongsgugch and ginger tgagnegbegntg gagdbegeng given at gegrgsgtg and thegnlyg whegng within the mgegborgyg ogfg mgagng where the negergs and congtryg peopleg hagd begetheg ingigtgeg geg gthigsg was the gfgirgst agcgagsiong with an agenergagtiong gongsgugch and ginger tgagnegbegntg gagdbegeng given at gegrgsgtg and thegnlyg whegng within the mgegborgyg ogfg mgagng where the negergs and congtryg peopleg hagd begetheg ingigtgeg geg
+this was the first occasion within a generation when such an entertainment had been given at elmhurst and the only one within the memory of man where the neighbors and country people had been invited guests
+gin the degbgagke betwen the seine gur sagtgegs her degfgegngd sgligfgigf tegan the mengmegnt had begeng gnagtinly agnogtagbgleg big of regnging but de ligergdg withg greaglg ingogsgagmg gin the degbgagke betwen the seine gur sagtgegs her degfgegngd sgligfgigf tegan the mengmegnt had begeng gnagtinly agnogtagbgleg big of regnging but de ligergdg withg greaglg ingogsgagmg
+in the debate between the senior societies her defence of the fifteenth amendment had been not only a notable bit of reasoning but delivered with real enthusiasm
+gthegmogtge nor gonigagton of ingegsgtryg gorges in the sgagme aregxtiong also gin oglgigneg gthegmogtge nor gonigagton of ingegsgtryg gorges in the sgagme aregxtiong also gin oglgigneg
+the modern organization of industry works in the same direction also by another line
+gdgog meg what ag chgagtgeg bog girgitgting to be ug gergmogrg timgagigtiong hog wasg cgleagsed with the conglomentg gdgog meg what ag chgagtgeg bog girgitgting to be ug gergmogrg timgagigtiong hog wasg cgleagsed with the conglomentg
+dear me what a chatterbox youre getting to be unc remarked the magician who was pleased with the compliment
+gigagmg gvgagrgyg bglgagdg gigagmg gvgagrgyg bglgagdg
+
+
+val:  93%|█████████▎| 244/262 [01:28<00:06,  2.80it/s]
+gthagtg wags but rugsglgigng og trpgpging cglagngce in the darg gthagtg wags but rugsglgigng og trpgpging cglagngce in the darg
+that was but rustling of dripping plants in the dark
+gagigsgiong was igngtgaglgler engtg of shgagm and shogtgyg gag nog thing would sgagtgigseg gfgygagmg that could nogtgsgtgagngd cgrogsgs egagmingagtiong bgyg gregsgcgogpegdg tgegsg gog and gilgan ogmogerg gagigsgiong was igngtgaglgler engtg of shgagm and shogtgyg gag nog thing would sgagtgigseg gfgygagmg that could nogtgsgtgagngd cgrogsgs egagmingagtiong bgyg gregsgcgogpegdg tgegsg gog and gilgan ogmogerg
+edison was intolerant of sham and shoddy and nothing would satisfy him that could not stand cross examination by microscope test tube and galvanometer
+grogtg sgagtgigtg sgtgilglg for agigmeg with gage gang gkgegngtg and fgluagshedg git was ogugt nog grogtg sgagtgigtg sgtgilglg for agigmeg with gage gang gkgegngtg and fgluagshedg git was ogugt nog
+ruth sat quite still for a time with face intent and flushed it was out now
+gthe pglgagceg gheghagd was a vgegryg god gogneg the sgugng shog on himgags tag fregshgagrg there was agnogth of thagtg and grgogugngd himg greg gang lagrg sgigsed cgogngrgagdsg g gyigngs as welowgs girgsg gthe pglgagceg gheghagd was a vgegryg god gogneg the sgugng shog on himgags tag fregshgagrg there was agnogth of thagtg and grgogugngd himg greg gang lagrg sgigsed cgogngrgagdsg g gyigngs as welowgs girgsg
+the place he had was a very good one the sun shone on him as to fresh air there was enough of that and round him grew many large sized comrades pines as well as firs
+ghogsgbgegngedg the ngegxg thing tog gigfeg ghogsgbgegngedg the ngegxg thing tog gigfeg
+husband the next thing to a wife
+ghegrg she was tgeagchging geargdtyg chugring and thes sgmaglgl of congfged gulgdergs gagndgbogdilgly pgogsgpmugrgagtiong gwagsg tog her g tgigmes ugngvgegrgbgleg ghegrg she was tgeagchging geargdtyg chugring and thes sgmaglgl of congfged gulgdergs gagndgbogdilgly pgogsgpmugrgagtiong gwagsg tog her g tgigmes ugngvgegrgbgleg
+here she was teaching dirty children and the smell of confused odors and bodily perspiration was to her at times unbearable
+grog the ag cardag brother gog grog the ag cardag brother gog
+brother mac ardle brother keogh
+gygegsg it is sugpgregsedg gygegsg it is sugpgregsedg
+yes it is suppressed
+gtoug orgygfgognd the people and pgogvergtgyg and left them and come geared of weg gtoug orgygfgognd the people and pgogvergtgyg and left them and come geared of weg
+the army found the people in poverty and left them in comparative wealth
+go aglagpgrgangceg moglyg had gogt trug hergagfgter ginger worgkg in an egemplgryg magnerg hagd gleaned hergsgeglgfg with great togsgpagchg and nogwg came to gagsgkg sgugmigsgigbglyg gig she should sait dogwn to gergsgpignging tog migingtgigmeg go aglagpgrgangceg moglyg had gogt trug hergagfgter ginger worgkg in an egemplgryg magnerg hagd gleaned hergsgeglgfg with great togsgpagchg and nogwg came to gagsgkg sgugmigsgigbglyg gig she should sait dogwn to gergsgpignging tog migingtgigmeg
+
+
+val:  98%|█████████▊| 257/262 [01:32<00:01,  3.76it/s]
+ghegcgegvesg gig though she gut nogt could mag mand forest greg hand log dog ghegcgegvesg gig though she gut nogt could mag mand forest greg hand log dog
+he keeps the thou shalt not commandments first rate hen lord does
+g dog beg are not to beg that as the questiong with it gigsgnogbler in the mgignd or sgugfgfor the sgligngs angrgogwgsg whagtg nog hagmgig sgbegkgigng g dog beg are not to beg that as the questiong with it gigsgnogbler in the mgignd or sgugfgfor the sgligngs angrgogwgsg whagtg nog hagmgig sgbegkgigng
+to be or not to be that is the question whether tis nobler in the mind to suffer the slings and arrows what no hamlet speaking
+gtgoglgogsg said the gagtherg the whole sgtgogrgyg and where sgaglgong her the stogyg gtgoglgogsg said the gagtherg the whole sgtgogrgyg and where sgaglgong her the stogyg
+tell us said the other the whole story and where solon heard the story
+git is a glen org bragingdgogwng harg gong sheaf ofgqguogrng to an ogldg wager nag it sgelgfg mogsgig and rgegngtg sgcargcegly agble togitgitg sgtgogngsg togtgng git is a glen org bragingdgogwng harg gong sheaf ofgqguogrng to an ogldg wager nag it sgelgfg mogsgig and rgegngtg sgcargcegly agble togitgitg sgtgogngsg togtgng
+it is a gleaner bringing down her one sheaf of corn to an old watermill itself mossy and rent scarcely able to get its stones to turn
+gog gsgugrg said misgus pgogigce or rather egagrgmedg you would g ligeit at ag gog gsgugrg said misgus pgogigce or rather egagrgmedg you would g ligeit at ag
+oh sir said missus poyser rather alarmed you wouldnt like it at all
+githigsg cgogstgmeg tgiyge gigxgtge doglergs in gnogigtsg githigsg cgogstgmeg tgiyge gigxgtge doglergs in gnogigtsg
+it has cost me twice sixty dollars in annoyance
+gthe shograg man gofgfgagcg gargerg whigsgagsg log gcglagragfgigdeg glugmgsg bgagsgtgergdg cgogmgong burgngtg g thigsg ognegsgtg magog fgagcgurgrg tgogsgligng gthe shograg man gofgfgagcg gargerg whigsgagsg log gcglagragfgigdeg glugmgsg bgagsgtgergdg cgogmgong burgngtg g thigsg ognegsgtg magog fgagcgurgrg tgogsgligng
+the sugar manufacturer who says loaf clarified lumps bastard common burnt this honest manufacturer talks slang
+gmgygmgegng pgogng of the tag it theirgfgigsg gmgygmgegng pgogng of the tag it theirgfgigsg
+my men pounded the table with their fists
+gbgegtgterg grog he had cgogungsgleg gangtgengcioug sglyg gbgegtgterg grog he had cgogungsgleg gangtgengcioug sglyg
+better go he had counselled sententiously
+gagmogngtogtheir pgergsgongs ofg digsgtgigtigiong fog gugnigigtgegd thegmgsgeglgvesg tog higmg wagsglogrgdg nagpgegagrg ofg mergchgigsgtgang sgogngdg of the tgagmgugsg ingegtgerg of the logrogthgogsg the gpgagrgsgong tog hog the tgtglegogfg gagrgagteg magng gigsg mogregjgugsgtglyg dgeg thegng tog gagngyg ogtherg whogmg higsg cogngtrgyg gogpgrgdgugcedg gagmogngtogtheir pgergsgongs ofg digsgtgigtigiong fog gugnigigtgegd thegmgsgeglgvesg tog higmg wagsglogrgdg nagpgegagrg ofg mergchgigsgtgang sgogngdg of the tgagmgugsg ingegtgerg of the logrogthgogsg the gpgagrgsgong tog hog the tgtglegogfg gagrgagteg magng gigsg mogregjgugsgtglyg dgeg thegng tog gagngyg ogtherg whogmg higsg cogngtrgyg gogpgrgdgugcedg
+
+
+val: 100%|██████████| 262/262 [01:36<00:00,  2.72it/s]
+gcgagptaing cgerveg tgagcg hagsgangeg tagord himg gcgagptaing cgerveg tgagcg hagsgangeg tagord himg
+captain servadac hastened towards him
+gand gled erelogthg tog mgogreg sgugdenglyg and gaglyg then the gre of the gog gemesg gqguigte to cgalglg fogrg and glgagngcedg agrimg glogokeg from the gcgorgnergsg og higsg geyesg gognglegkg but theg gaging cgagpgd and did nogt semed to pergcgeigv gig and gagter gegsgegcangsg mogre heg gagngdegd ig vergyg ginigcgentlyg gag to misgus dgargthgyg goglyg regmgargking gand gled erelogthg tog mgogreg sgugdenglyg and gaglyg then the gre of the gog gemesg gqguigte to cgalglg fogrg and glgagngcedg agrimg glogokeg from the gcgorgnergsg og higsg geyesg gognglegkg but theg gaging cgagpgd and did nogt semed to pergcgeigv gig and gagter gegsgegcangsg mogre heg gagngdegd ig vergyg ginigcgentlyg gag to misgus dgargthgyg goglyg regmgargking
+and wylder laughed too more suddenly and noisily than the humour of the joke seemed quite to call for and glanced a grim look from the corners of his eyes on lake but the gallant captain did not seem to perceive it and after a few seconds more he handed it very innocently back to missus dorothy only remarking
+gmgaymog biglgdg og gfgaglegsg fgtgure ousgtgig sgegmgrgigng the nogalesg then changergs gang under wager cagpgaging og gagngienge against gigs ing pgriolegst gpgregsgerg gmgaymog biglgdg og gfgaglegsg fgtgure ousgtgig sgegmgrgigng the nogalesg then changergs gang under wager cagpgaging og gagngienge against gigs ing pgriolegst gpgregsgerg
+nemo builds a fabulous futuristic submarine the nautilus then conducts an underwater campaign of vengeance against his imperialist oppressor
+gheg would begligkeg gagogloglgagugs rogugsging togegmgegng gagfgagctg ingagagtg gigaglgog og ferg has gtgagtging tog sgcrigstgin ngagseg gigfgagct ing gmagngigtgyg gheg would begligkeg gagogloglgagugs rogugsging togegmgegng gagfgagctg ingagagtg gigaglgog og ferg has gtgagtging tog sgcrigstgin ngagseg gigfgagct ing gmagngigtgyg
+he would be like a philologist refusing to examine a fact in language a philosopher hesitating to scrutinize a fact in humanity
+gif heg years thag one of their sglgagvesg at gcgrogchgmegng was gcgegpt on the coghgpgogsg gone cogldgngight when they were gog at agog and gile becgagme agmogst grogsgng to gegthg ingfgegtg hegod dgneg in the ingfgermgrgyg from the ofgfgegntce of the fgrgstg agbgout gone wagkgagfgte wargdsg gif heg years thag one of their sglgagvesg at gcgrogchgmegng was gcgegpt on the coghgpgogsg gone cogldgngight when they were gog at agog and gile becgagme agmogst grogsgng to gegthg ingfgegtg hegod dgneg in the ingfgermgrgyg from the ofgfgegntce of the fgrgstg agbgout gone wagkgagfgte wargdsg
+a few years back one of their slaves a coachman was kept on the coach box one cold night when they were out at a ball until he became almost frozen to death in fact he did die in the infirmary from the effects of the frost about one week afterwards
+gh was in the midst of thagtg when yo regtgegegneg cgaugsed him to make agvgegrgyg here regtgregtg grgyg hergigdeg sginc he had nogt tgigme to regplagce the pgagpergs which would tgd you that he had begen thag gh was in the midst of thagtg when yo regtgegegneg cgaugsed him to make agvgegrgyg here regtgregtg grgyg hergigdeg sginc he had nogt tgigme to regplagce the pgagpergs which would tgd you that he had begen thag
+he was in the midst of that when your return caused him to make a very hurried retreat very hurried since he had not time to replace the papers which would tell you that he had been there
+gthogaig mag begbgugtg and ungragtios s ogvgigsger you wil aglgogwg meg there foreg to gsgcrgige mygsgoglgfsg with the begstg wishes frog hagpgpinesgsg here and here gagterg your tgfrgegngdg grogber at sgelgyg gthogaig mag begbgugtg and ungragtios s ogvgigsger you wil aglgogwg meg there foreg to gsgcrgige mygsgoglgfsg with the begstg wishes frog hagpgpinesgsg here and here gagterg your tgfrgegngdg grogber at sgelgyg
+though i may be but an ungracious adviser you will allow me therefore to subscribe myself with the best wishes for your happiness here and hereafter your true friend robert southey
+ghe hasg gegen thegn with tog mugchgragceg nog tog have ogtderg stile tog gif they are regqgugiredg which ans the cage of the present magmagtg ghe hasg gegen thegn with tog mugchgragceg nog tog have ogtderg stile tog gif they are regqgugiredg which ans the cage of the present magmagtg
+he has given them with too much grace not to have others still to give if they are required which is the case at the present moment
+gwhen you agre you about the nag of gog agpgartg on the quesgtion of jgustgif fagcgagtiong you may be as progfgogund as you glgigkeg gwhen you agre you about the nag of gog agpgartg on the quesgtion of jgustgif fagcgagtiong you may be as progfgogund as you glgigkeg
+when you argue about the nature of god apart from the question of justification you may be as profound as you like
+gi amant gogang and ther are g lgigkeg meg who gegerglogvegsg meg fglatgtergs meg who ever flgagtgergsg meg pglagsgsg meg gagnd who gergorg plagsgagsg wgeglg sgaid mogtgaglgyg you do nogtgfgenigshg gi amant gogang and ther are g lgigkeg meg who gegerglogvegsg meg fglatgtergs meg who ever flgagtgergsg meg pglagsgsg meg gagnd who gergorg plagsgagsg wgeglg sgaid mogtgaglgyg you do nogtgfgenigshg
+i am a woman and there are few like me whoever loves me flatters me whoever flatters me pleases me and whoever pleases well said montalais you do not finish
+    epoch          : 9
+    loss           : 0.6940930324792862
+    grad norm      : 1.6565950775146485
+    WER (ARG)      : 0.631176789851209
+    CER (ARG)      : 0.3907154332855577
+    CER (BMS)      : 0
+    WER (BMS)      : 0
+    val_loss       : 0.6578890804116052
+    val_WER (ARG)  : 0.6223295985184062
+    val_CER (ARG)  : 0.38042274985164815
+    val_CER (BMS)  : 0.4552887610334391
+    val_WER (BMS)  : 0.7839332058347545
+train:   0%|          | 0/1855 [00:00<?, ?it/s]
+Saving current best: model_best.pth ...
+almost
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
