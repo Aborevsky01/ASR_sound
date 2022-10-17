@@ -22,7 +22,7 @@ class ArgmaxWERMetric(BaseMetric):
                 pred_text = self.text_encoder.ctc_decode(log_prob_vec[:length])
             else:
                 pred_text = self.text_encoder.decode(log_prob_vec[:length])
-            wers.append(calc_wer(target_text, pred_text.replace('▁',' ')))
+            wers.append(calc_wer(target_text, pred_text.replace('▁',' ').replace('_',' ')))
         return sum(wers) / len(wers)
 
 
@@ -36,5 +36,5 @@ class BeamSearchWERMetric(BaseMetric):
         lengths = log_probs_length.detach().numpy()
         for (pred_txt, _, _, _, _), length, target_text in zip(bms_pred, lengths, text):
             target_text = CTCCharTextEncoder.normalize_text(target_text)
-            wers.append(calc_wer(target_text, pred_txt))
+            wers.append(calc_wer(target_text, pred_txt.replace('_',' ')))
         return sum(wers) / len(wers)

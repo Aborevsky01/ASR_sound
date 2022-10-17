@@ -9,6 +9,7 @@ import os
 from pyctcdecode import build_ctcdecoder
 
 from BPE_models.BPE_train import bpe_train, kenlm_path
+from hw_asr.utils import prepare_device
 from lm_scorer.models.auto import AutoLMScorer as LMScorer
 
 import hw_asr.loss as module_loss
@@ -37,17 +38,15 @@ def main(config):
     device = torch.device("cuda:0" if use_cuda else "cpu")
 
     vocab = bpe_train(config)
-    print('after BPE train', vocab)
 
     text_encoder = config.get_text_encoder(vocab)
 
     decoder = build_ctcdecoder(
         text_encoder.alphabet,
         kenlm_model_path=kenlm_path(),
-        alpha=0.5,
-        beta=1.0,
+        alpha=1.5,
+        beta=0.7,
     )
-    print('pyctc', decoder._idx2vocab)
     # setup data_loader instances
     dataloaders = get_dataloaders(config, text_encoder)
 
@@ -57,10 +56,10 @@ def main(config):
     logger.info(model)
 
     # prepare for (multi-device) GPU training
-    # device, device_ids = prepare_device(config["n_gpu"])
-    # model = model.to(device)
-    # if len(device_ids) > 1:
-    #    model = torch.nn.DataParallel(model, device_ids=device_ids)
+    device, device_ids = prepare_device(config["n_gpu"])
+    model = model.to(device)
+    if len(device_ids) > 1:
+        model = torch.nn.DataParallel(model, device_ids=device_ids)
 
     # get function handles of loss and metrics
     loss_module = config.init_obj(config["loss"], module_loss).to(device)
@@ -88,7 +87,6 @@ def main(config):
         lr_scheduler=lr_scheduler,
         len_epoch=config["trainer"].get("len_epoch", None)
     )
-
     trainer.train()
 
 

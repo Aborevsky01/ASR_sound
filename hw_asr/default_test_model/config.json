@@ -1,5 +1,5 @@
 {
-  "name": "hundred_default_config",
+  "name": "threesixty_default_config",
   "n_gpu": 1,
   "preprocessing": {
     "sr": 16000,
@@ -11,8 +11,36 @@
     "log_spec": true
   },
   "augmentations": {
-    "wave": [],
-    "spectrogram": []
+    "wave": [{
+    "type": "Gain",
+    "args": {
+      "min_gain_in_db": -15.0,
+      "max_gain_in_db": 5.0
+    }
+   },
+  {
+    "type": "Noise",
+    "args": {
+      "sample_rate": 16000
+    }
+   },
+  {
+    "type": "Pitch",
+    "args": {
+      "sample_rate": 16000
+      }
+   }],
+    "spectrogram": [{
+    "type": "Speed",
+    "args": {
+      }
+    },
+  {
+    "type": "Crop",
+    "args": {
+     "value": 20
+    }
+  }]
   },
   "BPE": {
     "use": true,
@@ -28,7 +56,7 @@
   "data": {
     "train": {
       "batch_size": 30,
-      "num_workers": 0,
+      "num_workers": 4,
       "datasets": [
         {
          "type": "LibrispeechDataset",
@@ -42,7 +70,7 @@
     },
     "val": {
       "batch_size": 10,
-      "num_workers": 0,
+      "num_workers": 2,
       "datasets": [
         {
           "type": "LibrispeechDataset",
@@ -92,15 +120,15 @@
   "lr_scheduler": {
     "type": "OneCycleLR",
     "args": {
-      "steps_per_epoch": 2853,
-      "epochs": 5,
+      "steps_per_epoch": 1855,
+      "epochs": 9,
       "anneal_strategy": "linear",
       "max_lr": 5e-4,
       "pct_start": 0.2
     }
   },
   "trainer": {
-    "epochs": 5,
+    "epochs": 9,
     "save_dir": "saved/",
     "save_period": 5,
     "verbosity": 2,

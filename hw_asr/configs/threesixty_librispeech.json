@@ -1,5 +1,5 @@
 {
-  "name": "default_config",
+  "name": "hundred_default_config",
   "n_gpu": 1,
   "preprocessing": {
     "sr": 16000,
@@ -11,44 +11,40 @@
     "log_spec": true
   },
   "augmentations": {
-    "wave": [
-      {
-        "type": "Gain",
-        "args": {
-          "min_gain_in_db": -15.0,
-          "max_gain_in_db": 5.0
-        }
-      },
-      {
-        "type": "Noise",
-        "args": {
-          "sample_rate": 16000
-        }
-      },
-      {
-        "type": "Pitch",
-        "args": {
-          "sample_rate": 16000
-        }
+    "wave": [{
+    "type": "Gain",
+    "args": {
+      "min_gain_in_db": -15.0,
+      "max_gain_in_db": 5.0
+    }
+   },
+  {
+    "type": "Noise",
+    "args": {
+      "sample_rate": 16000
+    }
+   },
+  {
+    "type": "Pitch",
+    "args": {
+      "sample_rate": 16000
       }
-    ],
-    "spectrogram": [
-      {
-        "type": "Speed",
-        "args": {
-        }
-      },
-      {
-        "type": "Crop",
-        "args": {
-          "value": 20
-        }
+   }],
+    "spectrogram": [{
+    "type": "Speed",
+    "args": {
       }
-    ]
+    },
+  {
+    "type": "Crop",
+    "args": {
+     "value": 20
+    }
+  }]
   },
   "BPE": {
     "use": true,
-    "BPE_model": "train_360"
+    "BPE_model": "train_100"
   },
   "arch": {
     "type": "TrialModel",
@@ -59,20 +55,22 @@
   },
   "data": {
     "train": {
-      "batch_size": 10,
-      "num_workers": 0,
+      "batch_size": 30,
+      "num_workers": 4,
       "datasets": [
         {
          "type": "LibrispeechDataset",
           "args": {
-            "part": "train-clean-360"
+            "part": "train-clean-360",
+            "max_audio_length": 20.0,
+            "max_text_length": 200
           }
         }
       ]
     },
     "val": {
       "batch_size": 10,
-      "num_workers": 0,
+      "num_workers": 2,
       "datasets": [
         {
           "type": "LibrispeechDataset",
@@ -122,15 +120,15 @@
   "lr_scheduler": {
     "type": "OneCycleLR",
     "args": {
-      "steps_per_epoch": 2853,
-      "epochs": 6,
+      "steps_per_epoch": 1855,
+      "epochs": 13,
       "anneal_strategy": "linear",
       "max_lr": 5e-4,
       "pct_start": 0.2
     }
   },
   "trainer": {
-    "epochs": 6,
+    "epochs": 13,
     "save_dir": "saved/",
     "save_period": 5,
     "verbosity": 2,

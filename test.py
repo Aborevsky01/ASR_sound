@@ -4,13 +4,17 @@ import os
 from pathlib import Path
 
 import torch
+from pyctcdecode import build_ctcdecoder
 from tqdm import tqdm
+import numpy as np
 
 import hw_asr.model as module_model
 from hw_asr.trainer import Trainer
 from hw_asr.utils import ROOT_PATH
 from hw_asr.utils.object_loading import get_dataloaders
 from hw_asr.utils.parse_config import ConfigParser
+from BPE_models.BPE_train import bpe_train, kenlm_path
+from lm_scorer.models.auto import AutoLMScorer as LMScorer
 
 DEFAULT_CHECKPOINT_PATH = ROOT_PATH / "default_test_model" / "checkpoint.pth"
 
@@ -21,8 +25,19 @@ def main(config, out_file):
     # define cpu or gpu if possible
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
+    vocab = bpe_train(config)
+
     # text_encoder
-    text_encoder = config.get_text_encoder()
+    text_encoder = config.get_text_encoder(vocab)
+
+    decoder = build_ctcdecoder(
+        text_encoder.alphabet,
+        kenlm_model_path=kenlm_path(),
+        alpha=0.5,
+        beta=1.0,
+    )
+
+    LM_scorer = LMScorer.from_pretrained("gpt2", batch_size=1, device=device)
 
     # setup data_loader instances
     dataloaders = get_dataloaders(config, text_encoder)
@@ -59,15 +74,23 @@ def main(config, out_file):
             batch["probs"] = batch["log_probs"].exp().cpu()
             batch["argmax"] = batch["probs"].argmax(-1)
             for i in range(len(batch["text"])):
+
+                bm_result = decoder.decode_beams(batch['log_probs'][i].detach().numpy(), beam_width=50)
+                lm_scores = []
+                for bm_lin in bm_result[0:10]:
+                    score = LM_scorer.sentence_score(bm_lin[0], reduce="prod", log=True)
+                    lm_scores.append(bm_lin[-1] + score)
+                best_ind = np.argmax(lm_scores)
+                bms = bm_result[best_ind]
+                bms = bms[: int(batch["log_probs_length"][i])]
+
                 argmax = batch["argmax"][i]
                 argmax = argmax[: int(batch["log_probs_length"][i])]
                 results.append(
                     {
                         "ground_trurh": batch["text"][i],
                         "pred_text_argmax": text_encoder.ctc_decode(argmax.cpu().numpy()),
-                        "pred_text_beam_search": text_encoder.ctc_beam_search(
-                            batch["probs"][i], batch["log_probs_length"][i], beam_size=100
-                        )[:10],
+                        "pred_text_beam_search": bms
                     }
                 )
     with Path(out_file).open("w") as f:

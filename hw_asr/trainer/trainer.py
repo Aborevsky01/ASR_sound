@@ -2,6 +2,9 @@ import random
 from pathlib import Path
 from random import shuffle
 from string import ascii_lowercase
+
+from IPython import display
+
 from hw_asr.utils import ROOT_PATH
 import kenlm
 
@@ -54,9 +57,6 @@ class Trainer(BaseTrainer):
         self.config = config
         self.train_dataloader = dataloaders["train"]
         self.LM_scorer = LMScorer.from_pretrained("gpt2", batch_size=1, device=device)
-        # self.vocab = [''] + vocab
-        # self.vocab = list(ascii_lowercase + ' ')
-        # self.vocab = [''] + text_encoder.alphabet
         self.decoder = decoder
         if len_epoch is None:
             # epoch-based training
@@ -67,7 +67,7 @@ class Trainer(BaseTrainer):
             self.len_epoch = len_epoch
         self.evaluation_dataloaders = {k: v for k, v in dataloaders.items() if k != "train"}
         self.lr_scheduler = lr_scheduler
-        self.log_step = 50
+        self.log_step = 100
 
         self.train_metrics = MetricTracker(
             "loss", "grad norm", *[m.name for m in self.metrics], writer=self.writer
@@ -127,11 +127,8 @@ class Trainer(BaseTrainer):
                     continue
                 else:
                     raise e
-            if torch.isnan(batch['loss']).item() == True:
-                print(batch['loss'])
-                continue
             self.train_metrics.update("grad norm", self.get_grad_norm())
-            if batch_idx % 100 == 0:
+            if batch_idx % self.log_step == 0:
                 self.writer.set_step((epoch - 1) * self.len_epoch + batch_idx)
                 self.logger.debug(
                     "Train Epoch: {} {} Loss: {:.6f}".format(
@@ -144,6 +141,7 @@ class Trainer(BaseTrainer):
                 self._log_predictions(**batch)
                 self._log_spectrogram(batch["spectrogram"])
                 self._log_scalars(self.train_metrics)
+                self._log_audio(**batch)
                 # we don't want to reset train metrics at the start of every epoch
                 # because we are interested in recent train metrics
                 last_train_metrics = self.train_metrics.result()
@@ -153,13 +151,12 @@ class Trainer(BaseTrainer):
         log = last_train_metrics
 
         for part, dataloader in self.evaluation_dataloaders.items():
-            val_log = self._evaluation_epoch(epoch, part, dataloader, bms=True)
+            val_log = self._evaluation_epoch(epoch, part, dataloader)
             log.update(**{f"{part}_{name}": value for name, value in val_log.items()})
 
         return log
 
     def process_batch(self, batch, is_train: bool, metrics: MetricTracker, bms):
-        torch.autograd.set_detect_anomaly(True)
         batch = self.move_batch_to_device(batch, self.device)
         if is_train:
             self.optimizer.zero_grad()
@@ -173,8 +170,6 @@ class Trainer(BaseTrainer):
             batch["spectrogram_length"]
         )
         batch["loss"] = self.criterion(**batch)
-        if np.isnan(batch["loss"].item()):
-            return batch
         if is_train:
             batch["loss"].backward()
             self._clip_grad_norm()
@@ -187,18 +182,18 @@ class Trainer(BaseTrainer):
         if bms:
             batch['bms_pred'] = []
             for i, item in enumerate(batch['log_probs']):
-                # bm_result = self.text_encoder.ctc_beam_search(item.exp().cpu(), batch['log_probs_length'][i],beam_size=10)
+                # bm_result = self.text_encoder.ctc_beam_search(item.exp().cpu(), batch['log_probs_length'][i],
+                #                                                                                       beam_size=10)
                 bm_result = self.decoder.decode_beams(item.detach().numpy(), beam_width=50)
                 lm_scores = []
-
                 for bm_lin in bm_result[0:10]:
                     score = self.LM_scorer.sentence_score(bm_lin[0], reduce="prod", log=True)
                     lm_scores.append(bm_lin[-1] + score)
                 best_ind = np.argmax(lm_scores)
                 batch['bms_pred'].append(bm_result[best_ind])
             for met in self.metrics:
-              if met.name == "CER (BMS)" or met.name == "WER (BMS)":
-                metrics.update(met.name, met(**batch))
+                if met.name == "CER (BMS)" or met.name == "WER (BMS)":
+                    metrics.update(met.name, met(**batch))
         for met in self.metrics:
             if met.name == "CER (ARG)" or met.name == "WER (ARG)":
                 metrics.update(met.name, met(**batch))
@@ -223,12 +218,13 @@ class Trainer(BaseTrainer):
                     batch,
                     is_train=False,
                     metrics=self.evaluation_metrics,
-                    bms=bms
+                    bms=(batch_idx % 10) == 0
                 )
             self.writer.set_step(epoch * self.len_epoch, part)
             self._log_scalars(self.evaluation_metrics)
             self._log_predictions(**batch)
             self._log_spectrogram(batch["spectrogram"])
+            self._log_audio(**batch)
 
         # add histogram of model parameters to the tensorboard
         for name, p in self.model.named_parameters():
@@ -270,11 +266,11 @@ class Trainer(BaseTrainer):
         rows = {}
         # for (hypo, _, _, _, _), pred, target, raw_pred, audio_path in tuples[:examples_to_log]:
         for pred, target, raw_pred, audio_path in tuples[:examples_to_log]:
-            target = BaseTextEncoder.normalize_text(target)
-            wer = calc_wer(target, pred) * 100
+            target = self.text_encoder.normalize_text(target)
+            wer = calc_wer(target, pred.replace('▁', ' ').replace('_', ' ')) * 100
             cer = calc_cer(target, pred) * 100
-            #beam_wer = calc_wer(target, hypo) * 100
-            #beam_cer = calc_cer(target, hypo) * 100
+            # beam_wer = calc_wer(target, hypo) * 100
+            # beam_cer = calc_cer(target, hypo) * 100
 
             rows[Path(audio_path).name] = {
                 "target": target,
@@ -282,9 +278,9 @@ class Trainer(BaseTrainer):
                 "predictions": pred,
                 "wer": wer,
                 "cer": cer,
-                #"beam_hypothesis": hypo,
-                #"beam_wer": beam_wer,
-                #"beam_cer": beam_cer,
+                # "beam_hypothesis": hypo,
+                # "beam_wer": beam_wer,
+                # "beam_cer": beam_cer,
             }
         self.writer.add_table("predictions", pd.DataFrame.from_dict(rows, orient="index"))
 
@@ -292,6 +288,10 @@ class Trainer(BaseTrainer):
         spectrogram = random.choice(spectrogram_batch.cpu())
         image = PIL.Image.open(plot_spectrogram_to_buf(spectrogram))
         self.writer.add_image("spectrogram", ToTensor()(image))
+
+    def _log_audio(self, audio, **batch):
+        audio = random.choice(audio)
+        self.writer.add_audio("audio", audio, sample_rate=16000)
 
     @torch.no_grad()
     def get_grad_norm(self, norm_type=2):

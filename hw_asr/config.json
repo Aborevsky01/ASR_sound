@@ -16,7 +16,7 @@
   },
   "BPE": {
     "use": true,
-    "BPE_model": "dev"
+    "BPE_model": "train_100"
   },
   "arch": {
     "type": "TrialModel",
@@ -26,31 +26,14 @@
     }
   },
   "data": {
-    "train": {
+    "test": {
       "batch_size": 10,
       "num_workers": 0,
       "datasets": [
         {
           "type": "LibrispeechDataset",
           "args": {
-            "part": "train-clean-100",
-            "max_audio_length": 20.0,
-            "max_text_length": 200
-          }
-        }
-      ]
-    },
-    "val": {
-      "batch_size": 10,
-      "num_workers": 0,
-      "datasets": [
-        {
-          "type": "LibrispeechDataset",
-          "args": {
-            "part": "test-clean",
-            "max_audio_length": 20.0,
-            "max_text_length": 200,
-            "limit": 20
+            "part": "test-clean"
           }
         }
       ]

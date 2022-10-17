@@ -23,12 +23,12 @@ class CTCCharTextEncoder(CharTextEncoder):
         decoded = []
         last_char = 0
         for ind in inds:
-            if ind == 0:
+            if ind == last_char:
                 continue
-            if ind != last_char:
+            if ind != self.EMPTY_TOK:
                 decoded.append(self.ind2char[ind])
             last_char = ind
-        return ''.join(decoded)
+        return ''.join(decoded).replace(self.EMPTY_TOK, '')
 
     def ctc_beam_search(self, probs: torch.tensor, probs_length,
                         beam_size: int = 100) -> List[Hypothesis]:

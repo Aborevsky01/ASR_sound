@@ -39,7 +39,7 @@ def bpe_train(config):
         os.remove(vocab_name)
     BPE = spm.SentencePieceProcessor()
     BPE.load(str(ROOT_PATH / "BPE_models" / full_name))
-    vocab = ['▁'] + [BPE.id_to_piece(id) for id in range(BPE.get_piece_size())]
+    vocab = ['_'] + [BPE.id_to_piece(id) for id in range(BPE.get_piece_size())]
     vocab = list(set(vocab).union(set(list(ascii_lowercase))))
     return vocab
 

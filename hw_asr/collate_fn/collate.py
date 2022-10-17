@@ -10,10 +10,8 @@ def collate_fn(dataset_items: List[dict]):
     """
     Collate and pad fields in dataset items
     """
-    # TODO: padding value
     result_batch = {k: [dic[k] for dic in dataset_items] for k in dataset_items[0]}
     spect_len, text_enc_len = [], []
-    # result_batch = {'text': [], 'text_encoded_length': [], 'spectrogram_length': [], 'spectrogram': []}
     for i, item in enumerate(dataset_items):
         spect_len.append(item['spectrogram'].shape[2])
         text_enc_len.append(item['text_encoded'].shape[1])
