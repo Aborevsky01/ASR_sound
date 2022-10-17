@@ -1,0 +1,139 @@
+{
+  "name": "hundred_aug_default_config",
+  "n_gpu": 1,
+  "preprocessing": {
+    "sr": 16000,
+    "spectrogram": {
+      "type": "MelSpectrogram",
+      "args": {
+      }
+    },
+    "log_spec": true
+  },
+  "augmentations": {
+    "wave": [{
+    "type": "Gain",
+    "args": {
+      "min_gain_in_db": -15.0,
+      "max_gain_in_db": 5.0
+    }
+   },
+  {
+    "type": "Noise",
+    "args": {
+      "sample_rate": 16000
+    }
+   },
+  {
+    "type": "Pitch",
+    "args": {
+      "sample_rate": 16000
+      }
+   }],
+    "spectrogram": [{
+    "type": "Speed",
+    "args": {
+      }
+    },
+  {
+    "type": "Crop",
+    "args": {
+     "value": 20
+    }
+  }]
+  },
+  "BPE": {
+    "use": true,
+    "BPE_model": "train_100"
+  },
+  "arch": {
+    "type": "TrialModel",
+    "args": {
+      "n_feats": 128,
+      "fc_hidden": 512
+    }
+  },
+  "data": {
+    "train": {
+      "batch_size": 30,
+      "num_workers": 4,
+      "datasets": [
+        {
+         "type": "LibrispeechDataset",
+          "args": {
+            "part": "train-clean-100"
+          }
+        }
+      ]
+    },
+    "val": {
+      "batch_size": 10,
+      "num_workers": 2,
+      "datasets": [
+        {
+          "type": "LibrispeechDataset",
+          "args": {
+            "part": "test-clean"
+          }
+        }
+      ]
+    }
+  },
+  "optimizer": {
+    "type": "AdamW",
+    "args": {
+      "lr": 5e-4
+    }
+  },
+  "loss": {
+    "type": "CTCLoss",
+    "args": {}
+  },
+  "metrics": [
+    {
+      "type": "ArgmaxWERMetric",
+      "args": {
+        "name": "WER (ARG)"
+      }
+    },
+    {
+      "type": "ArgmaxCERMetric",
+      "args": {
+        "name": "CER (ARG)"
+      }
+    },
+    {
+      "type": "BeamSearchCERMetric",
+      "args": {
+        "name": "CER (BMS)"
+      }
+    },
+    {
+      "type": "BeamSearchWERMetric",
+      "args": {
+        "name": "WER (BMS)"
+      }
+    }
+  ],
+  "lr_scheduler": {
+    "type": "OneCycleLR",
+    "args": {
+      "steps_per_epoch": 951,
+      "epochs": 6,
+      "anneal_strategy": "linear",
+      "max_lr": 5e-4,
+      "pct_start": 0.2
+    }
+  },
+  "trainer": {
+    "epochs": 6,
+    "save_dir": "saved/",
+    "save_period": 5,
+    "verbosity": 2,
+    "monitor": "min val_loss",
+    "early_stop": 100,
+    "visualize": "wandb",
+    "wandb_project": "asr_project",
+    "grad_norm_clip": 10
+  }
+}
