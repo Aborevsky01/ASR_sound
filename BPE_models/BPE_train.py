@@ -39,7 +39,7 @@ def bpe_train(config):
         os.remove(vocab_name)
     BPE = spm.SentencePieceProcessor()
     BPE.load(str(ROOT_PATH / "BPE_models" / full_name))
-    vocab = ['_'] + [BPE.id_to_piece(id) for id in range(BPE.get_piece_size())]
+    vocab = ['▁'] + [BPE.id_to_piece(id) for id in range(BPE.get_piece_size())]
     vocab = list(set(vocab).union(set(list(ascii_lowercase))))
     return vocab
 
@@ -47,27 +47,27 @@ def bpe_train(config):
 def kenlm_path():
     lm_path = 'lowercase.arpa'
     if not os.path.exists(ROOT_PATH / "BPE_models" / lm_path):
-        lm_gzip_path = '3-gram.pruned.1e-7.arpa.gz'
+        lm_gzip_path = '4-gram.arpa.gz'
         if not os.path.exists(lm_gzip_path):
             print('Downloading 4-gram model.')
-            lm_url = 'https://openslr.elda.org/resources/11/3-gram.pruned.1e-7.arpa.gz'
+            lm_url = 'https://openslr.elda.org/resources/11/4-gram.arpa.gz'
             lm_gzip_path = wget.download(lm_url)
-            print('Downloaded the 3-gram language model.')
+            print('Downloaded the 4-gram language model.')
         else:
             print('.arpa.gz already exists.')
 
-        uppercase_lm_path = '3gram_upper.arpa.gz'
+        uppercase_lm_path = '4gram_upper.arpa.gz'
         if not os.path.exists(uppercase_lm_path):
             with gzip.open(lm_gzip_path, 'rb') as f_zipped:
                 with open(uppercase_lm_path, 'wb') as f_unzipped:
                     shutil.copyfileobj(f_zipped, f_unzipped)
-            print('Unzipped the 3-gram language model.')
+            print('Unzipped the 4-gram language model.')
         else:
             print('Unzipped .arpa already exists.')
 
-            with open(uppercase_lm_path, 'r') as f_upper:
-                with open(ROOT_PATH / "BPE_models" / lm_path, 'w') as f_lower:
-                    for line in f_upper:
-                        f_lower.write(line.lower())
+        with open(uppercase_lm_path, 'r') as f_upper:
+            with open(ROOT_PATH / "BPE_models" / lm_path, 'w') as f_lower:
+                for line in f_upper:
+                    f_lower.write(line.lower())
 
     return str(ROOT_PATH / "BPE_models" / lm_path)

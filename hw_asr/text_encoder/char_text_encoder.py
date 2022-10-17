@@ -28,7 +28,7 @@ class CharTextEncoder(BaseTextEncoder):
 
     def encode(self, text) -> Tensor:
         text = self.normalize_text(text)
-        if self.bpe: text = text.replace(' ', '_')
+        if self.bpe: text = text.replace(' ', '▁')
         try:
             return Tensor([self.char2ind[char] for char in text]).unsqueeze(0)
         except KeyError as e:

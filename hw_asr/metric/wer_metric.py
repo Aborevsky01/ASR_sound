@@ -22,7 +22,7 @@ class ArgmaxWERMetric(BaseMetric):
                 pred_text = self.text_encoder.ctc_decode(log_prob_vec[:length])
             else:
                 pred_text = self.text_encoder.decode(log_prob_vec[:length])
-            wers.append(calc_wer(target_text, pred_text.replace('_',' ')))
+            wers.append(calc_wer(target_text, pred_text.replace('▁',' ')))
         return sum(wers) / len(wers)
 
 

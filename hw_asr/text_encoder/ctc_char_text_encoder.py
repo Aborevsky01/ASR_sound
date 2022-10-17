@@ -15,7 +15,7 @@ class CTCCharTextEncoder(CharTextEncoder):
 
     def __init__(self, alphabet: List[str] = None, bpe=False):
         super().__init__(alphabet, bpe)
-        vocab = [self.EMPTY_TOK] + list(self.alphabet)
+        vocab = list(self.alphabet) + [self.EMPTY_TOK]
         self.ind2char = dict(enumerate(vocab))
         self.char2ind = {v: k for k, v in self.ind2char.items()}
 

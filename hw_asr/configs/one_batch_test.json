@@ -28,7 +28,7 @@
   "data": {
     "train": {
       "batch_size": 10,
-      "num_workers": 3,
+      "num_workers": 0,
       "datasets": [
         {
           "type": "LibrispeechDataset",
@@ -43,7 +43,7 @@
     },
     "val": {
       "batch_size": 10,
-      "num_workers": 3,
+      "num_workers": 0,
       "datasets": [
         {
           "type": "LibrispeechDataset",
@@ -113,7 +113,7 @@
     "early_stop": 100,
     "visualize": "wandb",
     "wandb_project": "asr_project",
-    "len_epoch": 10,
+    "len_epoch": 100,
     "grad_norm_clip": 10
   }
 }

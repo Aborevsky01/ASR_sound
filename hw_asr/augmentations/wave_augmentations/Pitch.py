@@ -7,7 +7,7 @@ from hw_asr.augmentations.random_apply import RandomApply
 
 class Pitch(AugmentationBase):
     def __init__(self, *args, **kwargs):
-        self._aug = RandomApply(PitchShift(*args, **kwargs), 0.2)
+        self._aug = RandomApply(PitchShift(*args, **kwargs), 0.05)
 
     def __call__(self, data: Tensor):
         x = data.unsqueeze(1)

@@ -31,25 +31,28 @@ np.random.seed(7)
 def main(config):
     logger = config.get_logger("train")
     os.environ["TOKENIZERS_PARALLELISM"] = "false"
+    os.environ['CUDA_VISIBLE_DEVICES'] = '0'
 
     use_cuda = torch.cuda.is_available()
     device = torch.device("cuda:0" if use_cuda else "cpu")
 
     vocab = bpe_train(config)
+    print('after BPE train', vocab)
 
     text_encoder = config.get_text_encoder(vocab)
 
     decoder = build_ctcdecoder(
-        vocab,
+        text_encoder.alphabet,
         kenlm_model_path=kenlm_path(),
-        alpha=1.5,
+        alpha=0.5,
         beta=1.0,
     )
+    print('pyctc', decoder._idx2vocab)
     # setup data_loader instances
     dataloaders = get_dataloaders(config, text_encoder)
 
     # build model architecture, then print to console
-    model = config.init_obj(config["arch"], module_arch, n_class=len(vocab) + 1)
+    model = config.init_obj(config["arch"], module_arch, n_class=len(text_encoder))
     model = model.to(device)  # vocab
     logger.info(model)
 
@@ -78,7 +81,6 @@ def main(config):
         metrics,
         optimizer,
         decoder,
-        vocab,
         text_encoder=text_encoder,
         config=config,
         device=device,

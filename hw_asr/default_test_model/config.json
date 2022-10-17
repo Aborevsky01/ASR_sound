@@ -1,5 +1,5 @@
 {
-  "name": "default_config",
+  "name": "hundred_default_config",
   "n_gpu": 1,
   "preprocessing": {
     "sr": 16000,
@@ -27,13 +27,15 @@
   },
   "data": {
     "train": {
-      "batch_size": 10,
+      "batch_size": 30,
       "num_workers": 0,
       "datasets": [
         {
          "type": "LibrispeechDataset",
           "args": {
-            "part": "train-clean-100"
+            "part": "train-clean-360",
+            "max_audio_length": 20.0,
+            "max_text_length": 200
           }
         }
       ]
@@ -45,9 +47,7 @@
         {
           "type": "LibrispeechDataset",
           "args": {
-            "part": "test-clean",
-            "max_audio_length": 20.0,
-            "max_text_length": 200
+            "part": "test-clean"
           }
         }
       ]
@@ -93,14 +93,14 @@
     "type": "OneCycleLR",
     "args": {
       "steps_per_epoch": 2853,
-      "epochs": 3,
+      "epochs": 5,
       "anneal_strategy": "linear",
       "max_lr": 5e-4,
       "pct_start": 0.2
     }
   },
   "trainer": {
-    "epochs": 3,
+    "epochs": 5,
     "save_dir": "saved/",
     "save_period": 5,
     "verbosity": 2,

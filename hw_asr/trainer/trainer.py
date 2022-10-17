@@ -40,7 +40,6 @@ class Trainer(BaseTrainer):
             metrics,
             optimizer,
             decoder,
-            vocab,
             config,
             device,
             dataloaders,
@@ -57,8 +56,7 @@ class Trainer(BaseTrainer):
         self.LM_scorer = LMScorer.from_pretrained("gpt2", batch_size=1, device=device)
         # self.vocab = [''] + vocab
         # self.vocab = list(ascii_lowercase + ' ')
-        self.vocab = [''] + text_encoder.alphabet
-        print(self.vocab)
+        # self.vocab = [''] + text_encoder.alphabet
         self.decoder = decoder
         if len_epoch is None:
             # epoch-based training
