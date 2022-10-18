@@ -14,6 +14,7 @@ class Speed(AugmentationBase):
         self._aug = tat.TimeStretch(n_freq=128)
 
     def __call__(self, data: Tensor):
+        res = data
         p = np.random.random()
         if p < 0.1:
             aug = self._aug(data, np.random.uniform(1., 1.3)).float()
